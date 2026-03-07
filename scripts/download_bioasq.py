@@ -9,8 +9,8 @@ Usage:
 """
 
 from __future__ import annotations
-from src.utils import setup_logging
-from src.config import data as data_cfg
+from axiom_hdc.utils import setup_logging
+from axiom_hdc.config import data as data_cfg
 
 import json
 import logging

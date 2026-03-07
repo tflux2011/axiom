@@ -24,8 +24,8 @@ from dataclasses import dataclass, field
 from itertools import combinations
 from typing import Generator
 
-from src.config import NERConfig, ner as default_ner_cfg
-from src.distiller import MedicalFact
+from axiom_hdc.config import NERConfig, ner as default_ner_cfg
+from axiom_hdc.distiller import MedicalFact
 
 logger = logging.getLogger("axiom.encoder")
 

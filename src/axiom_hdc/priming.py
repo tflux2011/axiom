@@ -28,7 +28,7 @@ from typing import Any, Callable
 import torch
 import torch.nn as nn
 
-from src.config import ModelConfig, HDCConfig, model as default_model_cfg, hdc as default_hdc_cfg
+from axiom_hdc.config import ModelConfig, HDCConfig, model as default_model_cfg, hdc as default_hdc_cfg
 
 logger = logging.getLogger("axiom.priming")
 

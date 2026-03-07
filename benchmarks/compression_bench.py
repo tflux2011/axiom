@@ -153,8 +153,8 @@ def _measure_axiom_storage(facts: list[dict]) -> dict:
     Imports torch/torchhd lazily to avoid loading them before FAISS subprocess.
     """
     # Lazy imports — keep torch out of module scope
-    from src.distiller import AxiomDistiller, MedicalFact
-    from src.config import hdc
+    from axiom_hdc.distiller import AxiomDistiller, MedicalFact
+    from axiom_hdc.config import hdc
 
     n = len(facts)
     logger.info("Distilling %d facts into Axiom Map (D=%d)...",
@@ -201,8 +201,8 @@ def _measure_axiom_storage(facts: list[dict]) -> dict:
 
 def run_compression_benchmark(num_facts: int = 100_000) -> dict:
     """Run the full compression benchmark and return results."""
-    from src.utils import setup_logging, save_json
-    from src.config import data as data_cfg
+    from axiom_hdc.utils import setup_logging, save_json
+    from axiom_hdc.config import data as data_cfg
 
     setup_logging()
 

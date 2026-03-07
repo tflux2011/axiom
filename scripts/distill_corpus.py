@@ -15,10 +15,10 @@ Usage:
 """
 
 from __future__ import annotations
-from src.utils import setup_logging, timer
-from src.encoder import AxiomEncoder
-from src.distiller import AxiomDistiller, MedicalFact
-from src.config import data as data_cfg
+from axiom_hdc.utils import setup_logging, timer
+from axiom_hdc.encoder import AxiomEncoder
+from axiom_hdc.distiller import AxiomDistiller, MedicalFact
+from axiom_hdc.config import data as data_cfg
 
 import argparse
 import json

@@ -31,8 +31,8 @@ import torch
 import torchhd
 from torchhd import functional as F
 
-from src.config import HDCConfig, hdc as default_hdc_cfg
-from src.utils import save_tensor, load_tensor, timer
+from axiom_hdc.config import HDCConfig, hdc as default_hdc_cfg
+from axiom_hdc.utils import save_tensor, load_tensor, timer
 
 logger = logging.getLogger("axiom.distiller")
 

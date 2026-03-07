@@ -13,8 +13,8 @@ from pathlib import Path
 import pytest
 import torch
 
-from src.config import HDCConfig
-from src.distiller import AxiomDistiller, MedicalFact, ItemMemory, _cyclic_shift
+from axiom_hdc.config import HDCConfig
+from axiom_hdc.distiller import AxiomDistiller, MedicalFact, ItemMemory, _cyclic_shift
 
 
 # ---------------------------------------------------------------------------
@@ -184,7 +184,7 @@ class TestSafetyGovernorLogic:
     def test_known_entity_similarity(
         self, distiller: AxiomDistiller, sample_facts: list[MedicalFact]
     ) -> None:
-        from src.governor import SafetyGovernor
+        from axiom_hdc.governor import SafetyGovernor
 
         distiller.distill(sample_facts)
         governor = SafetyGovernor(
@@ -200,7 +200,7 @@ class TestSafetyGovernorLogic:
     def test_unknown_entity_low_similarity(
         self, distiller: AxiomDistiller, sample_facts: list[MedicalFact]
     ) -> None:
-        from src.governor import SafetyGovernor
+        from axiom_hdc.governor import SafetyGovernor
 
         distiller.distill(sample_facts)
         governor = SafetyGovernor(
@@ -263,7 +263,7 @@ class TestQueryResponseDecoupling:
     def test_extract_expected_answer_shape(
         self, distiller: AxiomDistiller, sample_facts: list[MedicalFact]
     ) -> None:
-        from src.governor import SafetyGovernor
+        from axiom_hdc.governor import SafetyGovernor
 
         distiller.distill(sample_facts)
         governor = SafetyGovernor(
@@ -277,7 +277,7 @@ class TestQueryResponseDecoupling:
     def test_validate_known_answer_higher_than_random(
         self, distiller: AxiomDistiller, sample_facts: list[MedicalFact]
     ) -> None:
-        from src.governor import SafetyGovernor
+        from axiom_hdc.governor import SafetyGovernor
 
         distiller.distill(sample_facts)
         governor = SafetyGovernor(

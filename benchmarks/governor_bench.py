@@ -30,7 +30,7 @@ Security: No network calls; all synthetic data.
 """
 
 from __future__ import annotations
-from src.distiller import _cyclic_shift
+from axiom_hdc.distiller import _cyclic_shift
 import torchhd.functional as F
 
 import json

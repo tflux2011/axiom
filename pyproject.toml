@@ -1,0 +1,85 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "axiom-hdc"
+version = "0.1.0"
+description = "Zero-Retrieval Knowledge Injection for Offline LLMs via Hyperdimensional Computing"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [
+    { name = "Axiom Research Team", email = "axiom-research@example.org" },
+]
+keywords = [
+    "hyperdimensional-computing",
+    "knowledge-injection",
+    "offline-inference",
+    "language-models",
+    "hallucination-detection",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "torch>=2.2.0",
+    "torch-hd @ git+https://github.com/hyperdimensional-computing/torchhd.git",
+    "python-dotenv>=1.0.0",
+    "numpy>=1.26.0",
+]
+
+[project.optional-dependencies]
+llm = [
+    "transformers>=4.40.0",
+    "bitsandbytes>=0.43.0",
+    "accelerate>=0.30.0",
+    "safetensors>=0.4.0",
+]
+ner = [
+    "spacy>=3.7.0",
+    "scispacy>=0.5.4",
+]
+benchmarks = [
+    "faiss-cpu>=1.8.0",
+    "pandas>=2.2.0",
+    "tqdm>=4.66.0",
+]
+dev = [
+    "pytest>=8.0.0",
+    "ruff>=0.4.0",
+]
+all = ["axiom-hdc[llm,ner,benchmarks,dev]"]
+
+[project.scripts]
+axiom = "axiom_hdc.cli:main"
+
+[project.urls]
+Repository = "https://github.com/axiom-research/axiom"
+Paper = "https://arxiv.org/abs/XXXX.XXXXX"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/axiom_hdc"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "S", "B"]
+ignore = ["S101"]  # allow assert in tests

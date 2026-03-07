@@ -21,7 +21,7 @@ Usage:
 """
 
 from __future__ import annotations
-from src.distiller import _cyclic_shift
+from axiom_hdc.distiller import _cyclic_shift
 
 import logging
 import sys
@@ -310,9 +310,9 @@ def _build_test_queries(facts: list[tuple[str, str, str]]):
 
 def run_accuracy_benchmark() -> dict:
     """Run the full accuracy benchmark and return results."""
-    from src.utils import setup_logging, save_json
-    from src.distiller import AxiomDistiller, MedicalFact
-    from src.config import hdc, data as data_cfg
+    from axiom_hdc.utils import setup_logging, save_json
+    from axiom_hdc.distiller import AxiomDistiller, MedicalFact
+    from axiom_hdc.config import hdc, data as data_cfg
     import torch
     import torchhd.functional as F
 

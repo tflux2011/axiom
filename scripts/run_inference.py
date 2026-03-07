@@ -12,11 +12,11 @@ Usage:
 """
 
 from __future__ import annotations
-from src.utils import setup_logging, timer
-from src.priming import load_base_model, prime_model
-from src.governor import SafetyGovernor
-from src.distiller import AxiomDistiller
-from src.config import hdc, model as model_cfg, data as data_cfg
+from axiom_hdc.utils import setup_logging, timer
+from axiom_hdc.priming import load_base_model, prime_model
+from axiom_hdc.governor import SafetyGovernor
+from axiom_hdc.distiller import AxiomDistiller
+from axiom_hdc.config import hdc, model as model_cfg, data as data_cfg
 
 import argparse
 import logging

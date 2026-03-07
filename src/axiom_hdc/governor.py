@@ -36,8 +36,8 @@ import torch
 import torch.nn as nn
 from torchhd import functional as F
 
-from src.config import HDCConfig, hdc as default_hdc_cfg
-from src.distiller import _cyclic_shift
+from axiom_hdc.config import HDCConfig, hdc as default_hdc_cfg
+from axiom_hdc.distiller import _cyclic_shift
 
 logger = logging.getLogger("axiom.governor")
 

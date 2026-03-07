@@ -19,9 +19,9 @@ Usage:
 
 from __future__ import annotations
 from benchmarks.accuracy_bench import _build_knowledge_base, _build_test_queries
-from src.utils import setup_logging, save_json
-from src.config import hdc, data as data_cfg
-from src.distiller import AxiomDistiller, MedicalFact, _cyclic_shift
+from axiom_hdc.utils import setup_logging, save_json
+from axiom_hdc.config import hdc, data as data_cfg
+from axiom_hdc.distiller import AxiomDistiller, MedicalFact, _cyclic_shift
 
 import logging
 import sys

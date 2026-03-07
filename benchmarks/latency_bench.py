@@ -134,7 +134,7 @@ def _measure_axiom_query_latency(queries: list[str]) -> dict:
     """
     Build an Axiom Map and measure HD cosine-similarity query latency.
     """
-    from src.distiller import AxiomDistiller, MedicalFact
+    from axiom_hdc.distiller import AxiomDistiller, MedicalFact
 
     # Build a sample Axiom Map
     sample_facts = [
@@ -182,8 +182,8 @@ def _measure_axiom_query_latency(queries: list[str]) -> dict:
 
 def run_latency_benchmark(num_queries: int = 20) -> dict:
     """Run the full latency benchmark and return results."""
-    from src.utils import setup_logging, save_json
-    from src.config import data as data_cfg
+    from axiom_hdc.utils import setup_logging, save_json
+    from axiom_hdc.config import data as data_cfg
 
     setup_logging()
 
