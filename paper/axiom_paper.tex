@@ -85,11 +85,12 @@ components:
 \end{enumerate}
 Evaluated on a controlled synthetic medical knowledge graph
 (150~facts, 200~queries), AXIOM achieves a \textbf{29.7$\times$ query
-speedup} over FAISS HNSW (0.045\,ms vs.\ 1.33\,ms),
+speedup} over FAISS HNSW (0.045\,ms vs.\ 1.33\,ms for the HDC lookup
+alone, excluding tokenisation and SLM generation),
 \textbf{99\% nearest-neighbour fact retrieval accuracy}
-(F1\,=\,0.995), and \textbf{perfect hallucination detection on the
-controlled evaluation set}---all while running entirely offline on a
-standard laptop CPU.
+(F1\,=\,0.995), and \textbf{perfect hallucination detection under
+the synthetic benchmark conditions}---all while running entirely
+offline on a standard laptop CPU.
 \end{abstract}
 
 % --- 1. Introduction -------------------------------------------------------
@@ -131,8 +132,8 @@ constant time.
           29.7$\times$ speedup over FAISS HNSW.
     \item We design a \emph{Neurosymbolic Safety Governor} that employs the
           orthogonality property of HDC to perform per-token hallucination
-          suppression, achieving perfect detection on the controlled
-          evaluation set (0 false negatives on 100 adversarial probes).
+          suppression, achieving perfect detection under the synthetic
+          benchmark conditions (0~false negatives on 100~adversarial probes).
     \item We evaluate AXIOM's HDC subsystem on a controlled synthetic
           medical knowledge graph (150~facts, 200~queries), demonstrating
           99\% component-level retrieval accuracy and F1\,=\,0.995.
@@ -415,6 +416,9 @@ $d \cdot r + r \cdot k \cdot d_{\text{model}} = 10{,}000 \times 512 +
 512 \times 128 \times 3{,}072 \approx 206\text{M}$---roughly
 \textbf{18$\times$ fewer parameters} than the na\"ive approach and
 well below the SLM's own 3B parameter budget.
+Crucially, unlike full fine-tuning, the projection weights can be
+swapped independently to update domain knowledge without modifying the
+frozen SLM weights, preserving the base model's general capabilities.
 The projected vector $\mathbf{h}$ is reshaped into $k = 128$ virtual
 context tokens $\{\mathbf{t}_1, \ldots, \mathbf{t}_k\}$, each of
 dimension $d_{\text{model}}$.  These tokens occupy $<$0.4\,\% of the
@@ -831,6 +835,7 @@ in \S\ref{sec:discussion}.
         \midrule
         FAISS IVF-PQ  & 7.18\,MB  & ---       & 100\,K vectors, $m_{\text{sub}}=48$ \\
         FAISS HNSW    & ---       & 1.33\,ms  & 100\,K vectors, 768-dim \\
+        \multicolumn{4}{@{}l}{\footnotesize\emph{FAISS baselines use 100\,K vectors to approximate typical ANN index sizes in practical deployments.}} \\
         \textbf{AXIOM Map}    & \textbf{40\,KB}
                       & \textbf{0.045\,ms}
                       & 150~facts, $d=10{,}000$ \\
@@ -852,6 +857,9 @@ $d = 10{,}000 \times$ float32) adds 32.57\,MB for 808~entities, bringing
 the total AXIOM footprint to 32.61\,MB.  At $d = 10{,}000$ with bipolar
 quantisation, the core Axiom Map requires only $10{,}000 / 8 = 1.25$\,KB;
 the float32 representation used here is a convenient upper bound.
+To clarify: the \textbf{40\,KB} figure reported throughout this paper
+refers to the float32 working representation; the theoretical minimum
+under bipolar bit-packing is 1.25\,KB.
 We discuss the storage trade-off further in \S\ref{sec:discussion}.
 
 \paragraph{Latency (Phase~B).}
@@ -904,8 +912,9 @@ via algebraic binding, not merely embedding similarity.
 Table~\ref{tab:halluc_bench} reports AXIOM's hallucination detection
 performance.  Across 100~negative queries (30~unknown-entity probes,
 35~wrong-relation probes, 35~wrong-pair probes), the Safety Governor
-achieves \textbf{perfect detection}---every unsupported
-query is correctly rejected on this evaluation set.  The cosine separation between supported
+achieves \textbf{perfect detection} under these synthetic
+benchmark conditions---every unsupported
+query is correctly rejected.  The cosine separation between supported
 facts (mean cosine~0.066) and unsupported queries (mean cosine~0.026)
 is 0.040, providing a clear decision boundary.  Per-category analysis
 shows 100\% accuracy on all three negative categories: unknown entities,
@@ -1407,13 +1416,14 @@ medical inference.  By replacing the standard RAG pipeline with Axiomatic
 Distillation, Zero-Retrieval Priming, and a Safety Governor, AXIOM
 achieves a \textbf{29.7$\times$} query speedup over FAISS HNSW
 (0.045\,ms vs.\ 1.33\,ms), \textbf{99\%} fact retrieval accuracy
-(F1\,=\,0.995), and \textbf{perfect hallucination detection} on the
-controlled 150-fact / 200-query benchmark---all on a standard laptop CPU.
+(F1\,=\,0.995), and \textbf{perfect hallucination detection} under the
+synthetic benchmark conditions (150-fact / 200-query evaluation)---all
+on a standard laptop CPU.
 Our empirical capacity analysis confirms that single-vector retrieval is
 limited to $\sim$200 facts at $d = 10{,}000$, but Hierarchical Sharding
 restores $>$96\,\% recall at scale while preserving the zero-retrieval
 latency advantage.  The Safety Governor achieves $\geq 97\%$ precision
-with perfect hallucination detection at recommended shard sizes.
+with zero missed hallucinations at recommended shard sizes.
 
 \paragraph{Future work.}
 We plan to (1)~scale the Axiom Map to the full PubMed corpus ($>$35\,M
