@@ -193,9 +193,11 @@ AXIOM comprises three phases: \emph{Distillation} (\S\ref{sec:distiller}),
         phaselabel/.style={font=\footnotesize\bfseries,
                            text=gray!50!black},
     ]
-        % ── Phase labels ──
-        \node[phaselabel] at (-1.2,0.5) {OFFLINE};
-        \node[phaselabel] at (-1.2,-2.0) {ONLINE};
+        % ── Phase labels (rotated, in left margin) ──
+        \node[phaselabel, rotate=90, anchor=south] at (-2.2,0)
+              {OFFLINE};
+        \node[phaselabel, rotate=90, anchor=south] at (-2.2,-2.9)
+              {ONLINE};
         \draw[dashed, gray!40] (-1.8,-0.9) -- (11.5,-0.9);
 
         % ── Row 1: Offline pipeline (left → right) ──
@@ -222,8 +224,10 @@ AXIOM comprises three phases: \emph{Distillation} (\S\ref{sec:distiller}),
 
         \draw[arrow] (query)  -- (encode);
         \draw[arrow] (encode) -- (cosine);
-        \draw[arrow] (map.south) -- ++(0,-0.35) -| (cosine.north)
-              node[near start, right, note] {lookup};
+        % Map → Cosine lookup (label placed above the horizontal segment)
+        \draw[arrow] (map.south) -- ++(0,-0.5) -| (cosine.north);
+        \node[note, above right, inner sep=1pt] at (8.1,-0.5)
+              {lookup};
 
         % ── Row 3: Online generation (right → left, S-curve) ──
         \node[phase, fill=axiomblue!15] (proj) at (9.8,-3.8)
