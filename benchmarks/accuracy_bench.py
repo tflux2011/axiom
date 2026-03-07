@@ -19,6 +19,10 @@ Usage:
 """
 
 from __future__ import annotations
+from src.utils import setup_logging, save_json
+from src.governor import SafetyGovernor, GovernorVerdict
+from src.distiller import AxiomDistiller, MedicalFact
+from src.config import hdc, data as data_cfg
 
 import logging
 import sys
@@ -28,10 +32,6 @@ import torch
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from src.config import hdc, data as data_cfg
-from src.distiller import AxiomDistiller, MedicalFact
-from src.governor import SafetyGovernor, GovernorVerdict
-from src.utils import setup_logging, save_json
 
 logger = logging.getLogger("axiom.bench.accuracy")
 
@@ -217,7 +217,8 @@ def run_accuracy_benchmark() -> dict:
     logger.info("-" * 60)
     logger.info("RESULTS:")
     logger.info("  Fact Fidelity:           %.1f%%", fact_fidelity * 100)
-    logger.info("  Hallucination Catch Rate: %.1f%%", hallucination_catch_rate * 100)
+    logger.info("  Hallucination Catch Rate: %.1f%%",
+                hallucination_catch_rate * 100)
     logger.info("  Critical Errors:          %d", traps_total - traps_caught)
     logger.info("-" * 60)
 

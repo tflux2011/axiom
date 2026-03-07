@@ -38,6 +38,22 @@ logger = logging.getLogger("axiom.distiller")
 
 
 # ---------------------------------------------------------------------------
+# Permutation helper
+# ---------------------------------------------------------------------------
+
+def _cyclic_shift(hv: torch.Tensor, n: int) -> torch.Tensor:
+    """Apply a cyclic left-shift of *n* positions along the last dimension.
+
+    This implements the Π_n operator from the paper's Permutation-Based
+    Role Encoding.  Cyclic permutation breaks binding commutativity,
+    ensuring (A treats B) ≠ (B treats A) in the Axiom Map.
+    """
+    if n == 0:
+        return hv
+    return torch.roll(hv, shifts=-n, dims=-1)
+
+
+# ---------------------------------------------------------------------------
 # Data structures
 # ---------------------------------------------------------------------------
 
@@ -89,7 +105,8 @@ class ItemMemory:
             raise FileNotFoundError(f"Item memory not found: {path}")
         # Use weights_only=False since we save a plain dict of tensors.
         # This is safe because we only ever load files we created ourselves.
-        tensors = torch.load(path, map_location=self.device, weights_only=False)
+        tensors = torch.load(
+            path, map_location=self.device, weights_only=False)
         self._store.update(tensors)
         logger.info("Item memory (%d entries) loaded ← %s", self.size, path)
 
@@ -125,7 +142,8 @@ class AxiomDistiller:
         # Seed for reproducibility
         torch.manual_seed(self._seed)
 
-        self.item_memory = ItemMemory(dim=self.cfg.dimensions, device=self.device)
+        self.item_memory = ItemMemory(
+            dim=self.cfg.dimensions, device=self.device)
         self._fact_count = 0
 
         # The Axiom Map (Superposition Vector)
@@ -143,10 +161,12 @@ class AxiomDistiller:
 
     def encode_fact(self, fact: MedicalFact) -> torch.Tensor:
         """
-        Bind a single (S, R, O) triple into a directional fact hypervector.
+        Bind a single (S, R, O) triple into a directional fact hypervector
+        using Permutation-Based Role Encoding.
 
-        Uses circular convolution (element-wise XOR in bipolar form) to create
-        a vector that uniquely represents the ordered relationship.
+        The relation vector receives Π_1 (1-bit cyclic shift) and the
+        object vector receives Π_2 (2-bit cyclic shift) to break
+        commutativity.  This ensures (A treats B) ≠ (B treats A).
 
         Returns:
             Tensor of shape (1, D).
@@ -155,10 +175,12 @@ class AxiomDistiller:
         v_rel = self.item_memory.get(fact.relation)
         v_obj = self.item_memory.get(fact.obj)
 
-        # Binding:  fact = bind(bind(subject, relation), object)
-        # torchhd.bind performs element-wise multiplication for bipolar vectors
-        # which is equivalent to circular convolution in the frequency domain.
-        bound = F.bind(F.bind(v_sub, v_rel), v_obj)
+        # Permutation-Based Role Encoding:
+        #   R_fact = v_sub ⊗ Π_1(v_rel) ⊗ Π_2(v_obj)
+        bound = F.bind(
+            F.bind(v_sub, _cyclic_shift(v_rel, 1)),
+            _cyclic_shift(v_obj, 2),
+        )
         return bound
 
     def distill(self, facts: Iterable[MedicalFact]) -> torch.Tensor:
@@ -179,7 +201,8 @@ class AxiomDistiller:
                 self._fact_count += 1
 
                 if self._fact_count % 50_000 == 0:
-                    logger.info("Distilled %d facts so far …", self._fact_count)
+                    logger.info("Distilled %d facts so far …",
+                                self._fact_count)
 
         logger.info(
             "Distillation complete — %d facts encoded into Axiom Map.",
@@ -196,15 +219,17 @@ class AxiomDistiller:
         """
         Construct an HD query vector for "Subject + Relation → ?".
 
-        After binding subject and relation, the caller can compare this
-        against the Axiom Map via cosine similarity to retrieve the answer.
+        Uses the same Π_1 permutation applied during encoding so that
+        the query is compatible with the Axiom Map.  The caller can
+        multiply this probe by the Axiom Map to extract (unbind) the
+        expected answer vector.
 
         Returns:
             Query hypervector of shape (1, D).
         """
         v_sub = self.item_memory.get(subject)
         v_rel = self.item_memory.get(relation)
-        return F.bind(v_sub, v_rel)
+        return F.bind(v_sub, _cyclic_shift(v_rel, 1))
 
     def similarity(self, query_hv: torch.Tensor) -> float:
         """

@@ -57,7 +57,8 @@ class AxiomProjector(nn.Module):
         self.model_dim = model_dim
 
         # Linear projection from HDC space to (k * d_model)
-        self.proj = nn.Linear(hdc_dim, num_virtual_tokens * model_dim, bias=False)
+        self.proj = nn.Linear(
+            hdc_dim, num_virtual_tokens * model_dim, bias=False)
 
         # Layer norm to stabilise injection
         self.norm = nn.LayerNorm(model_dim)
@@ -194,7 +195,8 @@ class KVCacheInjector:
         target = self._get_target_layer()
         hook = target.register_forward_hook(self._make_hook())
         self._hooks.append(hook)
-        logger.info("AXIOM attention hook attached to layer %d.", self.model_cfg.injection_layer)
+        logger.info("AXIOM attention hook attached to layer %d.",
+                    self.model_cfg.injection_layer)
 
     def detach(self) -> None:
         """Remove all registered hooks (prevents memory leaks)."""
@@ -271,7 +273,8 @@ def load_base_model(
     )
 
     model.eval()
-    logger.info("Model loaded successfully. Parameters: %d", sum(p.numel() for p in model.parameters()))
+    logger.info("Model loaded successfully. Parameters: %d",
+                sum(p.numel() for p in model.parameters()))
 
     return model, tokenizer
 

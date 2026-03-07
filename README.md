@@ -8,11 +8,11 @@ A neurosymbolic architecture that combines **Hyperdimensional Computing (HDC)** 
 
 ## Key Results (BioASQ 14b)
 
-| Metric | Vanilla SLM | SLM + RAG | **AXIOM** |
-|--------|------------|-----------|-----------|
-| Storage | 2.1 GB | 14.1 GB | **3.3 GB** |
-| TTFT | 180 ms | 320 ms | **< 5 ms** |
-| Hallucination Rate | 23.4% | 8.7% | **0.2%** |
+| Metric             | Vanilla SLM | SLM + RAG | **AXIOM**  |
+| ------------------ | ----------- | --------- | ---------- |
+| Storage            | 2.1 GB      | 14.1 GB   | **3.3 GB** |
+| TTFT               | 180 ms      | 320 ms    | **< 5 ms** |
+| Hallucination Rate | 23.4%       | 8.7%      | **0.2%**   |
 
 ## Project Structure
 
@@ -124,13 +124,13 @@ Each candidate token is projected into HDC space and compared against the Axiom 
 
 All configuration is centralised in `src/config.py`. Key parameters:
 
-| Parameter | Default | Description |
-|-----------|---------|-------------|
-| `dimensions` | 10,000 | HDC vector dimensionality |
-| `safety_threshold` | 0.35 | Governor suppression threshold |
-| `injection_layer` | 16 | Transformer layer for KV injection |
-| `max_virtual_tokens` | 128 | Number of virtual context tokens |
-| `quantisation` | nf4 | Model quantisation scheme |
+| Parameter            | Default | Description                        |
+| -------------------- | ------- | ---------------------------------- |
+| `dimensions`         | 10,000  | HDC vector dimensionality          |
+| `safety_threshold`   | 0.35    | Governor suppression threshold     |
+| `injection_layer`    | 16      | Transformer layer for KV injection |
+| `max_virtual_tokens` | 128     | Number of virtual context tokens   |
+| `quantisation`       | nf4     | Model quantisation scheme          |
 
 ## External Storage
 

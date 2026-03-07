@@ -9,6 +9,8 @@ Usage:
 """
 
 from __future__ import annotations
+from src.utils import setup_logging
+from src.config import data as data_cfg
 
 import json
 import logging
@@ -18,8 +20,6 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from src.config import data as data_cfg
-from src.utils import setup_logging
 
 logger = logging.getLogger("axiom.scripts.download")
 
@@ -92,7 +92,8 @@ def download_bioasq() -> None:
                 "ideal_answer": "ACE inhibitors are contraindicated in pregnancy, bilateral renal artery stenosis, and angioedema history.",
                 "exact_answer": [
                     ["ACE_Inhibitors", "CONTRAINDICATES", "Pregnancy"],
-                    ["ACE_Inhibitors", "CONTRAINDICATES", "Bilateral_Renal_Stenosis"],
+                    ["ACE_Inhibitors", "CONTRAINDICATES",
+                        "Bilateral_Renal_Stenosis"],
                     ["ACE_Inhibitors", "CONTRAINDICATES", "Angioedema_History"],
                 ],
                 "snippets": [

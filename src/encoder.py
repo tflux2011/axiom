@@ -193,8 +193,10 @@ class AxiomEncoder:
                 sent_text = sent.text
 
                 for ent_a, ent_b in combinations(entities, 2):
-                    start = min(ent_a.end_char, ent_b.end_char) - sent.start_char
-                    end = max(ent_a.start_char, ent_b.start_char) - sent.start_char
+                    start = min(ent_a.end_char, ent_b.end_char) - \
+                        sent.start_char
+                    end = max(ent_a.start_char, ent_b.start_char) - \
+                        sent.start_char
                     between = sent_text[start:end] if end > start else sent_text
 
                     for rel_label, pattern in _RELATION_PATTERNS.items():

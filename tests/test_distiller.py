@@ -14,7 +14,7 @@ import pytest
 import torch
 
 from src.config import HDCConfig
-from src.distiller import AxiomDistiller, MedicalFact, ItemMemory
+from src.distiller import AxiomDistiller, MedicalFact, ItemMemory, _cyclic_shift
 
 
 # ---------------------------------------------------------------------------
@@ -212,3 +212,84 @@ class TestSafetyGovernorLogic:
         # Completely unknown entity → random HV → low similarity
         sim = governor._compute_token_safety("XyzUnknownDrug123")
         assert abs(sim) < 0.5
+
+
+# ---------------------------------------------------------------------------
+# Permutation-Based Role Encoding tests
+# ---------------------------------------------------------------------------
+
+class TestPermutationEncoding:
+    def test_cyclic_shift_preserves_shape(self) -> None:
+        hv = torch.randn(1, 100)
+        shifted = _cyclic_shift(hv, 3)
+        assert shifted.shape == hv.shape
+
+    def test_cyclic_shift_zero_is_identity(self) -> None:
+        hv = torch.randn(1, 100)
+        assert torch.equal(_cyclic_shift(hv, 0), hv)
+
+    def test_cyclic_shift_changes_vector(self) -> None:
+        hv = torch.randn(1, 100)
+        shifted = _cyclic_shift(hv, 1)
+        assert not torch.equal(shifted, hv)
+
+    def test_binding_asymmetry(
+        self, distiller: AxiomDistiller
+    ) -> None:
+        """(A treats B) must differ from (B treats A) due to permutation."""
+        fact_ab = MedicalFact("Aspirin", "TREATS", "Headache")
+        fact_ba = MedicalFact("Headache", "TREATS", "Aspirin")
+        hv_ab = distiller.encode_fact(fact_ab)
+        hv_ba = distiller.encode_fact(fact_ba)
+        # They must NOT be equal (commutativity is broken)
+        assert not torch.equal(hv_ab, hv_ba)
+
+    def test_different_relations_different_facts(
+        self, distiller: AxiomDistiller
+    ) -> None:
+        """Same subject/object with different relation → different HV."""
+        fact_treats = MedicalFact("Aspirin", "TREATS", "Pain")
+        fact_causes = MedicalFact("Aspirin", "CAUSES", "Pain")
+        hv_treats = distiller.encode_fact(fact_treats)
+        hv_causes = distiller.encode_fact(fact_causes)
+        assert not torch.equal(hv_treats, hv_causes)
+
+
+# ---------------------------------------------------------------------------
+# Query-Response Decoupling tests
+# ---------------------------------------------------------------------------
+
+class TestQueryResponseDecoupling:
+    def test_extract_expected_answer_shape(
+        self, distiller: AxiomDistiller, sample_facts: list[MedicalFact]
+    ) -> None:
+        from src.governor import SafetyGovernor
+
+        distiller.distill(sample_facts)
+        governor = SafetyGovernor(
+            axiom_map=distiller.axiom_map,
+            item_memory=distiller.item_memory._store,
+            cfg=distiller.cfg,
+        )
+        answer_hv = governor.extract_expected_answer("Aspirin", "TREATS")
+        assert answer_hv.shape == (1, distiller.cfg.dimensions)
+
+    def test_validate_known_answer_higher_than_random(
+        self, distiller: AxiomDistiller, sample_facts: list[MedicalFact]
+    ) -> None:
+        from src.governor import SafetyGovernor
+
+        distiller.distill(sample_facts)
+        governor = SafetyGovernor(
+            axiom_map=distiller.axiom_map,
+            item_memory=distiller.item_memory._store,
+            cfg=distiller.cfg,
+        )
+        answer_hv = governor.extract_expected_answer("Aspirin", "TREATS")
+        # "Headache" was distilled as the object of (Aspirin, TREATS, Headache)
+        sim_known = governor.validate_token_against_probe(
+            "Headache", answer_hv)
+        sim_random = governor.validate_token_against_probe(
+            "XyzNonsense", answer_hv)
+        # The known answer should score higher than a random token
+        assert sim_known > sim_random

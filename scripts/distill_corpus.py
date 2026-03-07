@@ -15,6 +15,10 @@ Usage:
 """
 
 from __future__ import annotations
+from src.utils import setup_logging, timer
+from src.encoder import AxiomEncoder
+from src.distiller import AxiomDistiller, MedicalFact
+from src.config import data as data_cfg
 
 import argparse
 import json
@@ -24,10 +28,6 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from src.config import data as data_cfg
-from src.distiller import AxiomDistiller, MedicalFact
-from src.encoder import AxiomEncoder
-from src.utils import setup_logging, timer
 
 logger = logging.getLogger("axiom.scripts.distill")
 
@@ -61,7 +61,8 @@ def _load_bioasq_structured(dataset_path: Path) -> list[tuple[str, str, str]]:
                 if isinstance(ans, list) and len(ans) == 3:
                     triples.append(tuple(ans))
 
-    logger.info("Loaded %d structured triples from %s", len(triples), dataset_path)
+    logger.info("Loaded %d structured triples from %s",
+                len(triples), dataset_path)
     return triples
 
 

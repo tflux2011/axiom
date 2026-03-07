@@ -37,6 +37,7 @@ import torch.nn as nn
 from torchhd import functional as F
 
 from src.config import HDCConfig, hdc as default_hdc_cfg
+from src.distiller import _cyclic_shift
 
 logger = logging.getLogger("axiom.governor")
 
@@ -99,6 +100,74 @@ class SafetyGovernor:
             len(self.item_memory),
         )
 
+    # ---- Query-Response Decoupling ------------------------------------------
+
+    def extract_expected_answer(
+        self,
+        subject: str,
+        relation: str,
+    ) -> torch.Tensor:
+        """
+        HDC Inverse Extraction (Step 2 from the paper).
+
+        Constructs the query probe V_query = v_s ⊗ Π_1(v_r) and unbinds it
+        from the Axiom Map to recover the expected answer vector:
+
+            v̂_answer = S ⊗ V_query^{-1}
+
+        For bipolar vectors, the inverse is the vector itself, so this reduces
+        to element-wise multiplication.
+
+        Returns:
+            Expected answer hypervector of shape (1, D).
+        """
+        subject_clean = subject.strip().upper()
+        relation_clean = relation.strip().upper()
+
+        if subject_clean in self.item_memory:
+            v_sub = self.item_memory[subject_clean]
+        else:
+            v_sub = F.random(1, self.cfg.dimensions)
+
+        if relation_clean in self.item_memory:
+            v_rel = self.item_memory[relation_clean]
+        else:
+            v_rel = F.random(1, self.cfg.dimensions)
+
+        # Query probe: v_sub ⊗ Π_1(v_rel)
+        query_probe = F.bind(v_sub, _cyclic_shift(v_rel, 1))
+
+        # Unbind from Axiom Map: S ⊗ query_probe (self-inverse for bipolar)
+        expected_answer = F.bind(
+            self.axiom_map.to(query_probe.device),
+            query_probe,
+        )
+        return expected_answer
+
+    def validate_token_against_probe(
+        self,
+        token_text: str,
+        expected_answer: torch.Tensor,
+    ) -> float:
+        """
+        Step 3: Compare a candidate token's HV against the extracted
+        expected-answer vector rather than the full Axiom Map.
+
+        Returns:
+            Cosine similarity (float).
+        """
+        token_clean = token_text.strip().upper()
+        if token_clean in self.item_memory:
+            token_hv = self.item_memory[token_clean]
+        else:
+            token_hv = F.random(1, self.cfg.dimensions)
+
+        sim = torch.nn.functional.cosine_similarity(
+            token_hv.float().to(expected_answer.device),
+            expected_answer.float(),
+        )
+        return sim.max().item()
+
     # ---- Core filtering ----------------------------------------------------
 
     def filter_logits(
@@ -122,7 +191,8 @@ class SafetyGovernor:
             verdicts:        List of GovernorVerdict for the evaluated candidates.
         """
         # Get top-k candidates
-        top_values, top_indices = torch.topk(logits, min(top_k, logits.size(-1)))
+        top_values, top_indices = torch.topk(
+            logits, min(top_k, logits.size(-1)))
 
         verdicts: list[GovernorVerdict] = []
         modified_logits = logits.clone()
@@ -245,7 +315,8 @@ class SafetyGovernor:
         Decode context tokens and find entity matches in item memory.
         Used for contextual relevance weighting (future enhancement).
         """
-        context_text = tokenizer.decode(context_token_ids, skip_special_tokens=True)
+        context_text = tokenizer.decode(
+            context_token_ids, skip_special_tokens=True)
         found = []
         for entity_name in self.item_memory:
             if entity_name.lower() in context_text.lower():

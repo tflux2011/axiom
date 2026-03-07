@@ -15,6 +15,9 @@ Usage:
 """
 
 from __future__ import annotations
+from src.utils import setup_logging, save_json
+from src.distiller import AxiomDistiller, MedicalFact
+from src.config import hdc, data as data_cfg
 
 import argparse
 import json
@@ -31,9 +34,6 @@ import torch
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from src.config import hdc, data as data_cfg
-from src.distiller import AxiomDistiller, MedicalFact
-from src.utils import setup_logging, save_json
 
 logger = logging.getLogger("axiom.bench.compression")
 
@@ -133,7 +133,8 @@ def _measure_axiom_storage(facts: list[MedicalFact]) -> dict:
     Distill facts into an Axiom Map and measure storage.
     """
     n = len(facts)
-    logger.info("Distilling %d facts into Axiom Map (D=%d)...", n, hdc.dimensions)
+    logger.info("Distilling %d facts into Axiom Map (D=%d)...",
+                n, hdc.dimensions)
 
     distiller = AxiomDistiller()
 

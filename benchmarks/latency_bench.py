@@ -16,6 +16,9 @@ Usage:
 """
 
 from __future__ import annotations
+from src.utils import setup_logging, save_json
+from src.distiller import AxiomDistiller, MedicalFact
+from src.config import hdc, model as model_cfg, data as data_cfg
 
 import argparse
 import logging
@@ -27,9 +30,6 @@ import torch
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from src.config import hdc, model as model_cfg, data as data_cfg
-from src.distiller import AxiomDistiller, MedicalFact
-from src.utils import setup_logging, save_json
 
 logger = logging.getLogger("axiom.bench.latency")
 

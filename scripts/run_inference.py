@@ -12,6 +12,11 @@ Usage:
 """
 
 from __future__ import annotations
+from src.utils import setup_logging, timer
+from src.priming import load_base_model, prime_model
+from src.governor import SafetyGovernor
+from src.distiller import AxiomDistiller
+from src.config import hdc, model as model_cfg, data as data_cfg
 
 import argparse
 import logging
@@ -22,11 +27,6 @@ import torch
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from src.config import hdc, model as model_cfg, data as data_cfg
-from src.distiller import AxiomDistiller
-from src.governor import SafetyGovernor
-from src.priming import load_base_model, prime_model
-from src.utils import setup_logging, timer
 
 logger = logging.getLogger("axiom.scripts.inference")
 
@@ -206,7 +206,8 @@ def _run_demo_mode(distiller: AxiomDistiller, governor: SafetyGovernor) -> None:
 
         if is_supported:
             print(f"  ✅ VERIFIED (similarity: {similarity:.4f})")
-            print(f"     The knowledge base supports: {entity} → {relation} → [match found]")
+            print(
+                f"     The knowledge base supports: {entity} → {relation} → [match found]")
         else:
             print(f"  ⚠️  UNVERIFIED (similarity: {similarity:.4f})")
             print(f"     Cannot confirm: {entity} → {relation}")
@@ -229,7 +230,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="AXIOM Inference Demo")
     parser.add_argument("--map-dir", type=Path, default=None)
     parser.add_argument("--cpu", action="store_true", help="Force CPU mode")
-    parser.add_argument("--demo", action="store_true", help="Demo mode (no LLM)")
+    parser.add_argument("--demo", action="store_true",
+                        help="Demo mode (no LLM)")
     args = parser.parse_args()
 
     run_inference(
