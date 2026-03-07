@@ -185,8 +185,8 @@ AXIOM comprises three phases: \emph{Distillation} (\S\ref{sec:distiller}),
 \begin{figure}[t]
     \centering
     \begin{tikzpicture}[
-        phase/.style={draw, rounded corners, minimum height=0.9cm,
-                      minimum width=2.5cm, align=center, font=\small,
+        phase/.style={draw, rounded corners, minimum height=0.8cm,
+                      minimum width=2.4cm, align=center, font=\small,
                       thick},
         arrow/.style={->, thick, >=stealth},
         note/.style={font=\scriptsize, text=gray!70!black, align=center},
@@ -194,57 +194,64 @@ AXIOM comprises three phases: \emph{Distillation} (\S\ref{sec:distiller}),
                            text=gray!50!black},
     ]
         % ── Phase labels ──
-        \node[phaselabel] at (-1.0,0.6) {OFFLINE};
-        \node[phaselabel] at (-1.0,-2.1) {ONLINE};
-        \draw[dashed, gray!40] (-2.0,-0.8) -- (12.5,-0.8);
+        \node[phaselabel] at (-1.2,0.5) {OFFLINE};
+        \node[phaselabel] at (-1.2,-2.0) {ONLINE};
+        \draw[dashed, gray!40] (-1.8,-0.9) -- (11.5,-0.9);
 
-        % ── Offline (build-time) ──
+        % ── Row 1: Offline pipeline (left → right) ──
         \node[phase, fill=axiomblue!12] (corpus) at (0,0)
-              {Medical\\Knowledge Graph};
-        \node[phase, fill=axiomteal!15] (ner) at (3.5,0)
-              {NER +\\Relation Extraction};
-        \node[phase, fill=axiomteal!15] (bind) at (7.0,0)
-              {HD Bind\\+ Bundle};
-        \node[phase, fill=axiomgold!25] (map) at (10.5,0)
-              {Axiom Map\\$\mathbf{S}\in\{\pm1\}^d$};
+              {Medical\\[-1pt]Knowledge Graph};
+        \node[phase, fill=axiomteal!15] (ner) at (3.2,0)
+              {NER +\\[-1pt]Relation Extr.};
+        \node[phase, fill=axiomteal!15] (bind) at (6.4,0)
+              {HD Bind\\[-1pt]+ Bundle};
+        \node[phase, fill=axiomgold!25] (map) at (9.8,0)
+              {Axiom Map\\[-1pt]$\mathbf{S}\!\in\!\{\pm1\}^d$};
 
         \draw[arrow] (corpus) -- (ner);
         \draw[arrow] (ner)    -- (bind);
         \draw[arrow] (bind)   -- (map);
 
-        % ── Online (query-time) ──
+        % ── Row 2: Online retrieval (left → right) ──
         \node[phase, fill=axiomblue!12] (query) at (0,-2.0)
               {User Query};
-        \node[phase, fill=axiomteal!15] (encode) at (3.5,-2.0)
-              {HDC Encode\\$O(d)$};
-        \node[phase, fill=axiomgold!25] (retrieve) at (7.0,-2.0)
-              {Unbind $\otimes$\\Cosine $O(d)$};
-        \node[phase, fill=axiomblue!15] (proj) at (3.5,-3.8)
-              {Low-Rank Proj.\\$W_2(W_1\,\mathbf{S})$};
-        \node[phase, fill=axiomblue!15] (slm) at (7.0,-3.8)
-              {SLM Generation\\(Llama-3.2-3B)};
-        \node[phase, fill=axiomsafe!18] (gov) at (10.5,-3.8)
-              {Safety\\Governor};
-        \node[phase, fill=axiomsafe!30, minimum width=2.0cm] (out)
-              at (10.5,-5.4) {Safe\\Output};
+        \node[phase, fill=axiomteal!15] (encode) at (3.2,-2.0)
+              {HDC Encode\\[-1pt]$O(d)$};
+        \node[phase, fill=axiomgold!25] (cosine) at (6.4,-2.0)
+              {Unbind $\otimes$\\[-1pt]Cosine $O(d)$};
 
-        % ── Online arrows ──
-        \draw[arrow] (query)    -- (encode);
-        \draw[arrow] (encode)   -- (retrieve);
-        \draw[arrow] (map.south) -- ++(0,-0.35) -| (retrieve.north)
+        \draw[arrow] (query)  -- (encode);
+        \draw[arrow] (encode) -- (cosine);
+        \draw[arrow] (map.south) -- ++(0,-0.35) -| (cosine.north)
               node[near start, right, note] {lookup};
-        \draw[arrow] (map.south) -- ++(0,-0.35) -| (proj.north)
-              node[near end, left, note] {inject};
-        \draw[arrow] (proj)     -- node[above, note]{KV-cache} (slm);
-        \draw[arrow] (slm)      -- (gov);
-        \draw[arrow] (gov)      -- (out);
-        \draw[arrow, dashed, axiomwarn] (gov.west) -- ++(-1.2,0)
-              node[left, note]{suppress\\token}
-              |- (slm.south west);
 
-        % ── Timing annotations ──
-        \node[note] at (3.5,-4.5) {$\sim$206M params};
-        \node[note] at (10.5,-2.7) {0.045\,ms};
+        % ── Row 3: Online generation (right → left, S-curve) ──
+        \node[phase, fill=axiomblue!15] (proj) at (9.8,-3.8)
+              {Low-Rank Proj.\\[-1pt]$W_2(W_1\,\mathbf{S})$};
+        \node[phase, fill=axiomblue!15] (slm) at (6.4,-3.8)
+              {SLM Generation\\[-1pt](Llama-3.2-3B)};
+        \node[phase, fill=axiomsafe!18] (gov) at (3.2,-3.8)
+              {Safety\\[-1pt]Governor};
+        \node[phase, fill=axiomsafe!30] (out) at (0,-3.8)
+              {Safe\\[-1pt]Output};
+
+        % Map → Proj (clean vertical)
+        \draw[arrow] (map) -- (proj)
+              node[midway, right, note] {inject};
+
+        % Generation flow: Proj → SLM → Gov → Output
+        \draw[arrow] (proj) -- node[above, note]{KV-cache} (slm);
+        \draw[arrow] (slm)  -- (gov);
+        \draw[arrow] (gov)  -- (out);
+
+        % Governor feedback (routed below the row)
+        \draw[arrow, dashed, axiomwarn] (gov.south) -- ++(0,-0.45)
+              node[below, note]{suppress token}
+              -| (slm.south);
+
+        % ── Annotations ──
+        \node[note] at (9.8,-4.55) {$\sim$206M params};
+        \node[note] at (6.4,-2.75) {0.045\,ms};
     \end{tikzpicture}
     \caption{\textbf{AXIOM architecture.}  \emph{Top (offline):} a medical
     knowledge graph is distilled into a compact Axiom Map via HDC binding
