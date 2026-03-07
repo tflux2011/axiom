@@ -1,0 +1,27 @@
+{
+  "benchmark": "compression_ratio",
+  "num_facts": 100000,
+  "axiom": {
+    "method": "AXIOM_HDC",
+    "num_facts": 100000,
+    "hdc_dimensions": 10000,
+    "axiom_map_bytes": 40000,
+    "item_memory_bytes": 32567591,
+    "total_bytes": 32607591,
+    "bits_per_fact": 2608.60728,
+    "build_time_s": 3.407517832936719
+  },
+  "faiss_baseline": {
+    "method": "FAISS_IVF_PQ",
+    "num_facts": 100000,
+    "embedding_dim": 768,
+    "index_bytes": 7175092,
+    "raw_embedding_bytes": 307200000,
+    "metadata_bytes": 5800000,
+    "total_bytes": 12975092,
+    "bits_per_fact": 1038.00736,
+    "build_time_s": 4.318187957978807
+  },
+  "compression_ratio": 0.39791630114595095,
+  "axiom_advantage": "0.4x smaller"
+}

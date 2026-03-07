@@ -1,0 +1,62 @@
+[
+  {
+    "n_facts": 50,
+    "nn_retrieval_accuracy": 1.0,
+    "precision": 0.983,
+    "recall": 1.0,
+    "f1": 0.9914,
+    "mean_halluc_catch": 1.0,
+    "mean_fp_rate": 0.2167,
+    "mean_top5_pres": 0.2
+  },
+  {
+    "n_facts": 100,
+    "nn_retrieval_accuracy": 1.0,
+    "precision": 0.9814,
+    "recall": 1.0,
+    "f1": 0.9906,
+    "mean_halluc_catch": 1.0,
+    "mean_fp_rate": 0.2167,
+    "mean_top5_pres": 0.2
+  },
+  {
+    "n_facts": 200,
+    "nn_retrieval_accuracy": 1.0,
+    "precision": 0.9731,
+    "recall": 1.0,
+    "f1": 0.9864,
+    "mean_halluc_catch": 1.0,
+    "mean_fp_rate": 0.2417,
+    "mean_top5_pres": 0.2
+  },
+  {
+    "n_facts": 500,
+    "nn_retrieval_accuracy": 0.9,
+    "precision": 0.9539,
+    "recall": 1.0,
+    "f1": 0.9764,
+    "mean_halluc_catch": 1.0,
+    "mean_fp_rate": 0.325,
+    "mean_top5_pres": 0.18
+  },
+  {
+    "n_facts": 1000,
+    "nn_retrieval_accuracy": 0.6,
+    "precision": 0.9042,
+    "recall": 1.0,
+    "f1": 0.9497,
+    "mean_halluc_catch": 1.0,
+    "mean_fp_rate": 0.697,
+    "mean_top5_pres": 0.11
+  },
+  {
+    "n_facts": 2000,
+    "nn_retrieval_accuracy": 0.65,
+    "precision": 0.7977,
+    "recall": 1.0,
+    "f1": 0.8875,
+    "mean_halluc_catch": 1.0,
+    "mean_fp_rate": 0.8486,
+    "mean_top5_pres": 0.11
+  }
+]

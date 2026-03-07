@@ -1,0 +1,93 @@
+[
+  {
+    "n_facts": 100,
+    "dim": 10000,
+    "n_probes": 100,
+    "recall_threshold": 0.0,
+    "recall_nn": 0.97,
+    "mean_cosine": 0.0803,
+    "std_cosine": 0.0096,
+    "threshold": 0.35,
+    "entities_in_memory": 144,
+    "distill_time_s": 0.01,
+    "probe_time_s": 0.07
+  },
+  {
+    "n_facts": 500,
+    "dim": 10000,
+    "n_probes": 200,
+    "recall_threshold": 0.0,
+    "recall_nn": 0.7,
+    "mean_cosine": 0.0351,
+    "std_cosine": 0.011,
+    "threshold": 0.35,
+    "entities_in_memory": 210,
+    "distill_time_s": 0.03,
+    "probe_time_s": 0.16
+  },
+  {
+    "n_facts": 1000,
+    "dim": 10000,
+    "n_probes": 200,
+    "recall_threshold": 0.0,
+    "recall_nn": 0.455,
+    "mean_cosine": 0.0257,
+    "std_cosine": 0.0091,
+    "threshold": 0.35,
+    "entities_in_memory": 212,
+    "distill_time_s": 0.05,
+    "probe_time_s": 0.17
+  },
+  {
+    "n_facts": 5000,
+    "dim": 10000,
+    "n_probes": 200,
+    "recall_threshold": 0.0,
+    "recall_nn": 0.03,
+    "mean_cosine": 0.0107,
+    "std_cosine": 0.009,
+    "threshold": 0.35,
+    "entities_in_memory": 438,
+    "distill_time_s": 0.2,
+    "probe_time_s": 0.3
+  },
+  {
+    "n_facts": 10000,
+    "dim": 10000,
+    "n_probes": 200,
+    "recall_threshold": 0.0,
+    "recall_nn": 0.015,
+    "mean_cosine": 0.0076,
+    "std_cosine": 0.0093,
+    "threshold": 0.35,
+    "entities_in_memory": 612,
+    "distill_time_s": 0.38,
+    "probe_time_s": 0.4
+  },
+  {
+    "n_facts": 50000,
+    "dim": 10000,
+    "n_probes": 200,
+    "recall_threshold": 0.0,
+    "recall_nn": 0.0,
+    "mean_cosine": 0.0029,
+    "std_cosine": 0.0098,
+    "threshold": 0.35,
+    "entities_in_memory": 1354,
+    "distill_time_s": 1.86,
+    "probe_time_s": 0.81
+  },
+  {
+    "n_facts": 100000,
+    "dim": 10000,
+    "n_probes": 200,
+    "recall_threshold": 0.0,
+    "recall_nn": 0.005,
+    "mean_cosine": 0.0018,
+    "std_cosine": 0.0083,
+    "threshold": 0.35,
+    "entities_in_memory": 1910,
+    "distill_time_s": 3.99,
+    "probe_time_s": 1.38
+  }
+]

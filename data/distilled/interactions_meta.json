@@ -1,0 +1,2301 @@
+{
+  "interactions": {
+    "WARFARIN||ASPIRIN": {
+      "subject": "WARFARIN",
+      "relation": "INTERACTS_WITH",
+      "object": "ASPIRIN",
+      "severity": "major",
+      "mechanism": "Dual antiplatelet and anticoagulant effect increases bleeding risk",
+      "clinical_note": "Concomitant use significantly increases risk of gastrointestinal and intracranial bleeding. Monitor INR closely if unavoidable.",
+      "interaction_type": "drug_drug"
+    },
+    "ASPIRIN||WARFARIN": {
+      "subject": "ASPIRIN",
+      "relation": "INTERACTS_WITH",
+      "object": "WARFARIN",
+      "severity": "major",
+      "mechanism": "Dual antiplatelet and anticoagulant effect increases bleeding risk",
+      "clinical_note": "Concomitant use significantly increases risk of gastrointestinal and intracranial bleeding. Monitor INR closely if unavoidable.",
+      "interaction_type": "drug_drug"
+    },
+    "WARFARIN||IBUPROFEN": {
+      "subject": "WARFARIN",
+      "relation": "INTERACTS_WITH",
+      "object": "IBUPROFEN",
+      "severity": "major",
+      "mechanism": "NSAID inhibits platelet function and may displace warfarin from protein binding",
+      "clinical_note": "Increased risk of GI bleeding. Use acetaminophen as alternative analgesic.",
+      "interaction_type": "drug_drug"
+    },
+    "IBUPROFEN||WARFARIN": {
+      "subject": "IBUPROFEN",
+      "relation": "INTERACTS_WITH",
+      "object": "WARFARIN",
+      "severity": "major",
+      "mechanism": "NSAID inhibits platelet function and may displace warfarin from protein binding",
+      "clinical_note": "Increased risk of GI bleeding. Use acetaminophen as alternative analgesic.",
+      "interaction_type": "drug_drug"
+    },
+    "WARFARIN||FLUCONAZOLE": {
+      "subject": "WARFARIN",
+      "relation": "INTERACTS_WITH",
+      "object": "FLUCONAZOLE",
+      "severity": "major",
+      "mechanism": "Fluconazole inhibits CYP2C9 and CYP3A4, reducing warfarin metabolism",
+      "clinical_note": "Can cause dangerously elevated INR. Reduce warfarin dose by 25-50% and monitor INR within 3-4 days.",
+      "interaction_type": "drug_drug"
+    },
+    "FLUCONAZOLE||WARFARIN": {
+      "subject": "FLUCONAZOLE",
+      "relation": "INTERACTS_WITH",
+      "object": "WARFARIN",
+      "severity": "major",
+      "mechanism": "Fluconazole inhibits CYP2C9 and CYP3A4, reducing warfarin metabolism",
+      "clinical_note": "Can cause dangerously elevated INR. Reduce warfarin dose by 25-50% and monitor INR within 3-4 days.",
+      "interaction_type": "drug_drug"
+    },
+    "WARFARIN||AMIODARONE": {
+      "subject": "WARFARIN",
+      "relation": "INTERACTS_WITH",
+      "object": "AMIODARONE",
+      "severity": "major",
+      "mechanism": "Amiodarone inhibits CYP2C9 and CYP3A4",
+      "clinical_note": "Reduce warfarin dose by 33-50% when starting amiodarone. Effect persists weeks after amiodarone discontinuation.",
+      "interaction_type": "drug_drug"
+    },
+    "AMIODARONE||WARFARIN": {
+      "subject": "AMIODARONE",
+      "relation": "INTERACTS_WITH",
+      "object": "WARFARIN",
+      "severity": "major",
+      "mechanism": "Amiodarone inhibits CYP2C9 and CYP3A4",
+      "clinical_note": "Reduce warfarin dose by 33-50% when starting amiodarone. Effect persists weeks after amiodarone discontinuation.",
+      "interaction_type": "drug_drug"
+    },
+    "WARFARIN||METRONIDAZOLE": {
+      "subject": "WARFARIN",
+      "relation": "INTERACTS_WITH",
+      "object": "METRONIDAZOLE",
+      "severity": "major",
+      "mechanism": "Metronidazole inhibits CYP2C9-mediated warfarin metabolism",
+      "clinical_note": "Monitor INR closely. Consider dose reduction of warfarin.",
+      "interaction_type": "drug_drug"
+    },
+    "METRONIDAZOLE||WARFARIN": {
+      "subject": "METRONIDAZOLE",
+      "relation": "INTERACTS_WITH",
+      "object": "WARFARIN",
+      "severity": "major",
+      "mechanism": "Metronidazole inhibits CYP2C9-mediated warfarin metabolism",
+      "clinical_note": "Monitor INR closely. Consider dose reduction of warfarin.",
+      "interaction_type": "drug_drug"
+    },
+    "WARFARIN||CIPROFLOXACIN": {
+      "subject": "WARFARIN",
+      "relation": "INTERACTS_WITH",
+      "object": "CIPROFLOXACIN",
+      "severity": "major",
+      "mechanism": "Ciprofloxacin inhibits CYP1A2, altering warfarin metabolism",
+      "clinical_note": "Increased INR and bleeding risk. Monitor closely and adjust warfarin dose.",
+      "interaction_type": "drug_drug"
+    },
+    "CIPROFLOXACIN||WARFARIN": {
+      "subject": "CIPROFLOXACIN",
+      "relation": "INTERACTS_WITH",
+      "object": "WARFARIN",
+      "severity": "major",
+      "mechanism": "Ciprofloxacin inhibits CYP1A2, altering warfarin metabolism",
+      "clinical_note": "Increased INR and bleeding risk. Monitor closely and adjust warfarin dose.",
+      "interaction_type": "drug_drug"
+    },
+    "WARFARIN||RIFAMPIN": {
+      "subject": "WARFARIN",
+      "relation": "INTERACTS_WITH",
+      "object": "RIFAMPIN",
+      "severity": "major",
+      "mechanism": "Rifampin is a potent CYP inducer, dramatically increasing warfarin metabolism",
+      "clinical_note": "May require 2-5x increase in warfarin dose. Monitor INR frequently during and after rifampin therapy.",
+      "interaction_type": "drug_drug"
+    },
+    "RIFAMPIN||WARFARIN": {
+      "subject": "RIFAMPIN",
+      "relation": "INTERACTS_WITH",
+      "object": "WARFARIN",
+      "severity": "major",
+      "mechanism": "Rifampin is a potent CYP inducer, dramatically increasing warfarin metabolism",
+      "clinical_note": "May require 2-5x increase in warfarin dose. Monitor INR frequently during and after rifampin therapy.",
+      "interaction_type": "drug_drug"
+    },
+    "WARFARIN||PHENYTOIN": {
+      "subject": "WARFARIN",
+      "relation": "INTERACTS_WITH",
+      "object": "PHENYTOIN",
+      "severity": "major",
+      "mechanism": "Complex bidirectional interaction via CYP2C9 competition",
+      "clinical_note": "Both drug levels may be affected. Monitor INR and phenytoin levels closely.",
+      "interaction_type": "drug_drug"
+    },
+    "PHENYTOIN||WARFARIN": {
+      "subject": "PHENYTOIN",
+      "relation": "INTERACTS_WITH",
+      "object": "WARFARIN",
+      "severity": "major",
+      "mechanism": "Complex bidirectional interaction via CYP2C9 competition",
+      "clinical_note": "Both drug levels may be affected. Monitor INR and phenytoin levels closely.",
+      "interaction_type": "drug_drug"
+    },
+    "WARFARIN||CLOZAPINE": {
+      "subject": "WARFARIN",
+      "relation": "INTERACTS_WITH",
+      "object": "CLOZAPINE",
+      "severity": "major",
+      "mechanism": "Clozapine inhibits and induces CYP1A2/CYP2C9 unpredictably, altering warfarin metabolism; additive risk of bleeding and agranulocytosis",
+      "clinical_note": "Monitor INR very closely. Clozapine-associated agranulocytosis compounded by warfarin bleeding risk. Adjust warfarin dose based on frequent INR checks.",
+      "interaction_type": "drug_drug"
+    },
+    "CLOZAPINE||WARFARIN": {
+      "subject": "CLOZAPINE",
+      "relation": "INTERACTS_WITH",
+      "object": "WARFARIN",
+      "severity": "major",
+      "mechanism": "Clozapine inhibits and induces CYP1A2/CYP2C9 unpredictably, altering warfarin metabolism; additive risk of bleeding and agranulocytosis",
+      "clinical_note": "Monitor INR very closely. Clozapine-associated agranulocytosis compounded by warfarin bleeding risk. Adjust warfarin dose based on frequent INR checks.",
+      "interaction_type": "drug_drug"
+    },
+    "WARFARIN||ATORVASTATIN": {
+      "subject": "WARFARIN",
+      "relation": "INTERACTS_WITH",
+      "object": "ATORVASTATIN",
+      "severity": "moderate",
+      "mechanism": "Atorvastatin may inhibit CYP2C9 and CYP3A4, modestly increasing warfarin exposure and raising INR",
+      "clinical_note": "Monitor INR when starting, stopping, or changing atorvastatin dose. Small warfarin dose adjustment may be needed. Risk of bleeding is increased.",
+      "interaction_type": "drug_drug"
+    },
+    "ATORVASTATIN||WARFARIN": {
+      "subject": "ATORVASTATIN",
+      "relation": "INTERACTS_WITH",
+      "object": "WARFARIN",
+      "severity": "moderate",
+      "mechanism": "Atorvastatin may inhibit CYP2C9 and CYP3A4, modestly increasing warfarin exposure and raising INR",
+      "clinical_note": "Monitor INR when starting, stopping, or changing atorvastatin dose. Small warfarin dose adjustment may be needed. Risk of bleeding is increased.",
+      "interaction_type": "drug_drug"
+    },
+    "SIMVASTATIN||AMIODARONE": {
+      "subject": "SIMVASTATIN",
+      "relation": "INTERACTS_WITH",
+      "object": "AMIODARONE",
+      "severity": "major",
+      "mechanism": "Amiodarone inhibits CYP3A4, increasing simvastatin levels",
+      "clinical_note": "Do not exceed simvastatin 20mg/day with amiodarone. Risk of rhabdomyolysis.",
+      "interaction_type": "drug_drug"
+    },
+    "AMIODARONE||SIMVASTATIN": {
+      "subject": "AMIODARONE",
+      "relation": "INTERACTS_WITH",
+      "object": "SIMVASTATIN",
+      "severity": "major",
+      "mechanism": "Amiodarone inhibits CYP3A4, increasing simvastatin levels",
+      "clinical_note": "Do not exceed simvastatin 20mg/day with amiodarone. Risk of rhabdomyolysis.",
+      "interaction_type": "drug_drug"
+    },
+    "SIMVASTATIN||CLARITHROMYCIN": {
+      "subject": "SIMVASTATIN",
+      "relation": "INTERACTS_WITH",
+      "object": "CLARITHROMYCIN",
+      "severity": "major",
+      "mechanism": "Strong CYP3A4 inhibition increases statin exposure dramatically",
+      "clinical_note": "CONTRAINDICATED. Suspend simvastatin during clarithromycin therapy.",
+      "interaction_type": "drug_drug"
+    },
+    "CLARITHROMYCIN||SIMVASTATIN": {
+      "subject": "CLARITHROMYCIN",
+      "relation": "INTERACTS_WITH",
+      "object": "SIMVASTATIN",
+      "severity": "major",
+      "mechanism": "Strong CYP3A4 inhibition increases statin exposure dramatically",
+      "clinical_note": "CONTRAINDICATED. Suspend simvastatin during clarithromycin therapy.",
+      "interaction_type": "drug_drug"
+    },
+    "SIMVASTATIN||ITRACONAZOLE": {
+      "subject": "SIMVASTATIN",
+      "relation": "INTERACTS_WITH",
+      "object": "ITRACONAZOLE",
+      "severity": "major",
+      "mechanism": "Strong CYP3A4 inhibition substantially increases simvastatin levels",
+      "clinical_note": "CONTRAINDICATED. Risk of rhabdomyolysis and myopathy.",
+      "interaction_type": "drug_drug"
+    },
+    "ITRACONAZOLE||SIMVASTATIN": {
+      "subject": "ITRACONAZOLE",
+      "relation": "INTERACTS_WITH",
+      "object": "SIMVASTATIN",
+      "severity": "major",
+      "mechanism": "Strong CYP3A4 inhibition substantially increases simvastatin levels",
+      "clinical_note": "CONTRAINDICATED. Risk of rhabdomyolysis and myopathy.",
+      "interaction_type": "drug_drug"
+    },
+    "SIMVASTATIN||CYCLOSPORINE": {
+      "subject": "SIMVASTATIN",
+      "relation": "INTERACTS_WITH",
+      "object": "CYCLOSPORINE",
+      "severity": "major",
+      "mechanism": "CYP3A4 and P-glycoprotein inhibition increases statin exposure",
+      "clinical_note": "CONTRAINDICATED. Use alternative statin with lower interaction potential.",
+      "interaction_type": "drug_drug"
+    },
+    "CYCLOSPORINE||SIMVASTATIN": {
+      "subject": "CYCLOSPORINE",
+      "relation": "INTERACTS_WITH",
+      "object": "SIMVASTATIN",
+      "severity": "major",
+      "mechanism": "CYP3A4 and P-glycoprotein inhibition increases statin exposure",
+      "clinical_note": "CONTRAINDICATED. Use alternative statin with lower interaction potential.",
+      "interaction_type": "drug_drug"
+    },
+    "SIMVASTATIN||GEMFIBROZIL": {
+      "subject": "SIMVASTATIN",
+      "relation": "INTERACTS_WITH",
+      "object": "GEMFIBROZIL",
+      "severity": "major",
+      "mechanism": "Gemfibrozil inhibits statin glucuronidation and OATP1B1 transport",
+      "clinical_note": "CONTRAINDICATED. Increased risk of myopathy and rhabdomyolysis.",
+      "interaction_type": "drug_drug"
+    },
+    "GEMFIBROZIL||SIMVASTATIN": {
+      "subject": "GEMFIBROZIL",
+      "relation": "INTERACTS_WITH",
+      "object": "SIMVASTATIN",
+      "severity": "major",
+      "mechanism": "Gemfibrozil inhibits statin glucuronidation and OATP1B1 transport",
+      "clinical_note": "CONTRAINDICATED. Increased risk of myopathy and rhabdomyolysis.",
+      "interaction_type": "drug_drug"
+    },
+    "SIMVASTATIN||DILTIAZEM": {
+      "subject": "SIMVASTATIN",
+      "relation": "INTERACTS_WITH",
+      "object": "DILTIAZEM",
+      "severity": "major",
+      "mechanism": "Diltiazem inhibits CYP3A4, increasing simvastatin levels",
+      "clinical_note": "Do not exceed simvastatin 10mg/day with diltiazem.",
+      "interaction_type": "drug_drug"
+    },
+    "DILTIAZEM||SIMVASTATIN": {
+      "subject": "DILTIAZEM",
+      "relation": "INTERACTS_WITH",
+      "object": "SIMVASTATIN",
+      "severity": "major",
+      "mechanism": "Diltiazem inhibits CYP3A4, increasing simvastatin levels",
+      "clinical_note": "Do not exceed simvastatin 10mg/day with diltiazem.",
+      "interaction_type": "drug_drug"
+    },
+    "METFORMIN||ALCOHOL": {
+      "subject": "METFORMIN",
+      "relation": "INTERACTS_WITH",
+      "object": "ALCOHOL",
+      "severity": "major",
+      "mechanism": "Both increase lactate production; alcohol impairs gluconeogenesis",
+      "clinical_note": "Risk of lactic acidosis is significantly increased. Counsel patients to limit alcohol.",
+      "interaction_type": "drug_drug"
+    },
+    "ALCOHOL||METFORMIN": {
+      "subject": "ALCOHOL",
+      "relation": "INTERACTS_WITH",
+      "object": "METFORMIN",
+      "severity": "major",
+      "mechanism": "Both increase lactate production; alcohol impairs gluconeogenesis",
+      "clinical_note": "Risk of lactic acidosis is significantly increased. Counsel patients to limit alcohol.",
+      "interaction_type": "drug_drug"
+    },
+    "METFORMIN||CONTRAST_DYE": {
+      "subject": "METFORMIN",
+      "relation": "INTERACTS_WITH",
+      "object": "CONTRAST_DYE",
+      "severity": "major",
+      "mechanism": "Iodinated contrast agents can cause acute kidney injury, reducing metformin clearance",
+      "clinical_note": "Hold metformin 48 hours before and after contrast procedures. Check renal function before restarting.",
+      "interaction_type": "drug_drug"
+    },
+    "CONTRAST_DYE||METFORMIN": {
+      "subject": "CONTRAST_DYE",
+      "relation": "INTERACTS_WITH",
+      "object": "METFORMIN",
+      "severity": "major",
+      "mechanism": "Iodinated contrast agents can cause acute kidney injury, reducing metformin clearance",
+      "clinical_note": "Hold metformin 48 hours before and after contrast procedures. Check renal function before restarting.",
+      "interaction_type": "drug_drug"
+    },
+    "METFORMIN||CIMETIDINE": {
+      "subject": "METFORMIN",
+      "relation": "INTERACTS_WITH",
+      "object": "CIMETIDINE",
+      "severity": "moderate",
+      "mechanism": "Cimetidine inhibits renal tubular secretion of metformin",
+      "clinical_note": "Increased metformin levels by 50%. Consider dose adjustment or alternative H2 blocker.",
+      "interaction_type": "drug_drug"
+    },
+    "CIMETIDINE||METFORMIN": {
+      "subject": "CIMETIDINE",
+      "relation": "INTERACTS_WITH",
+      "object": "METFORMIN",
+      "severity": "moderate",
+      "mechanism": "Cimetidine inhibits renal tubular secretion of metformin",
+      "clinical_note": "Increased metformin levels by 50%. Consider dose adjustment or alternative H2 blocker.",
+      "interaction_type": "drug_drug"
+    },
+    "METOPROLOL||VERAPAMIL": {
+      "subject": "METOPROLOL",
+      "relation": "INTERACTS_WITH",
+      "object": "VERAPAMIL",
+      "severity": "major",
+      "mechanism": "Additive negative chronotropic and inotropic effects",
+      "clinical_note": "Risk of severe bradycardia, heart block, and heart failure. Avoid combination or use with extreme caution.",
+      "interaction_type": "drug_drug"
+    },
+    "VERAPAMIL||METOPROLOL": {
+      "subject": "VERAPAMIL",
+      "relation": "INTERACTS_WITH",
+      "object": "METOPROLOL",
+      "severity": "major",
+      "mechanism": "Additive negative chronotropic and inotropic effects",
+      "clinical_note": "Risk of severe bradycardia, heart block, and heart failure. Avoid combination or use with extreme caution.",
+      "interaction_type": "drug_drug"
+    },
+    "METOPROLOL||FLUOXETINE": {
+      "subject": "METOPROLOL",
+      "relation": "INTERACTS_WITH",
+      "object": "FLUOXETINE",
+      "severity": "moderate",
+      "mechanism": "Fluoxetine inhibits CYP2D6, increasing metoprolol levels",
+      "clinical_note": "May cause excessive beta-blockade (bradycardia, hypotension). Monitor heart rate and blood pressure.",
+      "interaction_type": "drug_drug"
+    },
+    "FLUOXETINE||METOPROLOL": {
+      "subject": "FLUOXETINE",
+      "relation": "INTERACTS_WITH",
+      "object": "METOPROLOL",
+      "severity": "moderate",
+      "mechanism": "Fluoxetine inhibits CYP2D6, increasing metoprolol levels",
+      "clinical_note": "May cause excessive beta-blockade (bradycardia, hypotension). Monitor heart rate and blood pressure.",
+      "interaction_type": "drug_drug"
+    },
+    "METOPROLOL||CLONIDINE": {
+      "subject": "METOPROLOL",
+      "relation": "INTERACTS_WITH",
+      "object": "CLONIDINE",
+      "severity": "major",
+      "mechanism": "Abrupt clonidine withdrawal with concurrent beta-blocker can cause rebound hypertension",
+      "clinical_note": "If discontinuing both, taper beta-blocker first, then clonidine over several days.",
+      "interaction_type": "drug_drug"
+    },
+    "CLONIDINE||METOPROLOL": {
+      "subject": "CLONIDINE",
+      "relation": "INTERACTS_WITH",
+      "object": "METOPROLOL",
+      "severity": "major",
+      "mechanism": "Abrupt clonidine withdrawal with concurrent beta-blocker can cause rebound hypertension",
+      "clinical_note": "If discontinuing both, taper beta-blocker first, then clonidine over several days.",
+      "interaction_type": "drug_drug"
+    },
+    "LISINOPRIL||POTASSIUM": {
+      "subject": "LISINOPRIL",
+      "relation": "INTERACTS_WITH",
+      "object": "POTASSIUM",
+      "severity": "major",
+      "mechanism": "ACE inhibitors reduce aldosterone, decreasing potassium excretion",
+      "clinical_note": "Risk of life-threatening hyperkalemia. Avoid potassium supplements unless hypokalemia documented.",
+      "interaction_type": "drug_drug"
+    },
+    "POTASSIUM||LISINOPRIL": {
+      "subject": "POTASSIUM",
+      "relation": "INTERACTS_WITH",
+      "object": "LISINOPRIL",
+      "severity": "major",
+      "mechanism": "ACE inhibitors reduce aldosterone, decreasing potassium excretion",
+      "clinical_note": "Risk of life-threatening hyperkalemia. Avoid potassium supplements unless hypokalemia documented.",
+      "interaction_type": "drug_drug"
+    },
+    "LISINOPRIL||SPIRONOLACTONE": {
+      "subject": "LISINOPRIL",
+      "relation": "INTERACTS_WITH",
+      "object": "SPIRONOLACTONE",
+      "severity": "major",
+      "mechanism": "Both drugs increase serum potassium through different mechanisms",
+      "clinical_note": "Monitor potassium within 1 week of starting combination. Risk of hyperkalemia.",
+      "interaction_type": "drug_drug"
+    },
+    "SPIRONOLACTONE||LISINOPRIL": {
+      "subject": "SPIRONOLACTONE",
+      "relation": "INTERACTS_WITH",
+      "object": "LISINOPRIL",
+      "severity": "major",
+      "mechanism": "Both drugs increase serum potassium through different mechanisms",
+      "clinical_note": "Monitor potassium within 1 week of starting combination. Risk of hyperkalemia.",
+      "interaction_type": "drug_drug"
+    },
+    "LISINOPRIL||LITHIUM": {
+      "subject": "LISINOPRIL",
+      "relation": "INTERACTS_WITH",
+      "object": "LITHIUM",
+      "severity": "major",
+      "mechanism": "ACE inhibitors reduce lithium clearance",
+      "clinical_note": "Monitor lithium levels closely. Risk of lithium toxicity.",
+      "interaction_type": "drug_drug"
+    },
+    "LITHIUM||LISINOPRIL": {
+      "subject": "LITHIUM",
+      "relation": "INTERACTS_WITH",
+      "object": "LISINOPRIL",
+      "severity": "major",
+      "mechanism": "ACE inhibitors reduce lithium clearance",
+      "clinical_note": "Monitor lithium levels closely. Risk of lithium toxicity.",
+      "interaction_type": "drug_drug"
+    },
+    "LISINOPRIL||IBUPROFEN": {
+      "subject": "LISINOPRIL",
+      "relation": "INTERACTS_WITH",
+      "object": "IBUPROFEN",
+      "severity": "moderate",
+      "mechanism": "NSAIDs reduce prostaglandin-mediated renal perfusion, blunting ACE inhibitor efficacy",
+      "clinical_note": "May reduce antihypertensive effect and worsen renal function. Use lowest NSAID dose for shortest duration.",
+      "interaction_type": "drug_drug"
+    },
+    "IBUPROFEN||LISINOPRIL": {
+      "subject": "IBUPROFEN",
+      "relation": "INTERACTS_WITH",
+      "object": "LISINOPRIL",
+      "severity": "moderate",
+      "mechanism": "NSAIDs reduce prostaglandin-mediated renal perfusion, blunting ACE inhibitor efficacy",
+      "clinical_note": "May reduce antihypertensive effect and worsen renal function. Use lowest NSAID dose for shortest duration.",
+      "interaction_type": "drug_drug"
+    },
+    "DIGOXIN||AMIODARONE": {
+      "subject": "DIGOXIN",
+      "relation": "INTERACTS_WITH",
+      "object": "AMIODARONE",
+      "severity": "major",
+      "mechanism": "Amiodarone inhibits P-glycoprotein, reducing digoxin clearance",
+      "clinical_note": "Reduce digoxin dose by 50% when starting amiodarone. Monitor digoxin levels.",
+      "interaction_type": "drug_drug"
+    },
+    "AMIODARONE||DIGOXIN": {
+      "subject": "AMIODARONE",
+      "relation": "INTERACTS_WITH",
+      "object": "DIGOXIN",
+      "severity": "major",
+      "mechanism": "Amiodarone inhibits P-glycoprotein, reducing digoxin clearance",
+      "clinical_note": "Reduce digoxin dose by 50% when starting amiodarone. Monitor digoxin levels.",
+      "interaction_type": "drug_drug"
+    },
+    "DIGOXIN||VERAPAMIL": {
+      "subject": "DIGOXIN",
+      "relation": "INTERACTS_WITH",
+      "object": "VERAPAMIL",
+      "severity": "major",
+      "mechanism": "Verapamil inhibits P-glycoprotein and renal clearance of digoxin",
+      "clinical_note": "Digoxin levels may increase 50-75%. Reduce dose and monitor levels.",
+      "interaction_type": "drug_drug"
+    },
+    "VERAPAMIL||DIGOXIN": {
+      "subject": "VERAPAMIL",
+      "relation": "INTERACTS_WITH",
+      "object": "DIGOXIN",
+      "severity": "major",
+      "mechanism": "Verapamil inhibits P-glycoprotein and renal clearance of digoxin",
+      "clinical_note": "Digoxin levels may increase 50-75%. Reduce dose and monitor levels.",
+      "interaction_type": "drug_drug"
+    },
+    "DIGOXIN||CLARITHROMYCIN": {
+      "subject": "DIGOXIN",
+      "relation": "INTERACTS_WITH",
+      "object": "CLARITHROMYCIN",
+      "severity": "major",
+      "mechanism": "Clarithromycin inhibits P-glycoprotein and gut-bacteria-mediated digoxin inactivation",
+      "clinical_note": "Digoxin toxicity risk. Use azithromycin as alternative macrolide.",
+      "interaction_type": "drug_drug"
+    },
+    "CLARITHROMYCIN||DIGOXIN": {
+      "subject": "CLARITHROMYCIN",
+      "relation": "INTERACTS_WITH",
+      "object": "DIGOXIN",
+      "severity": "major",
+      "mechanism": "Clarithromycin inhibits P-glycoprotein and gut-bacteria-mediated digoxin inactivation",
+      "clinical_note": "Digoxin toxicity risk. Use azithromycin as alternative macrolide.",
+      "interaction_type": "drug_drug"
+    },
+    "DIGOXIN||QUINIDINE": {
+      "subject": "DIGOXIN",
+      "relation": "INTERACTS_WITH",
+      "object": "QUINIDINE",
+      "severity": "major",
+      "mechanism": "Quinidine inhibits P-glycoprotein and renal tubular secretion of digoxin",
+      "clinical_note": "Digoxin levels may double. Halve digoxin dose and monitor levels closely.",
+      "interaction_type": "drug_drug"
+    },
+    "QUINIDINE||DIGOXIN": {
+      "subject": "QUINIDINE",
+      "relation": "INTERACTS_WITH",
+      "object": "DIGOXIN",
+      "severity": "major",
+      "mechanism": "Quinidine inhibits P-glycoprotein and renal tubular secretion of digoxin",
+      "clinical_note": "Digoxin levels may double. Halve digoxin dose and monitor levels closely.",
+      "interaction_type": "drug_drug"
+    },
+    "CLOPIDOGREL||OMEPRAZOLE": {
+      "subject": "CLOPIDOGREL",
+      "relation": "INTERACTS_WITH",
+      "object": "OMEPRAZOLE",
+      "severity": "major",
+      "mechanism": "Omeprazole inhibits CYP2C19, preventing clopidogrel activation to its active metabolite",
+      "clinical_note": "Reduced antiplatelet effect increases thrombotic risk. Use pantoprazole instead.",
+      "interaction_type": "drug_drug"
+    },
+    "OMEPRAZOLE||CLOPIDOGREL": {
+      "subject": "OMEPRAZOLE",
+      "relation": "INTERACTS_WITH",
+      "object": "CLOPIDOGREL",
+      "severity": "major",
+      "mechanism": "Omeprazole inhibits CYP2C19, preventing clopidogrel activation to its active metabolite",
+      "clinical_note": "Reduced antiplatelet effect increases thrombotic risk. Use pantoprazole instead.",
+      "interaction_type": "drug_drug"
+    },
+    "CLOPIDOGREL||ASPIRIN": {
+      "subject": "CLOPIDOGREL",
+      "relation": "INTERACTS_WITH",
+      "object": "ASPIRIN",
+      "severity": "moderate",
+      "mechanism": "Additive antiplatelet effect",
+      "clinical_note": "Dual antiplatelet therapy is indicated post-ACS but increases bleeding risk. Use for defined duration only.",
+      "interaction_type": "drug_drug"
+    },
+    "ASPIRIN||CLOPIDOGREL": {
+      "subject": "ASPIRIN",
+      "relation": "INTERACTS_WITH",
+      "object": "CLOPIDOGREL",
+      "severity": "moderate",
+      "mechanism": "Additive antiplatelet effect",
+      "clinical_note": "Dual antiplatelet therapy is indicated post-ACS but increases bleeding risk. Use for defined duration only.",
+      "interaction_type": "drug_drug"
+    },
+    "LITHIUM||IBUPROFEN": {
+      "subject": "LITHIUM",
+      "relation": "INTERACTS_WITH",
+      "object": "IBUPROFEN",
+      "severity": "major",
+      "mechanism": "NSAIDs reduce renal lithium clearance by 15-25%",
+      "clinical_note": "Risk of lithium toxicity. If NSAID necessary, monitor lithium levels within 5 days.",
+      "interaction_type": "drug_drug"
+    },
+    "IBUPROFEN||LITHIUM": {
+      "subject": "IBUPROFEN",
+      "relation": "INTERACTS_WITH",
+      "object": "LITHIUM",
+      "severity": "major",
+      "mechanism": "NSAIDs reduce renal lithium clearance by 15-25%",
+      "clinical_note": "Risk of lithium toxicity. If NSAID necessary, monitor lithium levels within 5 days.",
+      "interaction_type": "drug_drug"
+    },
+    "LITHIUM||HYDROCHLOROTHIAZIDE": {
+      "subject": "LITHIUM",
+      "relation": "INTERACTS_WITH",
+      "object": "HYDROCHLOROTHIAZIDE",
+      "severity": "major",
+      "mechanism": "Thiazide diuretics reduce lithium clearance via sodium depletion",
+      "clinical_note": "May increase lithium levels by 25%. Reduce lithium dose and monitor levels.",
+      "interaction_type": "drug_drug"
+    },
+    "HYDROCHLOROTHIAZIDE||LITHIUM": {
+      "subject": "HYDROCHLOROTHIAZIDE",
+      "relation": "INTERACTS_WITH",
+      "object": "LITHIUM",
+      "severity": "major",
+      "mechanism": "Thiazide diuretics reduce lithium clearance via sodium depletion",
+      "clinical_note": "May increase lithium levels by 25%. Reduce lithium dose and monitor levels.",
+      "interaction_type": "drug_drug"
+    },
+    "LITHIUM||CARBAMAZEPINE": {
+      "subject": "LITHIUM",
+      "relation": "INTERACTS_WITH",
+      "object": "CARBAMAZEPINE",
+      "severity": "major",
+      "mechanism": "Additive neurotoxicity without affecting drug levels",
+      "clinical_note": "Risk of neurotoxic symptoms (ataxia, tremor, confusion) even at therapeutic levels.",
+      "interaction_type": "drug_drug"
+    },
+    "CARBAMAZEPINE||LITHIUM": {
+      "subject": "CARBAMAZEPINE",
+      "relation": "INTERACTS_WITH",
+      "object": "LITHIUM",
+      "severity": "major",
+      "mechanism": "Additive neurotoxicity without affecting drug levels",
+      "clinical_note": "Risk of neurotoxic symptoms (ataxia, tremor, confusion) even at therapeutic levels.",
+      "interaction_type": "drug_drug"
+    },
+    "SSRI||MAOI": {
+      "subject": "SSRI",
+      "relation": "INTERACTS_WITH",
+      "object": "MAOI",
+      "severity": "major",
+      "mechanism": "Excess serotonergic activity causing serotonin syndrome",
+      "clinical_note": "CONTRAINDICATED. Allow 14-day washout between MAOI and SSRI (5 weeks for fluoxetine).",
+      "interaction_type": "drug_drug"
+    },
+    "MAOI||SSRI": {
+      "subject": "MAOI",
+      "relation": "INTERACTS_WITH",
+      "object": "SSRI",
+      "severity": "major",
+      "mechanism": "Excess serotonergic activity causing serotonin syndrome",
+      "clinical_note": "CONTRAINDICATED. Allow 14-day washout between MAOI and SSRI (5 weeks for fluoxetine).",
+      "interaction_type": "drug_drug"
+    },
+    "FLUOXETINE||PHENELZINE": {
+      "subject": "FLUOXETINE",
+      "relation": "INTERACTS_WITH",
+      "object": "PHENELZINE",
+      "severity": "major",
+      "mechanism": "Serotonin syndrome risk from combined SSRI + MAOI",
+      "clinical_note": "CONTRAINDICATED. Potentially fatal. Requires 5-week washout after fluoxetine due to long half-life of norfluoxetine.",
+      "interaction_type": "drug_drug"
+    },
+    "PHENELZINE||FLUOXETINE": {
+      "subject": "PHENELZINE",
+      "relation": "INTERACTS_WITH",
+      "object": "FLUOXETINE",
+      "severity": "major",
+      "mechanism": "Serotonin syndrome risk from combined SSRI + MAOI",
+      "clinical_note": "CONTRAINDICATED. Potentially fatal. Requires 5-week washout after fluoxetine due to long half-life of norfluoxetine.",
+      "interaction_type": "drug_drug"
+    },
+    "FLUOXETINE||TRAMADOL": {
+      "subject": "FLUOXETINE",
+      "relation": "INTERACTS_WITH",
+      "object": "TRAMADOL",
+      "severity": "major",
+      "mechanism": "Tramadol has serotonergic activity; combined with SSRI increases serotonin syndrome risk",
+      "clinical_note": "Risk of seizures and serotonin syndrome. Use alternative analgesic.",
+      "interaction_type": "drug_drug"
+    },
+    "TRAMADOL||FLUOXETINE": {
+      "subject": "TRAMADOL",
+      "relation": "INTERACTS_WITH",
+      "object": "FLUOXETINE",
+      "severity": "major",
+      "mechanism": "Tramadol has serotonergic activity; combined with SSRI increases serotonin syndrome risk",
+      "clinical_note": "Risk of seizures and serotonin syndrome. Use alternative analgesic.",
+      "interaction_type": "drug_drug"
+    },
+    "SERTRALINE||PIMOZIDE": {
+      "subject": "SERTRALINE",
+      "relation": "INTERACTS_WITH",
+      "object": "PIMOZIDE",
+      "severity": "major",
+      "mechanism": "Sertraline inhibits CYP2D6 and CYP3A4, increasing pimozide levels and QT prolongation risk",
+      "clinical_note": "CONTRAINDICATED. Risk of fatal cardiac arrhythmia (torsades de pointes).",
+      "interaction_type": "drug_drug"
+    },
+    "PIMOZIDE||SERTRALINE": {
+      "subject": "PIMOZIDE",
+      "relation": "INTERACTS_WITH",
+      "object": "SERTRALINE",
+      "severity": "major",
+      "mechanism": "Sertraline inhibits CYP2D6 and CYP3A4, increasing pimozide levels and QT prolongation risk",
+      "clinical_note": "CONTRAINDICATED. Risk of fatal cardiac arrhythmia (torsades de pointes).",
+      "interaction_type": "drug_drug"
+    },
+    "SERTRALINE||LINEZOLID": {
+      "subject": "SERTRALINE",
+      "relation": "INTERACTS_WITH",
+      "object": "LINEZOLID",
+      "severity": "major",
+      "mechanism": "Linezolid is a reversible non-selective MAOI",
+      "clinical_note": "Risk of serotonin syndrome. If linezolid urgent, stop sertraline and monitor for 24 hours.",
+      "interaction_type": "drug_drug"
+    },
+    "LINEZOLID||SERTRALINE": {
+      "subject": "LINEZOLID",
+      "relation": "INTERACTS_WITH",
+      "object": "SERTRALINE",
+      "severity": "major",
+      "mechanism": "Linezolid is a reversible non-selective MAOI",
+      "clinical_note": "Risk of serotonin syndrome. If linezolid urgent, stop sertraline and monitor for 24 hours.",
+      "interaction_type": "drug_drug"
+    },
+    "CIPROFLOXACIN||TIZANIDINE": {
+      "subject": "CIPROFLOXACIN",
+      "relation": "INTERACTS_WITH",
+      "object": "TIZANIDINE",
+      "severity": "major",
+      "mechanism": "Ciprofloxacin strongly inhibits CYP1A2, increasing tizanidine AUC by 10-fold",
+      "clinical_note": "CONTRAINDICATED. Causes severe hypotension and excessive sedation.",
+      "interaction_type": "drug_drug"
+    },
+    "TIZANIDINE||CIPROFLOXACIN": {
+      "subject": "TIZANIDINE",
+      "relation": "INTERACTS_WITH",
+      "object": "CIPROFLOXACIN",
+      "severity": "major",
+      "mechanism": "Ciprofloxacin strongly inhibits CYP1A2, increasing tizanidine AUC by 10-fold",
+      "clinical_note": "CONTRAINDICATED. Causes severe hypotension and excessive sedation.",
+      "interaction_type": "drug_drug"
+    },
+    "CIPROFLOXACIN||THEOPHYLLINE": {
+      "subject": "CIPROFLOXACIN",
+      "relation": "INTERACTS_WITH",
+      "object": "THEOPHYLLINE",
+      "severity": "major",
+      "mechanism": "CYP1A2 inhibition increases theophylline levels",
+      "clinical_note": "Monitor theophylline levels. Reduce dose by 30-50% if combination unavoidable.",
+      "interaction_type": "drug_drug"
+    },
+    "THEOPHYLLINE||CIPROFLOXACIN": {
+      "subject": "THEOPHYLLINE",
+      "relation": "INTERACTS_WITH",
+      "object": "CIPROFLOXACIN",
+      "severity": "major",
+      "mechanism": "CYP1A2 inhibition increases theophylline levels",
+      "clinical_note": "Monitor theophylline levels. Reduce dose by 30-50% if combination unavoidable.",
+      "interaction_type": "drug_drug"
+    },
+    "ERYTHROMYCIN||SIMVASTATIN": {
+      "subject": "ERYTHROMYCIN",
+      "relation": "INTERACTS_WITH",
+      "object": "SIMVASTATIN",
+      "severity": "major",
+      "mechanism": "Erythromycin inhibits CYP3A4 and P-glycoprotein",
+      "clinical_note": "CONTRAINDICATED. Temporarily suspend simvastatin during erythromycin course.",
+      "interaction_type": "drug_drug"
+    },
+    "SIMVASTATIN||ERYTHROMYCIN": {
+      "subject": "SIMVASTATIN",
+      "relation": "INTERACTS_WITH",
+      "object": "ERYTHROMYCIN",
+      "severity": "major",
+      "mechanism": "Erythromycin inhibits CYP3A4 and P-glycoprotein",
+      "clinical_note": "CONTRAINDICATED. Temporarily suspend simvastatin during erythromycin course.",
+      "interaction_type": "drug_drug"
+    },
+    "KETOCONAZOLE||TRIAZOLAM": {
+      "subject": "KETOCONAZOLE",
+      "relation": "INTERACTS_WITH",
+      "object": "TRIAZOLAM",
+      "severity": "major",
+      "mechanism": "Ketoconazole strongly inhibits CYP3A4, increasing triazolam AUC by >10-fold",
+      "clinical_note": "CONTRAINDICATED. Prolonged sedation and respiratory depression risk.",
+      "interaction_type": "drug_drug"
+    },
+    "TRIAZOLAM||KETOCONAZOLE": {
+      "subject": "TRIAZOLAM",
+      "relation": "INTERACTS_WITH",
+      "object": "KETOCONAZOLE",
+      "severity": "major",
+      "mechanism": "Ketoconazole strongly inhibits CYP3A4, increasing triazolam AUC by >10-fold",
+      "clinical_note": "CONTRAINDICATED. Prolonged sedation and respiratory depression risk.",
+      "interaction_type": "drug_drug"
+    },
+    "KETOCONAZOLE||CISAPRIDE": {
+      "subject": "KETOCONAZOLE",
+      "relation": "INTERACTS_WITH",
+      "object": "CISAPRIDE",
+      "severity": "major",
+      "mechanism": "CYP3A4 inhibition increases cisapride levels causing QT prolongation",
+      "clinical_note": "CONTRAINDICATED. Risk of torsades de pointes and sudden cardiac death.",
+      "interaction_type": "drug_drug"
+    },
+    "CISAPRIDE||KETOCONAZOLE": {
+      "subject": "CISAPRIDE",
+      "relation": "INTERACTS_WITH",
+      "object": "KETOCONAZOLE",
+      "severity": "major",
+      "mechanism": "CYP3A4 inhibition increases cisapride levels causing QT prolongation",
+      "clinical_note": "CONTRAINDICATED. Risk of torsades de pointes and sudden cardiac death.",
+      "interaction_type": "drug_drug"
+    },
+    "AMLODIPINE||SIMVASTATIN": {
+      "subject": "AMLODIPINE",
+      "relation": "INTERACTS_WITH",
+      "object": "SIMVASTATIN",
+      "severity": "moderate",
+      "mechanism": "Amlodipine inhibits CYP3A4, modestly increasing simvastatin levels",
+      "clinical_note": "Limit simvastatin to 20mg/day when used with amlodipine.",
+      "interaction_type": "drug_drug"
+    },
+    "SIMVASTATIN||AMLODIPINE": {
+      "subject": "SIMVASTATIN",
+      "relation": "INTERACTS_WITH",
+      "object": "AMLODIPINE",
+      "severity": "moderate",
+      "mechanism": "Amlodipine inhibits CYP3A4, modestly increasing simvastatin levels",
+      "clinical_note": "Limit simvastatin to 20mg/day when used with amlodipine.",
+      "interaction_type": "drug_drug"
+    },
+    "AMLODIPINE||CYCLOSPORINE": {
+      "subject": "AMLODIPINE",
+      "relation": "INTERACTS_WITH",
+      "object": "CYCLOSPORINE",
+      "severity": "moderate",
+      "mechanism": "CYP3A4 competition; cyclosporine may increase amlodipine exposure",
+      "clinical_note": "Monitor blood pressure and cyclosporine levels.",
+      "interaction_type": "drug_drug"
+    },
+    "CYCLOSPORINE||AMLODIPINE": {
+      "subject": "CYCLOSPORINE",
+      "relation": "INTERACTS_WITH",
+      "object": "AMLODIPINE",
+      "severity": "moderate",
+      "mechanism": "CYP3A4 competition; cyclosporine may increase amlodipine exposure",
+      "clinical_note": "Monitor blood pressure and cyclosporine levels.",
+      "interaction_type": "drug_drug"
+    },
+    "PHENYTOIN||CARBAMAZEPINE": {
+      "subject": "PHENYTOIN",
+      "relation": "INTERACTS_WITH",
+      "object": "CARBAMAZEPINE",
+      "severity": "major",
+      "mechanism": "Mutual CYP induction decreases both drug levels unpredictably",
+      "clinical_note": "Monitor levels of both drugs. Dose adjustments likely required.",
+      "interaction_type": "drug_drug"
+    },
+    "CARBAMAZEPINE||PHENYTOIN": {
+      "subject": "CARBAMAZEPINE",
+      "relation": "INTERACTS_WITH",
+      "object": "PHENYTOIN",
+      "severity": "major",
+      "mechanism": "Mutual CYP induction decreases both drug levels unpredictably",
+      "clinical_note": "Monitor levels of both drugs. Dose adjustments likely required.",
+      "interaction_type": "drug_drug"
+    },
+    "PHENYTOIN||VALPROIC_ACID": {
+      "subject": "PHENYTOIN",
+      "relation": "INTERACTS_WITH",
+      "object": "VALPROIC_ACID",
+      "severity": "major",
+      "mechanism": "Valproate displaces phenytoin from protein binding and inhibits its metabolism",
+      "clinical_note": "Free phenytoin may increase despite stable total levels. Monitor free phenytoin levels.",
+      "interaction_type": "drug_drug"
+    },
+    "VALPROIC_ACID||PHENYTOIN": {
+      "subject": "VALPROIC_ACID",
+      "relation": "INTERACTS_WITH",
+      "object": "PHENYTOIN",
+      "severity": "major",
+      "mechanism": "Valproate displaces phenytoin from protein binding and inhibits its metabolism",
+      "clinical_note": "Free phenytoin may increase despite stable total levels. Monitor free phenytoin levels.",
+      "interaction_type": "drug_drug"
+    },
+    "VALPROIC_ACID||LAMOTRIGINE": {
+      "subject": "VALPROIC_ACID",
+      "relation": "INTERACTS_WITH",
+      "object": "LAMOTRIGINE",
+      "severity": "major",
+      "mechanism": "Valproate inhibits lamotrigine glucuronidation, doubling its half-life",
+      "clinical_note": "Halve the lamotrigine dose when adding valproate. Slow titration required to avoid Stevens-Johnson syndrome.",
+      "interaction_type": "drug_drug"
+    },
+    "LAMOTRIGINE||VALPROIC_ACID": {
+      "subject": "LAMOTRIGINE",
+      "relation": "INTERACTS_WITH",
+      "object": "VALPROIC_ACID",
+      "severity": "major",
+      "mechanism": "Valproate inhibits lamotrigine glucuronidation, doubling its half-life",
+      "clinical_note": "Halve the lamotrigine dose when adding valproate. Slow titration required to avoid Stevens-Johnson syndrome.",
+      "interaction_type": "drug_drug"
+    },
+    "CARBAMAZEPINE||ORAL_CONTRACEPTIVES": {
+      "subject": "CARBAMAZEPINE",
+      "relation": "INTERACTS_WITH",
+      "object": "ORAL_CONTRACEPTIVES",
+      "severity": "major",
+      "mechanism": "Carbamazepine induces CYP3A4, accelerating estrogen/progestin metabolism",
+      "clinical_note": "Oral contraceptives may fail. Use non-hormonal or high-dose contraception.",
+      "interaction_type": "drug_drug"
+    },
+    "ORAL_CONTRACEPTIVES||CARBAMAZEPINE": {
+      "subject": "ORAL_CONTRACEPTIVES",
+      "relation": "INTERACTS_WITH",
+      "object": "CARBAMAZEPINE",
+      "severity": "major",
+      "mechanism": "Carbamazepine induces CYP3A4, accelerating estrogen/progestin metabolism",
+      "clinical_note": "Oral contraceptives may fail. Use non-hormonal or high-dose contraception.",
+      "interaction_type": "drug_drug"
+    },
+    "INSULIN||THIAZOLIDINEDIONES": {
+      "subject": "INSULIN",
+      "relation": "INTERACTS_WITH",
+      "object": "THIAZOLIDINEDIONES",
+      "severity": "moderate",
+      "mechanism": "Additive glucose-lowering effect",
+      "clinical_note": "Increased risk of hypoglycemia and fluid retention. Monitor blood glucose closely.",
+      "interaction_type": "drug_drug"
+    },
+    "THIAZOLIDINEDIONES||INSULIN": {
+      "subject": "THIAZOLIDINEDIONES",
+      "relation": "INTERACTS_WITH",
+      "object": "INSULIN",
+      "severity": "moderate",
+      "mechanism": "Additive glucose-lowering effect",
+      "clinical_note": "Increased risk of hypoglycemia and fluid retention. Monitor blood glucose closely.",
+      "interaction_type": "drug_drug"
+    },
+    "SILDENAFIL||NITRATES": {
+      "subject": "SILDENAFIL",
+      "relation": "INTERACTS_WITH",
+      "object": "NITRATES",
+      "severity": "major",
+      "mechanism": "Both drugs cause vasodilation via nitric oxide / cGMP pathway",
+      "clinical_note": "CONTRAINDICATED. Risk of severe, potentially fatal hypotension. Includes nitroglycerin, isosorbide.",
+      "interaction_type": "drug_drug"
+    },
+    "NITRATES||SILDENAFIL": {
+      "subject": "NITRATES",
+      "relation": "INTERACTS_WITH",
+      "object": "SILDENAFIL",
+      "severity": "major",
+      "mechanism": "Both drugs cause vasodilation via nitric oxide / cGMP pathway",
+      "clinical_note": "CONTRAINDICATED. Risk of severe, potentially fatal hypotension. Includes nitroglycerin, isosorbide.",
+      "interaction_type": "drug_drug"
+    },
+    "SILDENAFIL||RITONAVIR": {
+      "subject": "SILDENAFIL",
+      "relation": "INTERACTS_WITH",
+      "object": "RITONAVIR",
+      "severity": "major",
+      "mechanism": "Ritonavir strongly inhibits CYP3A4, increasing sildenafil levels 11-fold",
+      "clinical_note": "Start sildenafil at 25mg no more than every 48 hours.",
+      "interaction_type": "drug_drug"
+    },
+    "RITONAVIR||SILDENAFIL": {
+      "subject": "RITONAVIR",
+      "relation": "INTERACTS_WITH",
+      "object": "SILDENAFIL",
+      "severity": "major",
+      "mechanism": "Ritonavir strongly inhibits CYP3A4, increasing sildenafil levels 11-fold",
+      "clinical_note": "Start sildenafil at 25mg no more than every 48 hours.",
+      "interaction_type": "drug_drug"
+    },
+    "THEOPHYLLINE||FLUVOXAMINE": {
+      "subject": "THEOPHYLLINE",
+      "relation": "INTERACTS_WITH",
+      "object": "FLUVOXAMINE",
+      "severity": "major",
+      "mechanism": "Fluvoxamine strongly inhibits CYP1A2, the primary enzyme metabolizing theophylline",
+      "clinical_note": "Theophylline levels may triple. Reduce dose by 33% and monitor serum levels.",
+      "interaction_type": "drug_drug"
+    },
+    "FLUVOXAMINE||THEOPHYLLINE": {
+      "subject": "FLUVOXAMINE",
+      "relation": "INTERACTS_WITH",
+      "object": "THEOPHYLLINE",
+      "severity": "major",
+      "mechanism": "Fluvoxamine strongly inhibits CYP1A2, the primary enzyme metabolizing theophylline",
+      "clinical_note": "Theophylline levels may triple. Reduce dose by 33% and monitor serum levels.",
+      "interaction_type": "drug_drug"
+    },
+    "METHOTREXATE||TRIMETHOPRIM": {
+      "subject": "METHOTREXATE",
+      "relation": "INTERACTS_WITH",
+      "object": "TRIMETHOPRIM",
+      "severity": "major",
+      "mechanism": "Both are folate antagonists; trimethoprim may reduce methotrexate renal clearance",
+      "clinical_note": "Increased risk of pancytopenia. Avoid combination or monitor CBC closely.",
+      "interaction_type": "drug_drug"
+    },
+    "TRIMETHOPRIM||METHOTREXATE": {
+      "subject": "TRIMETHOPRIM",
+      "relation": "INTERACTS_WITH",
+      "object": "METHOTREXATE",
+      "severity": "major",
+      "mechanism": "Both are folate antagonists; trimethoprim may reduce methotrexate renal clearance",
+      "clinical_note": "Increased risk of pancytopenia. Avoid combination or monitor CBC closely.",
+      "interaction_type": "drug_drug"
+    },
+    "METHOTREXATE||IBUPROFEN": {
+      "subject": "METHOTREXATE",
+      "relation": "INTERACTS_WITH",
+      "object": "IBUPROFEN",
+      "severity": "major",
+      "mechanism": "NSAIDs decrease renal methotrexate clearance and displace from protein binding",
+      "clinical_note": "Can cause fatal methotrexate toxicity at high MTX doses. Avoid NSAIDs with high-dose methotrexate.",
+      "interaction_type": "drug_drug"
+    },
+    "IBUPROFEN||METHOTREXATE": {
+      "subject": "IBUPROFEN",
+      "relation": "INTERACTS_WITH",
+      "object": "METHOTREXATE",
+      "severity": "major",
+      "mechanism": "NSAIDs decrease renal methotrexate clearance and displace from protein binding",
+      "clinical_note": "Can cause fatal methotrexate toxicity at high MTX doses. Avoid NSAIDs with high-dose methotrexate.",
+      "interaction_type": "drug_drug"
+    },
+    "METHOTREXATE||PENICILLIN": {
+      "subject": "METHOTREXATE",
+      "relation": "INTERACTS_WITH",
+      "object": "PENICILLIN",
+      "severity": "moderate",
+      "mechanism": "Penicillins can reduce renal tubular secretion of methotrexate",
+      "clinical_note": "Monitor methotrexate levels if co-administered. Use with caution.",
+      "interaction_type": "drug_drug"
+    },
+    "PENICILLIN||METHOTREXATE": {
+      "subject": "PENICILLIN",
+      "relation": "INTERACTS_WITH",
+      "object": "METHOTREXATE",
+      "severity": "moderate",
+      "mechanism": "Penicillins can reduce renal tubular secretion of methotrexate",
+      "clinical_note": "Monitor methotrexate levels if co-administered. Use with caution.",
+      "interaction_type": "drug_drug"
+    },
+    "GENTAMICIN||FUROSEMIDE": {
+      "subject": "GENTAMICIN",
+      "relation": "INTERACTS_WITH",
+      "object": "FUROSEMIDE",
+      "severity": "major",
+      "mechanism": "Additive ototoxicity and nephrotoxicity",
+      "clinical_note": "Monitor renal function and hearing. Maintain adequate hydration.",
+      "interaction_type": "drug_drug"
+    },
+    "FUROSEMIDE||GENTAMICIN": {
+      "subject": "FUROSEMIDE",
+      "relation": "INTERACTS_WITH",
+      "object": "GENTAMICIN",
+      "severity": "major",
+      "mechanism": "Additive ototoxicity and nephrotoxicity",
+      "clinical_note": "Monitor renal function and hearing. Maintain adequate hydration.",
+      "interaction_type": "drug_drug"
+    },
+    "GENTAMICIN||VANCOMYCIN": {
+      "subject": "GENTAMICIN",
+      "relation": "INTERACTS_WITH",
+      "object": "VANCOMYCIN",
+      "severity": "major",
+      "mechanism": "Additive nephrotoxicity",
+      "clinical_note": "Monitor renal function daily. Consider therapeutic drug monitoring for both agents.",
+      "interaction_type": "drug_drug"
+    },
+    "VANCOMYCIN||GENTAMICIN": {
+      "subject": "VANCOMYCIN",
+      "relation": "INTERACTS_WITH",
+      "object": "GENTAMICIN",
+      "severity": "major",
+      "mechanism": "Additive nephrotoxicity",
+      "clinical_note": "Monitor renal function daily. Consider therapeutic drug monitoring for both agents.",
+      "interaction_type": "drug_drug"
+    },
+    "HEPARIN||ASPIRIN": {
+      "subject": "HEPARIN",
+      "relation": "INTERACTS_WITH",
+      "object": "ASPIRIN",
+      "severity": "major",
+      "mechanism": "Additive anticoagulant and antiplatelet effects",
+      "clinical_note": "Markedly increased bleeding risk. Reserve for established indications (e.g. ACS).",
+      "interaction_type": "drug_drug"
+    },
+    "ASPIRIN||HEPARIN": {
+      "subject": "ASPIRIN",
+      "relation": "INTERACTS_WITH",
+      "object": "HEPARIN",
+      "severity": "major",
+      "mechanism": "Additive anticoagulant and antiplatelet effects",
+      "clinical_note": "Markedly increased bleeding risk. Reserve for established indications (e.g. ACS).",
+      "interaction_type": "drug_drug"
+    },
+    "ATORVASTATIN||CLARITHROMYCIN": {
+      "subject": "ATORVASTATIN",
+      "relation": "INTERACTS_WITH",
+      "object": "CLARITHROMYCIN",
+      "severity": "major",
+      "mechanism": "Clarithromycin inhibits CYP3A4, increasing atorvastatin exposure",
+      "clinical_note": "Limit atorvastatin to 20mg/day. Consider azithromycin as alternative.",
+      "interaction_type": "drug_drug"
+    },
+    "CLARITHROMYCIN||ATORVASTATIN": {
+      "subject": "CLARITHROMYCIN",
+      "relation": "INTERACTS_WITH",
+      "object": "ATORVASTATIN",
+      "severity": "major",
+      "mechanism": "Clarithromycin inhibits CYP3A4, increasing atorvastatin exposure",
+      "clinical_note": "Limit atorvastatin to 20mg/day. Consider azithromycin as alternative.",
+      "interaction_type": "drug_drug"
+    },
+    "ATORVASTATIN||GRAPEFRUIT": {
+      "subject": "ATORVASTATIN",
+      "relation": "INTERACTS_WITH",
+      "object": "GRAPEFRUIT",
+      "severity": "moderate",
+      "mechanism": "Grapefruit inhibits intestinal CYP3A4, increasing statin bioavailability",
+      "clinical_note": "Avoid large quantities of grapefruit juice (>1.2L/day). Modest intake usually acceptable with atorvastatin.",
+      "interaction_type": "drug_drug"
+    },
+    "GRAPEFRUIT||ATORVASTATIN": {
+      "subject": "GRAPEFRUIT",
+      "relation": "INTERACTS_WITH",
+      "object": "ATORVASTATIN",
+      "severity": "moderate",
+      "mechanism": "Grapefruit inhibits intestinal CYP3A4, increasing statin bioavailability",
+      "clinical_note": "Avoid large quantities of grapefruit juice (>1.2L/day). Modest intake usually acceptable with atorvastatin.",
+      "interaction_type": "drug_drug"
+    },
+    "PREDNISONE||IBUPROFEN": {
+      "subject": "PREDNISONE",
+      "relation": "INTERACTS_WITH",
+      "object": "IBUPROFEN",
+      "severity": "moderate",
+      "mechanism": "Both increase GI ulcer risk through different mechanisms",
+      "clinical_note": "Increased risk of GI bleeding and peptic ulceration. Add gastroprotection (PPI) if concurrent use needed.",
+      "interaction_type": "drug_drug"
+    },
+    "IBUPROFEN||PREDNISONE": {
+      "subject": "IBUPROFEN",
+      "relation": "INTERACTS_WITH",
+      "object": "PREDNISONE",
+      "severity": "moderate",
+      "mechanism": "Both increase GI ulcer risk through different mechanisms",
+      "clinical_note": "Increased risk of GI bleeding and peptic ulceration. Add gastroprotection (PPI) if concurrent use needed.",
+      "interaction_type": "drug_drug"
+    },
+    "LEVOTHYROXINE||CALCIUM_CARBONATE": {
+      "subject": "LEVOTHYROXINE",
+      "relation": "INTERACTS_WITH",
+      "object": "CALCIUM_CARBONATE",
+      "severity": "moderate",
+      "mechanism": "Calcium forms insoluble complexes with levothyroxine in the GI tract",
+      "clinical_note": "Separate administration by at least 4 hours. Monitor TSH.",
+      "interaction_type": "drug_drug"
+    },
+    "CALCIUM_CARBONATE||LEVOTHYROXINE": {
+      "subject": "CALCIUM_CARBONATE",
+      "relation": "INTERACTS_WITH",
+      "object": "LEVOTHYROXINE",
+      "severity": "moderate",
+      "mechanism": "Calcium forms insoluble complexes with levothyroxine in the GI tract",
+      "clinical_note": "Separate administration by at least 4 hours. Monitor TSH.",
+      "interaction_type": "drug_drug"
+    },
+    "LEVOTHYROXINE||IRON": {
+      "subject": "LEVOTHYROXINE",
+      "relation": "INTERACTS_WITH",
+      "object": "IRON",
+      "severity": "moderate",
+      "mechanism": "Iron chelates levothyroxine, reducing absorption",
+      "clinical_note": "Separate by at least 4 hours. Monitor TSH and adjust levothyroxine dose.",
+      "interaction_type": "drug_drug"
+    },
+    "IRON||LEVOTHYROXINE": {
+      "subject": "IRON",
+      "relation": "INTERACTS_WITH",
+      "object": "LEVOTHYROXINE",
+      "severity": "moderate",
+      "mechanism": "Iron chelates levothyroxine, reducing absorption",
+      "clinical_note": "Separate by at least 4 hours. Monitor TSH and adjust levothyroxine dose.",
+      "interaction_type": "drug_drug"
+    },
+    "DOXYCYCLINE||ANTACIDS": {
+      "subject": "DOXYCYCLINE",
+      "relation": "INTERACTS_WITH",
+      "object": "ANTACIDS",
+      "severity": "moderate",
+      "mechanism": "Divalent and trivalent cations chelate tetracyclines, preventing absorption",
+      "clinical_note": "Separate administration by 2-3 hours. Applies to calcium, magnesium, aluminum-containing antacids.",
+      "interaction_type": "drug_drug"
+    },
+    "ANTACIDS||DOXYCYCLINE": {
+      "subject": "ANTACIDS",
+      "relation": "INTERACTS_WITH",
+      "object": "DOXYCYCLINE",
+      "severity": "moderate",
+      "mechanism": "Divalent and trivalent cations chelate tetracyclines, preventing absorption",
+      "clinical_note": "Separate administration by 2-3 hours. Applies to calcium, magnesium, aluminum-containing antacids.",
+      "interaction_type": "drug_drug"
+    },
+    "DOXYCYCLINE||WARFARIN": {
+      "subject": "DOXYCYCLINE",
+      "relation": "INTERACTS_WITH",
+      "object": "WARFARIN",
+      "severity": "moderate",
+      "mechanism": "Doxycycline may potentiate warfarin by disrupting gut flora-mediated vitamin K synthesis",
+      "clinical_note": "Monitor INR when starting or stopping doxycycline.",
+      "interaction_type": "drug_drug"
+    },
+    "WARFARIN||DOXYCYCLINE": {
+      "subject": "WARFARIN",
+      "relation": "INTERACTS_WITH",
+      "object": "DOXYCYCLINE",
+      "severity": "moderate",
+      "mechanism": "Doxycycline may potentiate warfarin by disrupting gut flora-mediated vitamin K synthesis",
+      "clinical_note": "Monitor INR when starting or stopping doxycycline.",
+      "interaction_type": "drug_drug"
+    },
+    "AZITHROMYCIN||AMIODARONE": {
+      "subject": "AZITHROMYCIN",
+      "relation": "INTERACTS_WITH",
+      "object": "AMIODARONE",
+      "severity": "major",
+      "mechanism": "Both drugs can prolong QT interval",
+      "clinical_note": "Risk of torsades de pointes. Avoid combination if possible. Monitor ECG if unavoidable.",
+      "interaction_type": "drug_drug"
+    },
+    "AMIODARONE||AZITHROMYCIN": {
+      "subject": "AMIODARONE",
+      "relation": "INTERACTS_WITH",
+      "object": "AZITHROMYCIN",
+      "severity": "major",
+      "mechanism": "Both drugs can prolong QT interval",
+      "clinical_note": "Risk of torsades de pointes. Avoid combination if possible. Monitor ECG if unavoidable.",
+      "interaction_type": "drug_drug"
+    },
+    "ALPRAZOLAM||KETOCONAZOLE": {
+      "subject": "ALPRAZOLAM",
+      "relation": "INTERACTS_WITH",
+      "object": "KETOCONAZOLE",
+      "severity": "major",
+      "mechanism": "Ketoconazole inhibits CYP3A4, significantly increasing alprazolam levels",
+      "clinical_note": "Excessive sedation and respiratory depression. Reduce alprazolam dose or use lorazepam (non-CYP3A4 substrate).",
+      "interaction_type": "drug_drug"
+    },
+    "KETOCONAZOLE||ALPRAZOLAM": {
+      "subject": "KETOCONAZOLE",
+      "relation": "INTERACTS_WITH",
+      "object": "ALPRAZOLAM",
+      "severity": "major",
+      "mechanism": "Ketoconazole inhibits CYP3A4, significantly increasing alprazolam levels",
+      "clinical_note": "Excessive sedation and respiratory depression. Reduce alprazolam dose or use lorazepam (non-CYP3A4 substrate).",
+      "interaction_type": "drug_drug"
+    },
+    "ALPRAZOLAM||OPIOIDS": {
+      "subject": "ALPRAZOLAM",
+      "relation": "INTERACTS_WITH",
+      "object": "OPIOIDS",
+      "severity": "major",
+      "mechanism": "Additive CNS and respiratory depression",
+      "clinical_note": "FDA Black Box Warning. Combined use increases risk of respiratory depression, coma, and death.",
+      "interaction_type": "drug_drug"
+    },
+    "OPIOIDS||ALPRAZOLAM": {
+      "subject": "OPIOIDS",
+      "relation": "INTERACTS_WITH",
+      "object": "ALPRAZOLAM",
+      "severity": "major",
+      "mechanism": "Additive CNS and respiratory depression",
+      "clinical_note": "FDA Black Box Warning. Combined use increases risk of respiratory depression, coma, and death.",
+      "interaction_type": "drug_drug"
+    },
+    "MORPHINE||BENZODIAZEPINES": {
+      "subject": "MORPHINE",
+      "relation": "INTERACTS_WITH",
+      "object": "BENZODIAZEPINES",
+      "severity": "major",
+      "mechanism": "Additive CNS depression, respiratory depression",
+      "clinical_note": "FDA Black Box Warning. Use lowest effective doses and shortest duration if combination necessary.",
+      "interaction_type": "drug_drug"
+    },
+    "BENZODIAZEPINES||MORPHINE": {
+      "subject": "BENZODIAZEPINES",
+      "relation": "INTERACTS_WITH",
+      "object": "MORPHINE",
+      "severity": "major",
+      "mechanism": "Additive CNS depression, respiratory depression",
+      "clinical_note": "FDA Black Box Warning. Use lowest effective doses and shortest duration if combination necessary.",
+      "interaction_type": "drug_drug"
+    },
+    "FENTANYL||RITONAVIR": {
+      "subject": "FENTANYL",
+      "relation": "INTERACTS_WITH",
+      "object": "RITONAVIR",
+      "severity": "major",
+      "mechanism": "Ritonavir inhibits CYP3A4, dramatically increasing fentanyl levels",
+      "clinical_note": "Risk of fatal respiratory depression. Use with extreme caution; consider dose reduction.",
+      "interaction_type": "drug_drug"
+    },
+    "RITONAVIR||FENTANYL": {
+      "subject": "RITONAVIR",
+      "relation": "INTERACTS_WITH",
+      "object": "FENTANYL",
+      "severity": "major",
+      "mechanism": "Ritonavir inhibits CYP3A4, dramatically increasing fentanyl levels",
+      "clinical_note": "Risk of fatal respiratory depression. Use with extreme caution; consider dose reduction.",
+      "interaction_type": "drug_drug"
+    },
+    "CITALOPRAM||ONDANSETRON": {
+      "subject": "CITALOPRAM",
+      "relation": "INTERACTS_WITH",
+      "object": "ONDANSETRON",
+      "severity": "major",
+      "mechanism": "Both can prolong QT interval independently",
+      "clinical_note": "Increased risk of torsades de pointes. Monitor ECG. Consider alternative antiemetic.",
+      "interaction_type": "drug_drug"
+    },
+    "ONDANSETRON||CITALOPRAM": {
+      "subject": "ONDANSETRON",
+      "relation": "INTERACTS_WITH",
+      "object": "CITALOPRAM",
+      "severity": "major",
+      "mechanism": "Both can prolong QT interval independently",
+      "clinical_note": "Increased risk of torsades de pointes. Monitor ECG. Consider alternative antiemetic.",
+      "interaction_type": "drug_drug"
+    },
+    "HALOPERIDOL||METOCLOPRAMIDE": {
+      "subject": "HALOPERIDOL",
+      "relation": "INTERACTS_WITH",
+      "object": "METOCLOPRAMIDE",
+      "severity": "major",
+      "mechanism": "Both block dopamine receptors; additive extrapyramidal effects",
+      "clinical_note": "Increased risk of tardive dyskinesia and neuroleptic malignant syndrome.",
+      "interaction_type": "drug_drug"
+    },
+    "METOCLOPRAMIDE||HALOPERIDOL": {
+      "subject": "METOCLOPRAMIDE",
+      "relation": "INTERACTS_WITH",
+      "object": "HALOPERIDOL",
+      "severity": "major",
+      "mechanism": "Both block dopamine receptors; additive extrapyramidal effects",
+      "clinical_note": "Increased risk of tardive dyskinesia and neuroleptic malignant syndrome.",
+      "interaction_type": "drug_drug"
+    },
+    "CLOZAPINE||CARBAMAZEPINE": {
+      "subject": "CLOZAPINE",
+      "relation": "INTERACTS_WITH",
+      "object": "CARBAMAZEPINE",
+      "severity": "major",
+      "mechanism": "Both can cause agranulocytosis; carbamazepine also induces clozapine metabolism",
+      "clinical_note": "CONTRAINDICATED. Concurrent use forbidden due to additive bone marrow suppression risk.",
+      "interaction_type": "drug_drug"
+    },
+    "CARBAMAZEPINE||CLOZAPINE": {
+      "subject": "CARBAMAZEPINE",
+      "relation": "INTERACTS_WITH",
+      "object": "CLOZAPINE",
+      "severity": "major",
+      "mechanism": "Both can cause agranulocytosis; carbamazepine also induces clozapine metabolism",
+      "clinical_note": "CONTRAINDICATED. Concurrent use forbidden due to additive bone marrow suppression risk.",
+      "interaction_type": "drug_drug"
+    },
+    "TAMOXIFEN||PAROXETINE": {
+      "subject": "TAMOXIFEN",
+      "relation": "INTERACTS_WITH",
+      "object": "PAROXETINE",
+      "severity": "major",
+      "mechanism": "Paroxetine inhibits CYP2D6, preventing tamoxifen activation to endoxifen",
+      "clinical_note": "Reduced tamoxifen efficacy increases breast cancer recurrence risk. Use citalopram or venlafaxine instead.",
+      "interaction_type": "drug_drug"
+    },
+    "PAROXETINE||TAMOXIFEN": {
+      "subject": "PAROXETINE",
+      "relation": "INTERACTS_WITH",
+      "object": "TAMOXIFEN",
+      "severity": "major",
+      "mechanism": "Paroxetine inhibits CYP2D6, preventing tamoxifen activation to endoxifen",
+      "clinical_note": "Reduced tamoxifen efficacy increases breast cancer recurrence risk. Use citalopram or venlafaxine instead.",
+      "interaction_type": "drug_drug"
+    },
+    "MYCOPHENOLATE||PROTON_PUMP_INHIBITORS": {
+      "subject": "MYCOPHENOLATE",
+      "relation": "INTERACTS_WITH",
+      "object": "PROTON_PUMP_INHIBITORS",
+      "severity": "moderate",
+      "mechanism": "PPIs raise gastric pH, reducing mycophenolate mofetil absorption",
+      "clinical_note": "Consider using mycophenolate sodium (enteric-coated) which is pH-independent.",
+      "interaction_type": "drug_drug"
+    },
+    "PROTON_PUMP_INHIBITORS||MYCOPHENOLATE": {
+      "subject": "PROTON_PUMP_INHIBITORS",
+      "relation": "INTERACTS_WITH",
+      "object": "MYCOPHENOLATE",
+      "severity": "moderate",
+      "mechanism": "PPIs raise gastric pH, reducing mycophenolate mofetil absorption",
+      "clinical_note": "Consider using mycophenolate sodium (enteric-coated) which is pH-independent.",
+      "interaction_type": "drug_drug"
+    },
+    "TACROLIMUS||FLUCONAZOLE": {
+      "subject": "TACROLIMUS",
+      "relation": "INTERACTS_WITH",
+      "object": "FLUCONAZOLE",
+      "severity": "major",
+      "mechanism": "Fluconazole inhibits CYP3A4, increasing tacrolimus levels",
+      "clinical_note": "Monitor tacrolimus trough levels closely. Dose reduction of tacrolimus often required.",
+      "interaction_type": "drug_drug"
+    },
+    "FLUCONAZOLE||TACROLIMUS": {
+      "subject": "FLUCONAZOLE",
+      "relation": "INTERACTS_WITH",
+      "object": "TACROLIMUS",
+      "severity": "major",
+      "mechanism": "Fluconazole inhibits CYP3A4, increasing tacrolimus levels",
+      "clinical_note": "Monitor tacrolimus trough levels closely. Dose reduction of tacrolimus often required.",
+      "interaction_type": "drug_drug"
+    },
+    "LOSARTAN||POTASSIUM": {
+      "subject": "LOSARTAN",
+      "relation": "INTERACTS_WITH",
+      "object": "POTASSIUM",
+      "severity": "major",
+      "mechanism": "ARBs reduce aldosterone secretion, decreasing potassium excretion",
+      "clinical_note": "Risk of hyperkalemia. Avoid potassium supplements unless documented hypokalemia.",
+      "interaction_type": "drug_drug"
+    },
+    "POTASSIUM||LOSARTAN": {
+      "subject": "POTASSIUM",
+      "relation": "INTERACTS_WITH",
+      "object": "LOSARTAN",
+      "severity": "major",
+      "mechanism": "ARBs reduce aldosterone secretion, decreasing potassium excretion",
+      "clinical_note": "Risk of hyperkalemia. Avoid potassium supplements unless documented hypokalemia.",
+      "interaction_type": "drug_drug"
+    },
+    "LOSARTAN||LITHIUM": {
+      "subject": "LOSARTAN",
+      "relation": "INTERACTS_WITH",
+      "object": "LITHIUM",
+      "severity": "major",
+      "mechanism": "ARBs reduce renal lithium clearance similar to ACE inhibitors",
+      "clinical_note": "Monitor lithium levels closely. Risk of lithium toxicity.",
+      "interaction_type": "drug_drug"
+    },
+    "LITHIUM||LOSARTAN": {
+      "subject": "LITHIUM",
+      "relation": "INTERACTS_WITH",
+      "object": "LOSARTAN",
+      "severity": "major",
+      "mechanism": "ARBs reduce renal lithium clearance similar to ACE inhibitors",
+      "clinical_note": "Monitor lithium levels closely. Risk of lithium toxicity.",
+      "interaction_type": "drug_drug"
+    },
+    "FLUCONAZOLE||PHENYTOIN": {
+      "subject": "FLUCONAZOLE",
+      "relation": "INTERACTS_WITH",
+      "object": "PHENYTOIN",
+      "severity": "moderate",
+      "mechanism": "Fluconazole inhibits CYP2C9-mediated phenytoin metabolism",
+      "clinical_note": "Phenytoin levels may increase. Monitor drug levels and signs of toxicity.",
+      "interaction_type": "drug_drug"
+    },
+    "PHENYTOIN||FLUCONAZOLE": {
+      "subject": "PHENYTOIN",
+      "relation": "INTERACTS_WITH",
+      "object": "FLUCONAZOLE",
+      "severity": "moderate",
+      "mechanism": "Fluconazole inhibits CYP2C9-mediated phenytoin metabolism",
+      "clinical_note": "Phenytoin levels may increase. Monitor drug levels and signs of toxicity.",
+      "interaction_type": "drug_drug"
+    },
+    "RIFAMPIN||ORAL_CONTRACEPTIVES": {
+      "subject": "RIFAMPIN",
+      "relation": "INTERACTS_WITH",
+      "object": "ORAL_CONTRACEPTIVES",
+      "severity": "major",
+      "mechanism": "Rifampin strongly induces CYP3A4, UGT, and P-glycoprotein; accelerates hormone metabolism",
+      "clinical_note": "Oral contraceptives may fail completely. Use alternative non-hormonal contraception.",
+      "interaction_type": "drug_drug"
+    },
+    "ORAL_CONTRACEPTIVES||RIFAMPIN": {
+      "subject": "ORAL_CONTRACEPTIVES",
+      "relation": "INTERACTS_WITH",
+      "object": "RIFAMPIN",
+      "severity": "major",
+      "mechanism": "Rifampin strongly induces CYP3A4, UGT, and P-glycoprotein; accelerates hormone metabolism",
+      "clinical_note": "Oral contraceptives may fail completely. Use alternative non-hormonal contraception.",
+      "interaction_type": "drug_drug"
+    },
+    "RIFAMPIN||METHADONE": {
+      "subject": "RIFAMPIN",
+      "relation": "INTERACTS_WITH",
+      "object": "METHADONE",
+      "severity": "major",
+      "mechanism": "Rifampin induces CYP3A4, dramatically reducing methadone levels",
+      "clinical_note": "Risk of opioid withdrawal. May need 2-3x methadone dose increase. Monitor closely.",
+      "interaction_type": "drug_drug"
+    },
+    "METHADONE||RIFAMPIN": {
+      "subject": "METHADONE",
+      "relation": "INTERACTS_WITH",
+      "object": "RIFAMPIN",
+      "severity": "major",
+      "mechanism": "Rifampin induces CYP3A4, dramatically reducing methadone levels",
+      "clinical_note": "Risk of opioid withdrawal. May need 2-3x methadone dose increase. Monitor closely.",
+      "interaction_type": "drug_drug"
+    },
+    "RIFAMPIN||VORICONAZOLE": {
+      "subject": "RIFAMPIN",
+      "relation": "INTERACTS_WITH",
+      "object": "VORICONAZOLE",
+      "severity": "major",
+      "mechanism": "Rifampin induces CYP enzymes, reducing voriconazole levels to undetectable",
+      "clinical_note": "CONTRAINDICATED. Voriconazole efficacy completely abolished.",
+      "interaction_type": "drug_drug"
+    },
+    "VORICONAZOLE||RIFAMPIN": {
+      "subject": "VORICONAZOLE",
+      "relation": "INTERACTS_WITH",
+      "object": "RIFAMPIN",
+      "severity": "major",
+      "mechanism": "Rifampin induces CYP enzymes, reducing voriconazole levels to undetectable",
+      "clinical_note": "CONTRAINDICATED. Voriconazole efficacy completely abolished.",
+      "interaction_type": "drug_drug"
+    },
+    "AMOXICILLIN||METHOTREXATE": {
+      "subject": "AMOXICILLIN",
+      "relation": "INTERACTS_WITH",
+      "object": "METHOTREXATE",
+      "severity": "moderate",
+      "mechanism": "Amoxicillin reduces renal tubular secretion of methotrexate",
+      "clinical_note": "Monitor methotrexate levels. Mostly relevant for high-dose methotrexate therapy.",
+      "interaction_type": "drug_drug"
+    },
+    "METHOTREXATE||AMOXICILLIN": {
+      "subject": "METHOTREXATE",
+      "relation": "INTERACTS_WITH",
+      "object": "AMOXICILLIN",
+      "severity": "moderate",
+      "mechanism": "Amoxicillin reduces renal tubular secretion of methotrexate",
+      "clinical_note": "Monitor methotrexate levels. Mostly relevant for high-dose methotrexate therapy.",
+      "interaction_type": "drug_drug"
+    },
+    "GABAPENTIN||OPIOIDS": {
+      "subject": "GABAPENTIN",
+      "relation": "INTERACTS_WITH",
+      "object": "OPIOIDS",
+      "severity": "major",
+      "mechanism": "Additive respiratory depression and sedation",
+      "clinical_note": "FDA warning. Increased risk of respiratory depression, especially in elderly. Start at low doses.",
+      "interaction_type": "drug_drug"
+    },
+    "OPIOIDS||GABAPENTIN": {
+      "subject": "OPIOIDS",
+      "relation": "INTERACTS_WITH",
+      "object": "GABAPENTIN",
+      "severity": "major",
+      "mechanism": "Additive respiratory depression and sedation",
+      "clinical_note": "FDA warning. Increased risk of respiratory depression, especially in elderly. Start at low doses.",
+      "interaction_type": "drug_drug"
+    },
+    "PREGABALIN||OPIOIDS": {
+      "subject": "PREGABALIN",
+      "relation": "INTERACTS_WITH",
+      "object": "OPIOIDS",
+      "severity": "major",
+      "mechanism": "Additive CNS and respiratory depression",
+      "clinical_note": "FDA warning. Dose-dependent respiratory depression risk. Use lowest effective doses.",
+      "interaction_type": "drug_drug"
+    },
+    "OPIOIDS||PREGABALIN": {
+      "subject": "OPIOIDS",
+      "relation": "INTERACTS_WITH",
+      "object": "PREGABALIN",
+      "severity": "major",
+      "mechanism": "Additive CNS and respiratory depression",
+      "clinical_note": "FDA warning. Dose-dependent respiratory depression risk. Use lowest effective doses.",
+      "interaction_type": "drug_drug"
+    },
+    "SPIRONOLACTONE||ACE_INHIBITORS": {
+      "subject": "SPIRONOLACTONE",
+      "relation": "INTERACTS_WITH",
+      "object": "ACE_INHIBITORS",
+      "severity": "major",
+      "mechanism": "Both increase serum potassium via different mechanisms",
+      "clinical_note": "Established therapy for heart failure but requires monitoring. Check potassium within 3 days of dose change.",
+      "interaction_type": "drug_drug"
+    },
+    "ACE_INHIBITORS||SPIRONOLACTONE": {
+      "subject": "ACE_INHIBITORS",
+      "relation": "INTERACTS_WITH",
+      "object": "SPIRONOLACTONE",
+      "severity": "major",
+      "mechanism": "Both increase serum potassium via different mechanisms",
+      "clinical_note": "Established therapy for heart failure but requires monitoring. Check potassium within 3 days of dose change.",
+      "interaction_type": "drug_drug"
+    },
+    "OMEPRAZOLE||METHOTREXATE": {
+      "subject": "OMEPRAZOLE",
+      "relation": "INTERACTS_WITH",
+      "object": "METHOTREXATE",
+      "severity": "moderate",
+      "mechanism": "PPIs may inhibit renal H+/K+ ATPase or organic anion transporters, reducing MTX clearance",
+      "clinical_note": "Consider withholding PPI during high-dose methotrexate therapy.",
+      "interaction_type": "drug_drug"
+    },
+    "METHOTREXATE||OMEPRAZOLE": {
+      "subject": "METHOTREXATE",
+      "relation": "INTERACTS_WITH",
+      "object": "OMEPRAZOLE",
+      "severity": "moderate",
+      "mechanism": "PPIs may inhibit renal H+/K+ ATPase or organic anion transporters, reducing MTX clearance",
+      "clinical_note": "Consider withholding PPI during high-dose methotrexate therapy.",
+      "interaction_type": "drug_drug"
+    },
+    "ISONIAZID||RIFAMPIN": {
+      "subject": "ISONIAZID",
+      "relation": "INTERACTS_WITH",
+      "object": "RIFAMPIN",
+      "severity": "moderate",
+      "mechanism": "Rifampin induces isoniazid metabolism; both are hepatotoxic",
+      "clinical_note": "Standard TB regimen — monitor LFTs monthly, especially first 3 months.",
+      "interaction_type": "drug_drug"
+    },
+    "RIFAMPIN||ISONIAZID": {
+      "subject": "RIFAMPIN",
+      "relation": "INTERACTS_WITH",
+      "object": "ISONIAZID",
+      "severity": "moderate",
+      "mechanism": "Rifampin induces isoniazid metabolism; both are hepatotoxic",
+      "clinical_note": "Standard TB regimen — monitor LFTs monthly, especially first 3 months.",
+      "interaction_type": "drug_drug"
+    },
+    "ISONIAZID||ACETAMINOPHEN": {
+      "subject": "ISONIAZID",
+      "relation": "INTERACTS_WITH",
+      "object": "ACETAMINOPHEN",
+      "severity": "moderate",
+      "mechanism": "Isoniazid induces CYP2E1, increasing toxic metabolite (NAPQI) formation from acetaminophen",
+      "clinical_note": "Limit acetaminophen dose. Increased risk of hepatotoxicity.",
+      "interaction_type": "drug_drug"
+    },
+    "ACETAMINOPHEN||ISONIAZID": {
+      "subject": "ACETAMINOPHEN",
+      "relation": "INTERACTS_WITH",
+      "object": "ISONIAZID",
+      "severity": "moderate",
+      "mechanism": "Isoniazid induces CYP2E1, increasing toxic metabolite (NAPQI) formation from acetaminophen",
+      "clinical_note": "Limit acetaminophen dose. Increased risk of hepatotoxicity.",
+      "interaction_type": "drug_drug"
+    },
+    "ROSUVASTATIN||CYCLOSPORINE": {
+      "subject": "ROSUVASTATIN",
+      "relation": "INTERACTS_WITH",
+      "object": "CYCLOSPORINE",
+      "severity": "major",
+      "mechanism": "Cyclosporine inhibits OATP1B1 and BCRP, increasing rosuvastatin AUC 7-fold",
+      "clinical_note": "Maximum rosuvastatin dose 5mg/day with cyclosporine.",
+      "interaction_type": "drug_drug"
+    },
+    "CYCLOSPORINE||ROSUVASTATIN": {
+      "subject": "CYCLOSPORINE",
+      "relation": "INTERACTS_WITH",
+      "object": "ROSUVASTATIN",
+      "severity": "major",
+      "mechanism": "Cyclosporine inhibits OATP1B1 and BCRP, increasing rosuvastatin AUC 7-fold",
+      "clinical_note": "Maximum rosuvastatin dose 5mg/day with cyclosporine.",
+      "interaction_type": "drug_drug"
+    },
+    "ALLOPURINOL||AZATHIOPRINE": {
+      "subject": "ALLOPURINOL",
+      "relation": "INTERACTS_WITH",
+      "object": "AZATHIOPRINE",
+      "severity": "major",
+      "mechanism": "Allopurinol inhibits xanthine oxidase, blocking azathioprine/6-MP metabolism",
+      "clinical_note": "Reduce azathioprine dose by 66-75% if allopurinol essential. Risk of fatal pancytopenia.",
+      "interaction_type": "drug_drug"
+    },
+    "AZATHIOPRINE||ALLOPURINOL": {
+      "subject": "AZATHIOPRINE",
+      "relation": "INTERACTS_WITH",
+      "object": "ALLOPURINOL",
+      "severity": "major",
+      "mechanism": "Allopurinol inhibits xanthine oxidase, blocking azathioprine/6-MP metabolism",
+      "clinical_note": "Reduce azathioprine dose by 66-75% if allopurinol essential. Risk of fatal pancytopenia.",
+      "interaction_type": "drug_drug"
+    },
+    "ALLOPURINOL||MERCAPTOPURINE": {
+      "subject": "ALLOPURINOL",
+      "relation": "INTERACTS_WITH",
+      "object": "MERCAPTOPURINE",
+      "severity": "major",
+      "mechanism": "Allopurinol inhibits xanthine oxidase, the primary 6-MP elimination pathway",
+      "clinical_note": "Reduce 6-MP dose by 75%. Life-threatening myelosuppression if not adjusted.",
+      "interaction_type": "drug_drug"
+    },
+    "MERCAPTOPURINE||ALLOPURINOL": {
+      "subject": "MERCAPTOPURINE",
+      "relation": "INTERACTS_WITH",
+      "object": "ALLOPURINOL",
+      "severity": "major",
+      "mechanism": "Allopurinol inhibits xanthine oxidase, the primary 6-MP elimination pathway",
+      "clinical_note": "Reduce 6-MP dose by 75%. Life-threatening myelosuppression if not adjusted.",
+      "interaction_type": "drug_drug"
+    },
+    "POTASSIUM||TRIMETHOPRIM": {
+      "subject": "POTASSIUM",
+      "relation": "INTERACTS_WITH",
+      "object": "TRIMETHOPRIM",
+      "severity": "major",
+      "mechanism": "Trimethoprim blocks ENaC sodium channels in collecting duct, reducing potassium secretion",
+      "clinical_note": "Risk of hyperkalemia, especially with renal impairment. Monitor potassium levels.",
+      "interaction_type": "drug_drug"
+    },
+    "TRIMETHOPRIM||POTASSIUM": {
+      "subject": "TRIMETHOPRIM",
+      "relation": "INTERACTS_WITH",
+      "object": "POTASSIUM",
+      "severity": "major",
+      "mechanism": "Trimethoprim blocks ENaC sodium channels in collecting duct, reducing potassium secretion",
+      "clinical_note": "Risk of hyperkalemia, especially with renal impairment. Monitor potassium levels.",
+      "interaction_type": "drug_drug"
+    },
+    "VENLAFAXINE||TRAMADOL": {
+      "subject": "VENLAFAXINE",
+      "relation": "INTERACTS_WITH",
+      "object": "TRAMADOL",
+      "severity": "major",
+      "mechanism": "Both have serotonergic activity; increased serotonin syndrome risk",
+      "clinical_note": "Risk of serotonin syndrome and seizures. Use alternative analgesic.",
+      "interaction_type": "drug_drug"
+    },
+    "TRAMADOL||VENLAFAXINE": {
+      "subject": "TRAMADOL",
+      "relation": "INTERACTS_WITH",
+      "object": "VENLAFAXINE",
+      "severity": "major",
+      "mechanism": "Both have serotonergic activity; increased serotonin syndrome risk",
+      "clinical_note": "Risk of serotonin syndrome and seizures. Use alternative analgesic.",
+      "interaction_type": "drug_drug"
+    },
+    "DULOXETINE||TRAMADOL": {
+      "subject": "DULOXETINE",
+      "relation": "INTERACTS_WITH",
+      "object": "TRAMADOL",
+      "severity": "major",
+      "mechanism": "Both serotonergic; duloxetine also inhibits CYP2D6 reducing tramadol efficacy",
+      "clinical_note": "Dual risk: serotonin syndrome and reduced analgesia. Avoid combination.",
+      "interaction_type": "drug_drug"
+    },
+    "TRAMADOL||DULOXETINE": {
+      "subject": "TRAMADOL",
+      "relation": "INTERACTS_WITH",
+      "object": "DULOXETINE",
+      "severity": "major",
+      "mechanism": "Both serotonergic; duloxetine also inhibits CYP2D6 reducing tramadol efficacy",
+      "clinical_note": "Dual risk: serotonin syndrome and reduced analgesia. Avoid combination.",
+      "interaction_type": "drug_drug"
+    },
+    "TRAZODONE||FLUOXETINE": {
+      "subject": "TRAZODONE",
+      "relation": "INTERACTS_WITH",
+      "object": "FLUOXETINE",
+      "severity": "moderate",
+      "mechanism": "Fluoxetine inhibits CYP3A4/2D6, increasing trazodone levels",
+      "clinical_note": "Increased sedation and risk of serotonin syndrome. Start trazodone at low dose.",
+      "interaction_type": "drug_drug"
+    },
+    "FLUOXETINE||TRAZODONE": {
+      "subject": "FLUOXETINE",
+      "relation": "INTERACTS_WITH",
+      "object": "TRAZODONE",
+      "severity": "moderate",
+      "mechanism": "Fluoxetine inhibits CYP3A4/2D6, increasing trazodone levels",
+      "clinical_note": "Increased sedation and risk of serotonin syndrome. Start trazodone at low dose.",
+      "interaction_type": "drug_drug"
+    },
+    "QUETIAPINE||KETOCONAZOLE": {
+      "subject": "QUETIAPINE",
+      "relation": "INTERACTS_WITH",
+      "object": "KETOCONAZOLE",
+      "severity": "major",
+      "mechanism": "Ketoconazole inhibits CYP3A4, increasing quetiapine exposure 6-fold",
+      "clinical_note": "Reduce quetiapine dose to 1/6th when used with strong CYP3A4 inhibitors.",
+      "interaction_type": "drug_drug"
+    },
+    "KETOCONAZOLE||QUETIAPINE": {
+      "subject": "KETOCONAZOLE",
+      "relation": "INTERACTS_WITH",
+      "object": "QUETIAPINE",
+      "severity": "major",
+      "mechanism": "Ketoconazole inhibits CYP3A4, increasing quetiapine exposure 6-fold",
+      "clinical_note": "Reduce quetiapine dose to 1/6th when used with strong CYP3A4 inhibitors.",
+      "interaction_type": "drug_drug"
+    },
+    "COLCHICINE||CLARITHROMYCIN": {
+      "subject": "COLCHICINE",
+      "relation": "INTERACTS_WITH",
+      "object": "CLARITHROMYCIN",
+      "severity": "major",
+      "mechanism": "Clarithromycin inhibits CYP3A4 and P-glycoprotein; colchicine has narrow therapeutic index",
+      "clinical_note": "Fatal colchicine toxicity reported. Reduce colchicine dose significantly or avoid combination.",
+      "interaction_type": "drug_drug"
+    },
+    "CLARITHROMYCIN||COLCHICINE": {
+      "subject": "CLARITHROMYCIN",
+      "relation": "INTERACTS_WITH",
+      "object": "COLCHICINE",
+      "severity": "major",
+      "mechanism": "Clarithromycin inhibits CYP3A4 and P-glycoprotein; colchicine has narrow therapeutic index",
+      "clinical_note": "Fatal colchicine toxicity reported. Reduce colchicine dose significantly or avoid combination.",
+      "interaction_type": "drug_drug"
+    },
+    "DABIGATRAN||AMIODARONE": {
+      "subject": "DABIGATRAN",
+      "relation": "INTERACTS_WITH",
+      "object": "AMIODARONE",
+      "severity": "moderate",
+      "mechanism": "Amiodarone inhibits P-glycoprotein, increasing dabigatran levels by 12-60%",
+      "clinical_note": "Reduce dabigatran dose to 150mg daily in patients with renal impairment.",
+      "interaction_type": "drug_drug"
+    },
+    "AMIODARONE||DABIGATRAN": {
+      "subject": "AMIODARONE",
+      "relation": "INTERACTS_WITH",
+      "object": "DABIGATRAN",
+      "severity": "moderate",
+      "mechanism": "Amiodarone inhibits P-glycoprotein, increasing dabigatran levels by 12-60%",
+      "clinical_note": "Reduce dabigatran dose to 150mg daily in patients with renal impairment.",
+      "interaction_type": "drug_drug"
+    },
+    "APIXABAN||KETOCONAZOLE": {
+      "subject": "APIXABAN",
+      "relation": "INTERACTS_WITH",
+      "object": "KETOCONAZOLE",
+      "severity": "major",
+      "mechanism": "Dual CYP3A4 and P-glycoprotein inhibition doubles apixaban exposure",
+      "clinical_note": "Reduce apixaban dose by 50% when combined with strong CYP3A4 + P-gp inhibitors.",
+      "interaction_type": "drug_drug"
+    },
+    "KETOCONAZOLE||APIXABAN": {
+      "subject": "KETOCONAZOLE",
+      "relation": "INTERACTS_WITH",
+      "object": "APIXABAN",
+      "severity": "major",
+      "mechanism": "Dual CYP3A4 and P-glycoprotein inhibition doubles apixaban exposure",
+      "clinical_note": "Reduce apixaban dose by 50% when combined with strong CYP3A4 + P-gp inhibitors.",
+      "interaction_type": "drug_drug"
+    },
+    "RIVAROXABAN||RIFAMPIN": {
+      "subject": "RIVAROXABAN",
+      "relation": "INTERACTS_WITH",
+      "object": "RIFAMPIN",
+      "severity": "major",
+      "mechanism": "Rifampin induces CYP3A4 and P-glycoprotein, reducing rivaroxaban efficacy by 50%",
+      "clinical_note": "Avoid combination. Reduced anticoagulant effect increases thrombotic risk.",
+      "interaction_type": "drug_drug"
+    },
+    "RIFAMPIN||RIVAROXABAN": {
+      "subject": "RIFAMPIN",
+      "relation": "INTERACTS_WITH",
+      "object": "RIVAROXABAN",
+      "severity": "major",
+      "mechanism": "Rifampin induces CYP3A4 and P-glycoprotein, reducing rivaroxaban efficacy by 50%",
+      "clinical_note": "Avoid combination. Reduced anticoagulant effect increases thrombotic risk.",
+      "interaction_type": "drug_drug"
+    },
+    "METFORMIN||RENAL_FAILURE": {
+      "subject": "METFORMIN",
+      "relation": "CONTRAINDICATES",
+      "object": "RENAL_FAILURE",
+      "severity": "major",
+      "mechanism": "Impaired renal clearance of metformin leads to accumulation",
+      "clinical_note": "Contraindicated if eGFR <30. Reduce dose if eGFR 30-45. Risk of fatal lactic acidosis.",
+      "interaction_type": "drug_condition"
+    },
+    "METFORMIN||LIVER_DISEASE": {
+      "subject": "METFORMIN",
+      "relation": "CONTRAINDICATES",
+      "object": "LIVER_DISEASE",
+      "severity": "major",
+      "mechanism": "Hepatic impairment reduces lactate clearance",
+      "clinical_note": "Avoid in patients with clinical or laboratory evidence of hepatic disease. Risk of lactic acidosis.",
+      "interaction_type": "drug_condition"
+    },
+    "ACE_INHIBITORS||PREGNANCY": {
+      "subject": "ACE_INHIBITORS",
+      "relation": "CONTRAINDICATES",
+      "object": "PREGNANCY",
+      "severity": "major",
+      "mechanism": "ACE inhibitors are teratogenic; cause fetal renal dysgenesis, oligohydramnios",
+      "clinical_note": "CONTRAINDICATED in all trimesters. Discontinue immediately upon pregnancy detection.",
+      "interaction_type": "drug_condition"
+    },
+    "ACE_INHIBITORS||ANGIOEDEMA": {
+      "subject": "ACE_INHIBITORS",
+      "relation": "CONTRAINDICATES",
+      "object": "ANGIOEDEMA",
+      "severity": "major",
+      "mechanism": "ACE inhibitor-induced angioedema can be life-threatening",
+      "clinical_note": "History of angioedema with any ACE inhibitor is absolute contraindication for all ACE inhibitors.",
+      "interaction_type": "drug_condition"
+    },
+    "ACE_INHIBITORS||BILATERAL_RENAL_ARTERY_STENOSIS": {
+      "subject": "ACE_INHIBITORS",
+      "relation": "CONTRAINDICATES",
+      "object": "BILATERAL_RENAL_ARTERY_STENOSIS",
+      "severity": "major",
+      "mechanism": "ACE inhibitors remove efferent arteriolar tone, causing acute renal failure",
+      "clinical_note": "Can cause acute anuria. Also applies to unilateral stenosis of a solitary kidney.",
+      "interaction_type": "drug_condition"
+    },
+    "WARFARIN||ACTIVE_BLEEDING": {
+      "subject": "WARFARIN",
+      "relation": "CONTRAINDICATES",
+      "object": "ACTIVE_BLEEDING",
+      "severity": "major",
+      "mechanism": "Anticoagulation worsens hemorrhage",
+      "clinical_note": "Absolute contraindication. Reverse anticoagulation with vitamin K, FFP, or PCC.",
+      "interaction_type": "drug_condition"
+    },
+    "NSAIDS||PEPTIC_ULCER": {
+      "subject": "NSAIDS",
+      "relation": "CONTRAINDICATES",
+      "object": "PEPTIC_ULCER",
+      "severity": "major",
+      "mechanism": "NSAIDs inhibit protective prostaglandins in gastric mucosa",
+      "clinical_note": "High risk of GI hemorrhage. Use acetaminophen or add PPI gastroprotection.",
+      "interaction_type": "drug_condition"
+    },
+    "NSAIDS||CHRONIC_KIDNEY_DISEASE": {
+      "subject": "NSAIDS",
+      "relation": "CONTRAINDICATES",
+      "object": "CHRONIC_KIDNEY_DISEASE",
+      "severity": "major",
+      "mechanism": "NSAIDs reduce renal blood flow by inhibiting prostaglandin-mediated afferent arteriolar vasodilation",
+      "clinical_note": "Can precipitate acute kidney injury. Avoid in CKD stage 3 or worse.",
+      "interaction_type": "drug_condition"
+    },
+    "NSAIDS||HEART_FAILURE": {
+      "subject": "NSAIDS",
+      "relation": "CONTRAINDICATES",
+      "object": "HEART_FAILURE",
+      "severity": "major",
+      "mechanism": "NSAIDs cause sodium and water retention, worsening heart failure",
+      "clinical_note": "Increased risk of decompensation and hospitalization.",
+      "interaction_type": "drug_condition"
+    },
+    "BETA_BLOCKERS||SEVERE_ASTHMA": {
+      "subject": "BETA_BLOCKERS",
+      "relation": "CONTRAINDICATES",
+      "object": "SEVERE_ASTHMA",
+      "severity": "major",
+      "mechanism": "Beta-2 receptor blockade causes bronchospasm",
+      "clinical_note": "Non-selective beta-blockers absolutely contraindicated. Cardioselective agents (bisoprolol) may be used cautiously in mild asthma.",
+      "interaction_type": "drug_condition"
+    },
+    "BETA_BLOCKERS||SEVERE_BRADYCARDIA": {
+      "subject": "BETA_BLOCKERS",
+      "relation": "CONTRAINDICATES",
+      "object": "SEVERE_BRADYCARDIA",
+      "severity": "major",
+      "mechanism": "Further depression of AV node conduction and heart rate",
+      "clinical_note": "Contraindicated if heart rate <50 bpm or second/third degree heart block.",
+      "interaction_type": "drug_condition"
+    },
+    "STATINS||ACTIVE_LIVER_DISEASE": {
+      "subject": "STATINS",
+      "relation": "CONTRAINDICATES",
+      "object": "ACTIVE_LIVER_DISEASE",
+      "severity": "major",
+      "mechanism": "Statins undergo hepatic metabolism and can worsen liver injury",
+      "clinical_note": "Contraindicated if transaminases persistently >3x ULN. Check LFTs before starting.",
+      "interaction_type": "drug_condition"
+    },
+    "STATINS||PREGNANCY": {
+      "subject": "STATINS",
+      "relation": "CONTRAINDICATES",
+      "object": "PREGNANCY",
+      "severity": "major",
+      "mechanism": "Cholesterol is essential for fetal development; statins may be teratogenic",
+      "clinical_note": "Contraindicated in pregnancy and breastfeeding. Discontinue 1 month before planned conception.",
+      "interaction_type": "drug_condition"
+    },
+    "CIPROFLOXACIN||MYASTHENIA_GRAVIS": {
+      "subject": "CIPROFLOXACIN",
+      "relation": "CONTRAINDICATES",
+      "object": "MYASTHENIA_GRAVIS",
+      "severity": "major",
+      "mechanism": "Fluoroquinolones can worsen neuromuscular blockade",
+      "clinical_note": "Risk of respiratory failure. Avoid all fluoroquinolones in myasthenia gravis patients.",
+      "interaction_type": "drug_condition"
+    },
+    "CIPROFLOXACIN||QT_PROLONGATION": {
+      "subject": "CIPROFLOXACIN",
+      "relation": "CONTRAINDICATES",
+      "object": "QT_PROLONGATION",
+      "severity": "major",
+      "mechanism": "Fluoroquinolones independently prolong QT interval",
+      "clinical_note": "Avoid in patients with congenital or acquired long QT syndrome. Monitor ECG if unavoidable.",
+      "interaction_type": "drug_condition"
+    },
+    "LITHIUM||RENAL_FAILURE": {
+      "subject": "LITHIUM",
+      "relation": "CONTRAINDICATES",
+      "object": "RENAL_FAILURE",
+      "severity": "major",
+      "mechanism": "Lithium relies entirely on renal elimination",
+      "clinical_note": "Contraindicated in severe renal impairment. Dose adjustment required in mild-moderate CKD.",
+      "interaction_type": "drug_condition"
+    },
+    "LITHIUM||DEHYDRATION": {
+      "subject": "LITHIUM",
+      "relation": "CONTRAINDICATES",
+      "object": "DEHYDRATION",
+      "severity": "major",
+      "mechanism": "Volume depletion increases proximal tubular lithium reabsorption",
+      "clinical_note": "Risk of lithium toxicity. Ensure adequate hydration. Hold lithium during acute illness with dehydration.",
+      "interaction_type": "drug_condition"
+    },
+    "METHOTREXATE||PREGNANCY": {
+      "subject": "METHOTREXATE",
+      "relation": "CONTRAINDICATES",
+      "object": "PREGNANCY",
+      "severity": "major",
+      "mechanism": "Potent teratogen; inhibits folate metabolism essential for fetal development",
+      "clinical_note": "Category X. Wait at least 3 months (men) or 1 ovulatory cycle (women) after stopping before conception.",
+      "interaction_type": "drug_condition"
+    },
+    "METHOTREXATE||LIVER_DISEASE": {
+      "subject": "METHOTREXATE",
+      "relation": "CONTRAINDICATES",
+      "object": "LIVER_DISEASE",
+      "severity": "major",
+      "mechanism": "Methotrexate is hepatotoxic and can cause fibrosis/cirrhosis",
+      "clinical_note": "Avoid in alcoholic liver disease or chronic hepatitis. Monitor LFTs regularly.",
+      "interaction_type": "drug_condition"
+    },
+    "METHOTREXATE||IMMUNODEFICIENCY": {
+      "subject": "METHOTREXATE",
+      "relation": "CONTRAINDICATES",
+      "object": "IMMUNODEFICIENCY",
+      "severity": "major",
+      "mechanism": "Methotrexate suppresses immune function",
+      "clinical_note": "Risk of fatal opportunistic infections. Contraindicated in existing immunodeficiency syndromes.",
+      "interaction_type": "drug_condition"
+    },
+    "ASPIRIN||PEDIATRIC_VIRAL_ILLNESS": {
+      "subject": "ASPIRIN",
+      "relation": "CONTRAINDICATES",
+      "object": "PEDIATRIC_VIRAL_ILLNESS",
+      "severity": "major",
+      "mechanism": "Aspirin in children with viral illness (influenza, varicella) causes Reye syndrome",
+      "clinical_note": "CONTRAINDICATED in children <18 with fever or viral illness. Use acetaminophen or ibuprofen.",
+      "interaction_type": "drug_condition"
+    },
+    "TETRACYCLINES||PREGNANCY": {
+      "subject": "TETRACYCLINES",
+      "relation": "CONTRAINDICATES",
+      "object": "PREGNANCY",
+      "severity": "major",
+      "mechanism": "Permanent discoloration of developing teeth; inhibition of bone growth",
+      "clinical_note": "Avoid in pregnancy and children under 8. Use amoxicillin or azithromycin as alternatives.",
+      "interaction_type": "drug_condition"
+    },
+    "VALPROIC_ACID||PREGNANCY": {
+      "subject": "VALPROIC_ACID",
+      "relation": "CONTRAINDICATES",
+      "object": "PREGNANCY",
+      "severity": "major",
+      "mechanism": "Neural tube defects (spina bifida) in 1-2% of exposed pregnancies",
+      "clinical_note": "Most teratogenic antiepileptic. Use lamotrigine or levetiracetam in women of childbearing potential.",
+      "interaction_type": "drug_condition"
+    },
+    "THIAZOLIDINEDIONES||HEART_FAILURE": {
+      "subject": "THIAZOLIDINEDIONES",
+      "relation": "CONTRAINDICATES",
+      "object": "HEART_FAILURE",
+      "severity": "major",
+      "mechanism": "TZDs cause fluid retention via renal sodium reabsorption",
+      "clinical_note": "Contraindicated in NYHA Class III-IV heart failure. Pioglitazone linked to edema and weight gain.",
+      "interaction_type": "drug_condition"
+    },
+    "ERGOTAMINE||PERIPHERAL_VASCULAR_DISEASE": {
+      "subject": "ERGOTAMINE",
+      "relation": "CONTRAINDICATES",
+      "object": "PERIPHERAL_VASCULAR_DISEASE",
+      "severity": "major",
+      "mechanism": "Ergotamine causes vasoconstriction, worsening ischemia",
+      "clinical_note": "Risk of gangrene. Also contraindicated in coronary artery disease and hypertension.",
+      "interaction_type": "drug_condition"
+    },
+    "CLOZAPINE||AGRANULOCYTOSIS": {
+      "subject": "CLOZAPINE",
+      "relation": "CONTRAINDICATES",
+      "object": "AGRANULOCYTOSIS",
+      "severity": "major",
+      "mechanism": "Clozapine-induced agranulocytosis occurs in 1% of patients",
+      "clinical_note": "Requires mandatory ANC monitoring (REMS program). Absolute contraindication if prior clozapine-induced agranulocytosis.",
+      "interaction_type": "drug_condition"
+    },
+    "SILDENAFIL||SEVERE_HYPOTENSION": {
+      "subject": "SILDENAFIL",
+      "relation": "CONTRAINDICATES",
+      "object": "SEVERE_HYPOTENSION",
+      "severity": "major",
+      "mechanism": "Further vasodilation can cause cardiovascular collapse",
+      "clinical_note": "Contraindicated if systolic BP <90mmHg. Also avoid within 24 hours of nitrate use.",
+      "interaction_type": "drug_condition"
+    },
+    "DIGOXIN||HYPOKALEMIA": {
+      "subject": "DIGOXIN",
+      "relation": "CONTRAINDICATES",
+      "object": "HYPOKALEMIA",
+      "severity": "major",
+      "mechanism": "Hypokalemia sensitizes the myocardium to digoxin toxicity",
+      "clinical_note": "Correct potassium before starting digoxin. Maintain K+ >4.0 mEq/L during therapy.",
+      "interaction_type": "drug_condition"
+    },
+    "CORTICOSTEROIDS||SYSTEMIC_FUNGAL_INFECTION": {
+      "subject": "CORTICOSTEROIDS",
+      "relation": "CONTRAINDICATES",
+      "object": "SYSTEMIC_FUNGAL_INFECTION",
+      "severity": "major",
+      "mechanism": "Immunosuppression allows fungal dissemination",
+      "clinical_note": "Systemic corticosteroids contraindicated in active systemic fungal infections.",
+      "interaction_type": "drug_condition"
+    },
+    "AMINOGLYCOSIDES||MYASTHENIA_GRAVIS": {
+      "subject": "AMINOGLYCOSIDES",
+      "relation": "CONTRAINDICATES",
+      "object": "MYASTHENIA_GRAVIS",
+      "severity": "major",
+      "mechanism": "Aminoglycosides worsen neuromuscular blockade",
+      "clinical_note": "Risk of respiratory failure. Use alternative antibiotics when possible.",
+      "interaction_type": "drug_condition"
+    },
+    "OPIOIDS||RESPIRATORY_DEPRESSION": {
+      "subject": "OPIOIDS",
+      "relation": "CONTRAINDICATES",
+      "object": "RESPIRATORY_DEPRESSION",
+      "severity": "major",
+      "mechanism": "Opioids suppress medullary respiratory center",
+      "clinical_note": "Absolute contraindication in severe respiratory depression. Have naloxone available.",
+      "interaction_type": "drug_condition"
+    },
+    "ISOTRETINOIN||PREGNANCY": {
+      "subject": "ISOTRETINOIN",
+      "relation": "CONTRAINDICATES",
+      "object": "PREGNANCY",
+      "severity": "major",
+      "mechanism": "Extremely potent teratogen; causes craniofacial, cardiac, and CNS malformations",
+      "clinical_note": "iPLEDGE program mandatory. Two forms of contraception required. Negative pregnancy test monthly.",
+      "interaction_type": "drug_condition"
+    },
+    "SULFONAMIDES||G6PD_DEFICIENCY": {
+      "subject": "SULFONAMIDES",
+      "relation": "CONTRAINDICATES",
+      "object": "G6PD_DEFICIENCY",
+      "severity": "major",
+      "mechanism": "Oxidative stress from sulfonamides triggers hemolytic anemia in G6PD-deficient patients",
+      "clinical_note": "Screen for G6PD deficiency before prescribing. Use alternative antibiotics.",
+      "interaction_type": "drug_condition"
+    },
+    "CHLOROQUINE||RETINAL_DISEASE": {
+      "subject": "CHLOROQUINE",
+      "relation": "CONTRAINDICATES",
+      "object": "RETINAL_DISEASE",
+      "severity": "major",
+      "mechanism": "Chloroquine accumulates in the retinal pigment epithelium causing irreversible maculopathy",
+      "clinical_note": "Annual ophthalmologic screening recommended after 5 years of use. Stop if retinal changes detected.",
+      "interaction_type": "drug_condition"
+    },
+    "CARBAMAZEPINE||BONE_MARROW_DEPRESSION": {
+      "subject": "CARBAMAZEPINE",
+      "relation": "CONTRAINDICATES",
+      "object": "BONE_MARROW_DEPRESSION",
+      "severity": "major",
+      "mechanism": "Carbamazepine can cause aplastic anemia and agranulocytosis",
+      "clinical_note": "Obtain baseline CBC. Contraindicated in patients with prior bone marrow depression.",
+      "interaction_type": "drug_condition"
+    },
+    "DOXYCYCLINE||PREGNANCY": {
+      "subject": "DOXYCYCLINE",
+      "relation": "CONTRAINDICATES",
+      "object": "PREGNANCY",
+      "severity": "major",
+      "mechanism": "Tetracyclines cause permanent tooth discoloration and inhibit fetal bone growth",
+      "clinical_note": "Avoid in pregnancy. Use amoxicillin or azithromycin when possible.",
+      "interaction_type": "drug_condition"
+    },
+    "FLUCONAZOLE||QT_PROLONGATION": {
+      "subject": "FLUCONAZOLE",
+      "relation": "CONTRAINDICATES",
+      "object": "QT_PROLONGATION",
+      "severity": "major",
+      "mechanism": "Fluconazole can prolong QT interval, especially at high doses",
+      "clinical_note": "Caution with doses >400mg/day. Avoid in patients with baseline QT prolongation.",
+      "interaction_type": "drug_condition"
+    },
+    "TRAMADOL||SEIZURE_DISORDER": {
+      "subject": "TRAMADOL",
+      "relation": "CONTRAINDICATES",
+      "object": "SEIZURE_DISORDER",
+      "severity": "major",
+      "mechanism": "Tramadol lowers seizure threshold",
+      "clinical_note": "Risk of seizures, especially at higher doses or with SSRIs/TCAs. Use alternative analgesic.",
+      "interaction_type": "drug_condition"
+    },
+    "SPIRONOLACTONE||HYPERKALEMIA": {
+      "subject": "SPIRONOLACTONE",
+      "relation": "CONTRAINDICATES",
+      "object": "HYPERKALEMIA",
+      "severity": "major",
+      "mechanism": "Spironolactone blocks aldosterone, reducing potassium excretion",
+      "clinical_note": "Contraindicated if serum K+ >5.5 mEq/L. Monitor potassium within 1 week of starting.",
+      "interaction_type": "drug_condition"
+    },
+    "ALLOPURINOL||ACUTE_GOUT": {
+      "subject": "ALLOPURINOL",
+      "relation": "CONTRAINDICATES",
+      "object": "ACUTE_GOUT",
+      "severity": "moderate",
+      "mechanism": "Rapid urate lowering can paradoxically worsen acute gout flare",
+      "clinical_note": "Do not initiate during acute gout attack. Wait 2-4 weeks after flare resolution. Start at low dose with colchicine prophylaxis.",
+      "interaction_type": "drug_condition"
+    }
+  },
+  "aliases": {
+    "TYLENOL": "ACETAMINOPHEN",
+    "PARACETAMOL": "ACETAMINOPHEN",
+    "ADVIL": "IBUPROFEN",
+    "MOTRIN": "IBUPROFEN",
+    "COUMADIN": "WARFARIN",
+    "LIPITOR": "ATORVASTATIN",
+    "ZOCOR": "SIMVASTATIN",
+    "CRESTOR": "ROSUVASTATIN",
+    "GLUCOPHAGE": "METFORMIN",
+    "NORVASC": "AMLODIPINE",
+    "LOPRESSOR": "METOPROLOL",
+    "TOPROL": "METOPROLOL",
+    "ZOLOFT": "SERTRALINE",
+    "PROZAC": "FLUOXETINE",
+    "LEXAPRO": "ESCITALOPRAM",
+    "CELEXA": "CITALOPRAM",
+    "PAXIL": "PAROXETINE",
+    "EFFEXOR": "VENLAFAXINE",
+    "CYMBALTA": "DULOXETINE",
+    "XANAX": "ALPRAZOLAM",
+    "VALIUM": "DIAZEPAM",
+    "ATIVAN": "LORAZEPAM",
+    "AMBIEN": "ZOLPIDEM",
+    "PRILOSEC": "OMEPRAZOLE",
+    "NEXIUM": "ESOMEPRAZOLE",
+    "PREVACID": "LANSOPRAZOLE",
+    "PLAVIX": "CLOPIDOGREL",
+    "ELIQUIS": "APIXABAN",
+    "XARELTO": "RIVAROXABAN",
+    "PRADAXA": "DABIGATRAN",
+    "DILANTIN": "PHENYTOIN",
+    "TEGRETOL": "CARBAMAZEPINE",
+    "DEPAKOTE": "VALPROIC_ACID",
+    "LAMICTAL": "LAMOTRIGINE",
+    "NEURONTIN": "GABAPENTIN",
+    "LYRICA": "PREGABALIN",
+    "SYNTHROID": "LEVOTHYROXINE",
+    "LEVOXYL": "LEVOTHYROXINE",
+    "LANOXIN": "DIGOXIN",
+    "LASIX": "FUROSEMIDE",
+    "ALDACTONE": "SPIRONOLACTONE",
+    "HCTZ": "HYDROCHLOROTHIAZIDE",
+    "ZITHROMAX": "AZITHROMYCIN",
+    "CIPRO": "CIPROFLOXACIN",
+    "BIAXIN": "CLARITHROMYCIN",
+    "FLAGYL": "METRONIDAZOLE",
+    "DIFLUCAN": "FLUCONAZOLE",
+    "ACCUTANE": "ISOTRETINOIN",
+    "ZYLOPRIM": "ALLOPURINOL",
+    "COZAAR": "LOSARTAN",
+    "PRINIVIL": "LISINOPRIL",
+    "ZESTRIL": "LISINOPRIL",
+    "PROGRAF": "TACROLIMUS",
+    "NOLVADEX": "TAMOXIFEN",
+    "SEROQUEL": "QUETIAPINE",
+    "HALDOL": "HALOPERIDOL",
+    "VIAGRA": "SILDENAFIL",
+    "CIALIS": "TADALAFIL",
+    "ULTRAM": "TRAMADOL",
+    "DESYREL": "TRAZODONE",
+    "CELLCEPT": "MYCOPHENOLATE",
+    "IMURAN": "AZATHIOPRINE",
+    "PURINETHOL": "MERCAPTOPURINE"
+  }
+}

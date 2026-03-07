@@ -145,23 +145,39 @@ class KVCacheInjector:
         """
         Locate the transformer layer at the configured injection point.
 
-        Supports Llama-style architectures:
-            model.model.layers[i]
+        Supports multiple architectures:
+            - Llama:  model.model.layers[i]
+            - GPT-2:  model.transformer.h[i]
+            - GPT-J:  model.transformer.h[i]
+            - Falcon:  model.transformer.h[i]
         """
-        try:
-            layers = self.model.model.layers
-            target = layers[self.model_cfg.injection_layer]
-            logger.info(
-                "Target injection layer: %d / %d",
-                self.model_cfg.injection_layer,
-                len(layers),
-            )
-            return target
-        except (AttributeError, IndexError) as exc:
-            raise RuntimeError(
-                f"Cannot locate transformer layer {self.model_cfg.injection_layer}. "
-                f"Ensure the model architecture matches the expected Llama layout."
-            ) from exc
+        layer_idx = self.model_cfg.injection_layer
+
+        # Try common architecture patterns
+        layer_accessors = [
+            lambda: self.model.model.layers,        # Llama, Mistral
+            lambda: self.model.transformer.h,        # GPT-2, GPT-J
+            lambda: self.model.gpt_neox.layers,      # GPT-NeoX
+        ]
+
+        for accessor in layer_accessors:
+            try:
+                layers = accessor()
+                # Clamp to valid range
+                idx = min(layer_idx, len(layers) - 1)
+                target = layers[idx]
+                logger.info(
+                    "Target injection layer: %d / %d",
+                    idx, len(layers),
+                )
+                return target
+            except (AttributeError, IndexError):
+                continue
+
+        raise RuntimeError(
+            f"Cannot locate transformer layer {layer_idx}. "
+            f"Supported architectures: Llama, GPT-2, GPT-J, GPT-NeoX."
+        )
 
     def _make_hook(self) -> Callable:
         """
@@ -237,7 +253,10 @@ def load_base_model(
     cache_dir: Path | None = None,
 ) -> tuple[nn.Module, Any]:
     """
-    Load the base SLM with quantisation for low-memory deployment.
+    Load the base SLM with optional quantisation.
+
+    On macOS (no bitsandbytes), quantisation is automatically skipped
+    and the model runs in float32/float16 on CPU or MPS.
 
     Returns:
         (model, tokenizer) tuple.
@@ -248,31 +267,60 @@ def load_base_model(
           filling the boot drive.
     """
     import os
-    from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
+    import platform
+    from transformers import AutoModelForCausalLM, AutoTokenizer
 
     cfg = cfg or default_model_cfg
 
-    hf_token = os.getenv("HF_TOKEN")
-    if not hf_token:
+    hf_token = os.getenv("HF_TOKEN") or None
+    if not hf_token and "llama" in cfg.model_id.lower():
         logger.warning(
             "HF_TOKEN not set. Gated models may fail to download. "
             "Set it in your .env file."
         )
 
+    # Quantisation: only available on Linux with CUDA + bitsandbytes
     quantisation_config = None
-    if cfg.quantisation == "nf4":
-        quantisation_config = BitsAndBytesConfig(
-            load_in_4bit=True,
-            bnb_4bit_quant_type="nf4",
-            bnb_4bit_compute_dtype=torch.float16,
-            bnb_4bit_use_double_quant=True,
-        )
-    elif cfg.quantisation == "int8":
-        quantisation_config = BitsAndBytesConfig(load_in_8bit=True)
+    use_quant = cfg.quantisation != "none"
+
+    if use_quant:
+        try:
+            from transformers import BitsAndBytesConfig
+            import bitsandbytes  # noqa: F401
+
+            if cfg.quantisation == "nf4":
+                quantisation_config = BitsAndBytesConfig(
+                    load_in_4bit=True,
+                    bnb_4bit_quant_type="nf4",
+                    bnb_4bit_compute_dtype=torch.float16,
+                    bnb_4bit_use_double_quant=True,
+                )
+            elif cfg.quantisation == "int8":
+                quantisation_config = BitsAndBytesConfig(load_in_8bit=True)
+        except ImportError:
+            logger.info(
+                "bitsandbytes not available (platform=%s). "
+                "Running without quantisation.",
+                platform.system(),
+            )
+            quantisation_config = None
 
     cache_path = str(cache_dir) if cache_dir else None
 
-    logger.info("Loading model: %s (quant=%s)", cfg.model_id, cfg.quantisation)
+    # Determine dtype for non-quantised loading
+    if cfg.device == "mps" or (
+        cfg.device == "cpu" and platform.machine() == "arm64"
+    ):
+        model_dtype = torch.float32  # MPS float16 support is partial
+    elif cfg.device != "cpu":
+        model_dtype = torch.float16
+    else:
+        model_dtype = torch.float32
+
+    logger.info(
+        "Loading model: %s (quant=%s, dtype=%s, device=%s)",
+        cfg.model_id, cfg.quantisation, model_dtype, cfg.device,
+    )
 
     tokenizer = AutoTokenizer.from_pretrained(
         cfg.model_id,
@@ -280,20 +328,35 @@ def load_base_model(
         token=hf_token,
         trust_remote_code=False,
     )
+    # Ensure pad token exists (GPT-2 and some models lack one)
+    if tokenizer.pad_token is None:
+        tokenizer.pad_token = tokenizer.eos_token
+
+    load_kwargs: dict[str, Any] = {
+        "cache_dir": cache_path,
+        "token": hf_token,
+        "trust_remote_code": False,
+        "torch_dtype": model_dtype,
+    }
+    if quantisation_config is not None:
+        load_kwargs["quantization_config"] = quantisation_config
+        load_kwargs["device_map"] = "auto"
 
     model = AutoModelForCausalLM.from_pretrained(
-        cfg.model_id,
-        quantization_config=quantisation_config,
-        device_map="auto" if cfg.device != "cpu" else None,
-        cache_dir=cache_path,
-        token=hf_token,
-        trust_remote_code=False,
-        torch_dtype=torch.float16 if cfg.device != "cpu" else torch.float32,
+        cfg.model_id, **load_kwargs
     )
 
+    # Move to device if not using device_map="auto"
+    if quantisation_config is None and cfg.device != "cpu":
+        device = torch.device(cfg.device)
+        model = model.to(device)
+
     model.eval()
-    logger.info("Model loaded successfully. Parameters: %d",
-                sum(p.numel() for p in model.parameters()))
+    n_params = sum(p.numel() for p in model.parameters())
+    logger.info(
+        "Model loaded: %s — %.1fM params, dtype=%s",
+        cfg.model_id, n_params / 1e6, model_dtype,
+    )
 
     return model, tokenizer
 

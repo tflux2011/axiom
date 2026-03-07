@@ -14,15 +14,18 @@ build/
 *.swp
 *.swo
 
-# Data & models (stored on external HD)
-data/
+# Large model files
 models/
-*.bin
 *.safetensors
 *.gguf
 
-# Outputs
-results/
+# Data — include curated dataset & distilled artefacts, exclude large projector
+data/projection/projector.pt
+
+# Node
+web/node_modules/
+
+# Logs
 logs/
 *.log
 
