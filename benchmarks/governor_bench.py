@@ -30,6 +30,8 @@ Security: No network calls; all synthetic data.
 """
 
 from __future__ import annotations
+from src.distiller import _cyclic_shift
+import torchhd.functional as F
 
 import json
 import random
@@ -42,9 +44,6 @@ import torch
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-import torchhd.functional as F
-
-from src.distiller import _cyclic_shift
 
 
 # ---------------------------------------------------------------------------
@@ -79,7 +78,7 @@ class Scenario:
     """A single test scenario for the Governor."""
     name: str
     known_entities: list[str]        # Entities IN the Axiom Map
-    hallucination_entities: list[str] # Entities NOT in the Axiom Map
+    hallucination_entities: list[str]  # Entities NOT in the Axiom Map
     n_facts: int
 
 
@@ -174,7 +173,8 @@ def run_governor_experiment(
     axiom_map, item_memory = create_axiom_map_and_memory(facts, dim, dev)
 
     # --- 2. Create hallucination entities (NOT in the map) ---
-    hallucination_names = [f"FAKE_DRUG_{i:04d}" for i in range(n_hallucination_entities)]
+    hallucination_names = [
+        f"FAKE_DRUG_{i:04d}" for i in range(n_hallucination_entities)]
     for name in hallucination_names:
         key = name.strip().upper()
         if key not in item_memory:
@@ -196,7 +196,8 @@ def run_governor_experiment(
         [s for s, _, _ in facts] + [o for _, _, o in facts]
     ))
     all_relation_names = list(set(r for _, r, _ in facts))
-    vocab = all_known_entities + all_relation_names + hallucination_names + ["<pad>", "<unk>"]
+    vocab = all_known_entities + all_relation_names + \
+        hallucination_names + ["<pad>", "<unk>"]
     tokenizer = SyntheticTokenizer(vocab)
 
     # --- 3. Run scenarios ---
@@ -240,13 +241,15 @@ def run_governor_experiment(
 
         # Hallucinations get medium-high logits
         n_halluc = rng.randint(2, 6)
-        halluc_sample = rng.sample(hallucination_names, min(n_halluc, len(hallucination_names)))
+        halluc_sample = rng.sample(hallucination_names, min(
+            n_halluc, len(hallucination_names)))
         for t in halluc_sample:
             tid = tokenizer._token_to_id.get(t, 0)
             logits[tid] = 4.0 + rng.random() * 2.0
 
         original_logits = logits.clone()
-        top_values, top_indices = torch.topk(logits, min(top_k, logits.size(-1)))
+        top_values, top_indices = torch.topk(
+            logits, min(top_k, logits.size(-1)))
 
         verdicts: list[dict] = []
         modified_logits = logits.clone()
@@ -296,10 +299,14 @@ def run_governor_experiment(
         total_evaluated = len(verdicts)
         n_suppressed = sum(1 for v in verdicts if v["action"] == "SUPPRESS")
 
-        tp = sum(1 for v in verdicts if v["is_hallucination"] and v["action"] == "SUPPRESS")
-        fn = sum(1 for v in verdicts if v["is_hallucination"] and v["action"] == "PASS")
-        fp = sum(1 for v in verdicts if v["is_correct_answer"] and v["action"] == "SUPPRESS")
-        tn = sum(1 for v in verdicts if v["is_correct_answer"] and v["action"] == "PASS")
+        tp = sum(
+            1 for v in verdicts if v["is_hallucination"] and v["action"] == "SUPPRESS")
+        fn = sum(
+            1 for v in verdicts if v["is_hallucination"] and v["action"] == "PASS")
+        fp = sum(
+            1 for v in verdicts if v["is_correct_answer"] and v["action"] == "SUPPRESS")
+        tn = sum(
+            1 for v in verdicts if v["is_correct_answer"] and v["action"] == "PASS")
 
         halluc_in_topk = sum(1 for v in verdicts if v["is_hallucination"])
         correct_in_topk = sum(1 for v in verdicts if v["is_correct_answer"])
@@ -332,7 +339,8 @@ def run_governor_experiment(
         })
 
     # --- Aggregate ---
-    nn_accuracy = sum(1 for r in scenario_results if r["nn_correct"]) / n_scenarios
+    nn_accuracy = sum(
+        1 for r in scenario_results if r["nn_correct"]) / n_scenarios
     agg = {
         "n_scenarios": n_scenarios,
         "n_known_facts": n_known_facts,

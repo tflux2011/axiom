@@ -24,6 +24,8 @@ Security: No network calls; all synthetic data; deterministic seeds.
 """
 
 from __future__ import annotations
+from src.distiller import _cyclic_shift
+import torchhd.functional as F
 
 import json
 import math
@@ -36,8 +38,6 @@ import torch
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-import torchhd.functional as F
-from src.distiller import _cyclic_shift
 
 # Optional: matplotlib for plots
 try:
@@ -336,14 +336,16 @@ def run_capacity_bound_test(dim: int = 10_000) -> dict:
     for n in test_ns:
         emp = run_empirical_trial(dim, n, n_probes=200, seed=42, binarize=True)
         recall = emp["recall_at_1"]
-        print(f"  N={n:>4}  Recall@1={recall:.1%}  (vocab={emp['vocab_size']})")
+        print(
+            f"  N={n:>4}  Recall@1={recall:.1%}  (vocab={emp['vocab_size']})")
         if recall < 0.90 and empirical_boundary is None:
             empirical_boundary = n
 
     avg_vocab = 300
     n_max_thy = theoretical_capacity_bound(dim, avg_vocab, alpha=0.05)
 
-    print(f"\n  Theoretical N_max (95% conf, |M|={avg_vocab}): {n_max_thy:.0f}")
+    print(
+        f"\n  Theoretical N_max (95% conf, |M|={avg_vocab}): {n_max_thy:.0f}")
     if empirical_boundary:
         print(f"  Empirical boundary (Recall@1 < 90%): {empirical_boundary}")
         pct_diff = abs(n_max_thy - empirical_boundary) / n_max_thy * 100
@@ -484,8 +486,10 @@ def main():
             f"(SNR err {m_snr:.1f}%, cos err {m_cos:.1f}%)"
         )
 
-    print(f"  Theoretical N_max: {bound_result['theoretical_n_max']:.0f} facts")
-    print(f"  Empirical boundary: {bound_result['empirical_boundary'] or '>500'}")
+    print(
+        f"  Theoretical N_max: {bound_result['theoretical_n_max']:.0f} facts")
+    print(
+        f"  Empirical boundary: {bound_result['empirical_boundary'] or '>500'}")
 
     # 5. Plot
     plot_theory_vs_empirical(

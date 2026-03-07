@@ -59,6 +59,10 @@ class ModelConfig:
     max_virtual_tokens: int = 128
     """Number of virtual context tokens derived from the HD map."""
 
+    projection_bottleneck: int = 512
+    """Bottleneck dimension for the low-rank two-stage projection.
+    Total projection params ≈ hdc_dim * bottleneck + bottleneck * k * d_model."""
+
     device: str = os.getenv("AXIOM_DEVICE", "cpu")
     """Target device: cpu | cuda | mps."""
 

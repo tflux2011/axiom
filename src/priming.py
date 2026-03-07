@@ -39,11 +39,17 @@ logger = logging.getLogger("axiom.priming")
 
 class AxiomProjector(nn.Module):
     """
-    Projects the HDC Axiom Map into the transformer's hidden dimension,
-    producing k virtual context tokens.
+    Low-rank two-stage projection from HDC Axiom Map to transformer
+    virtual context tokens.
+
+    Architecture:
+        Stage 1: W1 ∈ R^{hdc_dim × bottleneck}   (10000 × 512)
+        Stage 2: W2 ∈ R^{bottleneck × k*d_model}  (512 × 128*3072)
+
+    Total params ≈ 206M (vs 3.9B for a naive single linear layer).
 
     Input:  (1, D_hdc)           e.g. (1, 10000)
-    Output: (k, d_model)         e.g. (128, 3072)  for Llama-3.2-3B
+    Output: (1, k, d_model)      e.g. (1, 128, 3072) for Llama-3.2-3B
     """
 
     def __init__(
@@ -51,28 +57,38 @@ class AxiomProjector(nn.Module):
         hdc_dim: int,
         model_dim: int,
         num_virtual_tokens: int,
+        bottleneck_dim: int = 512,
     ) -> None:
         super().__init__()
         self.num_virtual_tokens = num_virtual_tokens
         self.model_dim = model_dim
+        self.bottleneck_dim = bottleneck_dim
 
-        # Linear projection from HDC space to (k * d_model)
-        self.proj = nn.Linear(
-            hdc_dim, num_virtual_tokens * model_dim, bias=False)
+        # Stage 1: HDC space → bottleneck
+        self.proj_down = nn.Linear(hdc_dim, bottleneck_dim, bias=False)
+
+        # Stage 2: bottleneck → (k * d_model)
+        self.proj_up = nn.Linear(
+            bottleneck_dim, num_virtual_tokens * model_dim, bias=False
+        )
 
         # Layer norm to stabilise injection
         self.norm = nn.LayerNorm(model_dim)
 
+        total_params = (hdc_dim * bottleneck_dim
+                        + bottleneck_dim * num_virtual_tokens * model_dim)
         logger.info(
-            "AxiomProjector: %d → %d × %d",
+            "AxiomProjector (low-rank): %d → %d → %d × %d  (%dM params)",
             hdc_dim,
+            bottleneck_dim,
             num_virtual_tokens,
             model_dim,
+            total_params // 1_000_000,
         )
 
     def forward(self, axiom_map: torch.Tensor) -> torch.Tensor:
         """
-        Project and reshape the Axiom Map.
+        Project and reshape the Axiom Map via low-rank bottleneck.
 
         Args:
             axiom_map: (1, D_hdc)
@@ -80,8 +96,11 @@ class AxiomProjector(nn.Module):
         Returns:
             virtual_tokens: (1, k, d_model)
         """
-        # (1, D_hdc) → (1, k * d_model)
-        projected = self.proj(axiom_map.float())
+        # (1, D_hdc) → (1, bottleneck)
+        compressed = self.proj_down(axiom_map.float())
+
+        # (1, bottleneck) → (1, k * d_model)
+        projected = self.proj_up(compressed)
 
         # (1, k * d_model) → (1, k, d_model)
         tokens = projected.view(1, self.num_virtual_tokens, self.model_dim)

@@ -2,34 +2,31 @@
 AXIOM Benchmark — Phase B: Latency (Time to First Token)
 
 Compares inference latency between:
-    Baseline 1: Vanilla SLM (no RAG)
-    Baseline 2: SLM + Standard Vector RAG (FAISS retrieval)
-    AXIOM:      SLM + HD Axiomatic Priming (zero-retrieval)
+    Baseline: SLM + Standard Vector RAG (FAISS HNSW retrieval)
+    AXIOM:    SLM + HD Axiomatic Priming (zero-retrieval)
 
 Metrics:
-    - Time to First Token (TTFT) in milliseconds
-    - Total generation time
-    - Tokens per second
+    - Query latency in milliseconds
+    - Speedup factor
 
 Usage:
     python -m benchmarks.latency_bench --queries 50
+
+Note: FAISS runs in subprocess to avoid OpenMP clashes with PyTorch.
 """
 
 from __future__ import annotations
-from src.utils import setup_logging, save_json
-from src.distiller import AxiomDistiller, MedicalFact
-from src.config import hdc, model as model_cfg, data as data_cfg
 
 import argparse
+import json
 import logging
+import os
+import subprocess
 import sys
 import time
 from pathlib import Path
 
-import torch
-
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-
 
 logger = logging.getLogger("axiom.bench.latency")
 
@@ -65,83 +62,79 @@ SAMPLE_QUERIES = [
 # Simulation: FAISS retrieval latency
 # ---------------------------------------------------------------------------
 
-def _simulate_faiss_retrieval(dim: int = 768, n_vectors: int = 500_000) -> float:
+def _simulate_faiss_retrieval(dim: int = 768, n_vectors: int = 100_000) -> dict:
     """
     Simulate the latency of a FAISS nearest-neighbour search.
-    Returns time in seconds.
+    Runs in subprocess to avoid OpenMP clashes with PyTorch.
+    Returns dict with avg, min, max latency in seconds.
     """
-    import numpy as np
-    import faiss
+    logger.info("Building FAISS HNSW index (%d vectors, dim=%d) [subprocess]...",
+                n_vectors, dim)
 
-    rng = np.random.default_rng(42)
-    data = rng.standard_normal((n_vectors, dim)).astype(np.float32)
-    faiss.normalize_L2(data)
+    script = f"""
+import json, time
+import numpy as np
+import faiss
 
-    # HNSW index (common in production RAG)
-    index = faiss.IndexHNSWFlat(dim, 32)
-    index.hnsw.efSearch = 128
-    index.add(data)
+rng = np.random.default_rng(42)
+data = rng.standard_normal(({n_vectors}, {dim})).astype(np.float32)
+faiss.normalize_L2(data)
 
-    query = rng.standard_normal((1, dim)).astype(np.float32)
-    faiss.normalize_L2(query)
+# HNSW index (common in production RAG)
+index = faiss.IndexHNSWFlat({dim}, 32)
+index.hnsw.efSearch = 128
 
-    # Warm up
+t0 = time.perf_counter()
+index.add(data)
+build_time = time.perf_counter() - t0
+
+query = rng.standard_normal((1, {dim})).astype(np.float32)
+faiss.normalize_L2(query)
+
+# Warm up
+index.search(query, 10)
+
+# Measure 50 queries
+times = []
+for _ in range(50):
+    t0 = time.perf_counter()
     index.search(query, 10)
+    times.append(time.perf_counter() - t0)
 
-    # Measure
-    times = []
-    for _ in range(20):
-        t0 = time.perf_counter()
-        index.search(query, 10)
-        times.append(time.perf_counter() - t0)
+result = {{
+    "avg_s": sum(times) / len(times),
+    "min_s": min(times),
+    "max_s": max(times),
+    "build_time_s": build_time,
+    "n_vectors": {n_vectors},
+}}
+print(json.dumps(result))
+"""
 
-    return sum(times) / len(times)
+    result = subprocess.run(
+        [sys.executable, "-c", script],
+        capture_output=True,
+        text=True,
+        env={**os.environ, "KMP_DUPLICATE_LIB_OK": "TRUE"},
+        timeout=600,
+    )
+
+    if result.returncode != 0:
+        logger.error("FAISS subprocess failed: %s", result.stderr)
+        raise RuntimeError(f"FAISS subprocess failed (rc={result.returncode})")
+
+    return json.loads(result.stdout.strip())
 
 
 # ---------------------------------------------------------------------------
 # AXIOM query latency
 # ---------------------------------------------------------------------------
 
-def _measure_axiom_query_latency(
-    distiller: AxiomDistiller, queries: list[str]
-) -> list[float]:
+def _measure_axiom_query_latency(queries: list[str]) -> dict:
     """
-    Measure the latency of HD cosine-similarity queries against the Axiom Map.
+    Build an Axiom Map and measure HD cosine-similarity query latency.
     """
-    latencies = []
-    for q in queries:
-        # Simulate: extract main entity and relation from query
-        words = q.split()
-        entity = words[min(5, len(words) - 1)] if len(words) > 5 else words[0]
-        relation = "TREATS"
-
-        # Warm up
-        qv = distiller.query(entity, relation)
-        _ = distiller.similarity(qv)
-
-        # Measure
-        t0 = time.perf_counter()
-        qv = distiller.query(entity, relation)
-        sim = distiller.similarity(qv)
-        elapsed = time.perf_counter() - t0
-        latencies.append(elapsed)
-
-    return latencies
-
-
-# ---------------------------------------------------------------------------
-# Main benchmark
-# ---------------------------------------------------------------------------
-
-def run_latency_benchmark(num_queries: int = 20) -> dict:
-    """Run the full latency benchmark and return results."""
-    setup_logging()
-
-    logger.info("=" * 60)
-    logger.info("AXIOM Latency Benchmark — %d queries", num_queries)
-    logger.info("=" * 60)
-
-    queries = SAMPLE_QUERIES[:num_queries]
+    from src.distiller import AxiomDistiller, MedicalFact
 
     # Build a sample Axiom Map
     sample_facts = [
@@ -157,13 +150,56 @@ def run_latency_benchmark(num_queries: int = 20) -> dict:
     distiller = AxiomDistiller()
     distiller.distill(sample_facts)
 
-    # --- AXIOM latency ---
-    axiom_latencies = _measure_axiom_query_latency(distiller, queries)
-    axiom_avg_ms = (sum(axiom_latencies) / len(axiom_latencies)) * 1000
+    latencies = []
+    for q in queries:
+        # Extract a query entity from the question text
+        words = q.split()
+        entity = words[min(5, len(words) - 1)] if len(words) > 5 else words[0]
+        relation = "TREATS"
 
-    # --- FAISS latency ---
-    faiss_avg_s = _simulate_faiss_retrieval()
-    faiss_avg_ms = faiss_avg_s * 1000
+        # Warm up
+        qv = distiller.query(entity, relation)
+        _ = distiller.similarity(qv)
+
+        # Measure
+        t0 = time.perf_counter()
+        qv = distiller.query(entity, relation)
+        sim = distiller.similarity(qv)
+        elapsed = time.perf_counter() - t0
+        latencies.append(elapsed)
+
+    return {
+        "avg_s": sum(latencies) / len(latencies),
+        "min_s": min(latencies),
+        "max_s": max(latencies),
+        "all_ms": [round(l * 1000, 4) for l in latencies],
+    }
+
+
+# ---------------------------------------------------------------------------
+# Main benchmark
+# ---------------------------------------------------------------------------
+
+def run_latency_benchmark(num_queries: int = 20) -> dict:
+    """Run the full latency benchmark and return results."""
+    from src.utils import setup_logging, save_json
+    from src.config import data as data_cfg
+
+    setup_logging()
+
+    logger.info("=" * 60)
+    logger.info("AXIOM Latency Benchmark — %d queries", num_queries)
+    logger.info("=" * 60)
+
+    queries = SAMPLE_QUERIES[:num_queries]
+
+    # --- FAISS latency (subprocess, before torch loads) ---
+    faiss_data = _simulate_faiss_retrieval()
+    faiss_avg_ms = faiss_data["avg_s"] * 1000
+
+    # --- AXIOM latency (loads torch/torchhd) ---
+    axiom_data = _measure_axiom_query_latency(queries)
+    axiom_avg_ms = axiom_data["avg_s"] * 1000
 
     # --- Compute speedup ---
     speedup = faiss_avg_ms / max(axiom_avg_ms, 0.001)
@@ -173,23 +209,27 @@ def run_latency_benchmark(num_queries: int = 20) -> dict:
         "num_queries": num_queries,
         "axiom": {
             "avg_query_ms": round(axiom_avg_ms, 4),
-            "min_query_ms": round(min(axiom_latencies) * 1000, 4),
-            "max_query_ms": round(max(axiom_latencies) * 1000, 4),
+            "min_query_ms": round(axiom_data["min_s"] * 1000, 4),
+            "max_query_ms": round(axiom_data["max_s"] * 1000, 4),
+            "per_query_ms": axiom_data["all_ms"],
             "method": "HD_cosine_similarity",
         },
         "faiss_baseline": {
             "avg_query_ms": round(faiss_avg_ms, 4),
+            "min_query_ms": round(faiss_data["min_s"] * 1000, 4),
+            "max_query_ms": round(faiss_data["max_s"] * 1000, 4),
+            "build_time_s": faiss_data["build_time_s"],
             "method": "HNSW_knn_search",
-            "n_vectors": 500_000,
+            "n_vectors": faiss_data["n_vectors"],
         },
         "speedup": f"{speedup:.1f}x faster",
     }
 
     logger.info("-" * 60)
     logger.info("RESULTS:")
-    logger.info("  FAISS avg:   %.4f ms", faiss_avg_ms)
-    logger.info("  AXIOM avg:   %.4f ms", axiom_avg_ms)
-    logger.info("  Speedup:     %.1fx", speedup)
+    logger.info("  FAISS HNSW avg:   %.4f ms", faiss_avg_ms)
+    logger.info("  AXIOM HD avg:     %.4f ms", axiom_avg_ms)
+    logger.info("  Speedup:          %.1fx", speedup)
     logger.info("-" * 60)
 
     data_cfg.ensure_dirs()

@@ -30,6 +30,8 @@ Security: No network calls; all synthetic data.
 """
 
 from __future__ import annotations
+from src.distiller import _cyclic_shift
+import torchhd.functional as F
 
 import json
 import math
@@ -43,9 +45,6 @@ import numpy as np
 
 # --- project imports --------------------------------------------------------
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-import torchhd.functional as F
-
-from src.distiller import _cyclic_shift
 
 
 # ---------------------------------------------------------------------------
@@ -97,7 +96,8 @@ def _generate_facts(
         attempts += 1
 
     if len(facts) < n:
-        print(f"  [warn] only generated {len(facts)} unique triples for target {n}")
+        print(
+            f"  [warn] only generated {len(facts)} unique triples for target {n}")
 
     return facts
 
@@ -121,7 +121,8 @@ def run_capacity_experiment(
     Returns a list of result dicts, one per scale.
     """
     if scales is None:
-        scales = [100, 500, 1_000, 5_000, 10_000, 50_000, 100_000, 500_000, 1_000_000, 5_000_000]
+        scales = [100, 500, 1_000, 5_000, 10_000, 50_000,
+                  100_000, 500_000, 1_000_000, 5_000_000]
 
     torch.manual_seed(seed)
     dev = torch.device(device)
@@ -166,7 +167,8 @@ def run_capacity_experiment(
 
         # --- 5. Probe a random subset ---
         rng = random.Random(seed + 1)
-        probe_indices = rng.sample(range(len(facts)), min(n_probes, len(facts)))
+        probe_indices = rng.sample(
+            range(len(facts)), min(n_probes, len(facts)))
 
         # Pre-stack all object HVs for nearest-neighbour search
         all_obj_names = [n for n in item_memory if n.startswith("OBJ_")]
@@ -273,7 +275,8 @@ def plot_capacity_curve(results: list[dict], out_path: Path) -> None:
                 label="90% baseline")
     ax1.set_xlabel("Number of Facts (N)", fontsize=12)
     ax1.set_ylabel("Recall@1 (%)", fontsize=12)
-    ax1.set_title("HDC Capacity: Retrieval Accuracy vs. Fact Count", fontsize=13)
+    ax1.set_title(
+        "HDC Capacity: Retrieval Accuracy vs. Fact Count", fontsize=13)
     ax1.set_ylim(0, 105)
     ax1.legend(fontsize=10)
     ax1.grid(True, alpha=0.3)
@@ -291,7 +294,8 @@ def plot_capacity_curve(results: list[dict], out_path: Path) -> None:
                 label="τ = 0.35")
     ax2.set_xlabel("Number of Facts (N)", fontsize=12)
     ax2.set_ylabel("Cosine Similarity", fontsize=12)
-    ax2.set_title("Signal-to-Noise Ratio vs. Superposition Density", fontsize=13)
+    ax2.set_title(
+        "Signal-to-Noise Ratio vs. Superposition Density", fontsize=13)
     ax2.legend(fontsize=10)
     ax2.grid(True, alpha=0.3)
 
