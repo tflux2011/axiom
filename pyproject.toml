@@ -63,7 +63,7 @@ all = ["axiom-hdc[llm,ner,benchmarks,dev]"]
 axiom = "axiom_hdc.cli:main"
 
 [project.urls]
-Repository = "https://github.com/axiom-research/axiom"
+Repository = "https://github.com/tflux2011/axiom"
 Paper = "https://arxiv.org/abs/XXXX.XXXXX"
 
 [tool.hatch.metadata]
