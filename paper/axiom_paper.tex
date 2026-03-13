@@ -1192,12 +1192,11 @@ yielding 44{,}315~raw triples (38{,}508~unique after deduplication).
 Because a single Axiom Map at $d = 10{,}000$ saturates above
 $N \approx 200$~facts (\S\ref{sec:capacity}), we apply
 \emph{Hierarchical Sharding} (\S\ref{sec:sharding}): facts are
-partitioned into sub-maps of $N_s \leq 200$, and every query probes
-all shards, returning the globally best cosine match.  An
-\emph{adaptive threshold}~$\tau^*$ is selected per scale by
-maximising F1 over the observed positive/negative cosine
-distributions, replacing the fixed $\tau = 0.35$ used in
-single-map operation.
+partitioned into sub-maps of $N_s \leq 200$, every query probes
+all shards returning the globally best cosine match, and an
+\emph{adaptive threshold}~$\tau^*$ (selected by maximising F1
+over the observed cosine distributions) replaces the fixed
+$\tau = 0.35$ used in single-map operation.
 
 \begin{table}[t]
     \centering
