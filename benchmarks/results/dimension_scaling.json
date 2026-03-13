@@ -1,0 +1,80 @@
+[
+  {
+    "n_facts": 500,
+    "dim": 1000,
+    "n_probes": 200,
+    "recall_threshold": 0.0,
+    "recall_nn": 0.105,
+    "mean_cosine": 0.0379,
+    "std_cosine": 0.0314,
+    "threshold": 0.35,
+    "entities_in_memory": 210,
+    "distill_time_s": 0.02,
+    "probe_time_s": 0.07
+  },
+  {
+    "n_facts": 500,
+    "dim": 2000,
+    "n_probes": 200,
+    "recall_threshold": 0.0,
+    "recall_nn": 0.21,
+    "mean_cosine": 0.0348,
+    "std_cosine": 0.0241,
+    "threshold": 0.35,
+    "entities_in_memory": 210,
+    "distill_time_s": 0.02,
+    "probe_time_s": 0.08
+  },
+  {
+    "n_facts": 500,
+    "dim": 5000,
+    "n_probes": 200,
+    "recall_threshold": 0.0,
+    "recall_nn": 0.47,
+    "mean_cosine": 0.0349,
+    "std_cosine": 0.0154,
+    "threshold": 0.35,
+    "entities_in_memory": 210,
+    "distill_time_s": 0.02,
+    "probe_time_s": 0.11
+  },
+  {
+    "n_facts": 500,
+    "dim": 10000,
+    "n_probes": 200,
+    "recall_threshold": 0.0,
+    "recall_nn": 0.685,
+    "mean_cosine": 0.0349,
+    "std_cosine": 0.0097,
+    "threshold": 0.35,
+    "entities_in_memory": 210,
+    "distill_time_s": 0.03,
+    "probe_time_s": 0.19
+  },
+  {
+    "n_facts": 500,
+    "dim": 20000,
+    "n_probes": 200,
+    "recall_threshold": 0.0,
+    "recall_nn": 0.835,
+    "mean_cosine": 0.0366,
+    "std_cosine": 0.0075,
+    "threshold": 0.35,
+    "entities_in_memory": 210,
+    "distill_time_s": 0.1,
+    "probe_time_s": 0.28
+  },
+  {
+    "n_facts": 500,
+    "dim": 50000,
+    "n_probes": 200,
+    "recall_threshold": 0.0,
+    "recall_nn": 0.83,
+    "mean_cosine": 0.0355,
+    "std_cosine": 0.0048,
+    "threshold": 0.35,
+    "entities_in_memory": 210,
+    "distill_time_s": 0.17,
+    "probe_time_s": 0.58
+  }
+]

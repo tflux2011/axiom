@@ -1,0 +1,51 @@
+[
+  {
+    "total_facts": 5000,
+    "shard_size": 50,
+    "n_shards": 100,
+    "n_probed": 300,
+    "recall_nn": 0.9667
+  },
+  {
+    "total_facts": 5000,
+    "shard_size": 100,
+    "n_shards": 50,
+    "n_probed": 250,
+    "recall_nn": 0.976
+  },
+  {
+    "total_facts": 5000,
+    "shard_size": 200,
+    "n_shards": 25,
+    "n_probed": 225,
+    "recall_nn": 0.9644
+  },
+  {
+    "total_facts": 5000,
+    "shard_size": 500,
+    "n_shards": 10,
+    "n_probed": 210,
+    "recall_nn": 0.7476
+  },
+  {
+    "total_facts": 5000,
+    "shard_size": 1000,
+    "n_shards": 5,
+    "n_probed": 205,
+    "recall_nn": 0.3512
+  },
+  {
+    "total_facts": 5000,
+    "shard_size": 2500,
+    "n_shards": 2,
+    "n_probed": 202,
+    "recall_nn": 0.1238
+  },
+  {
+    "total_facts": 5000,
+    "shard_size": 5000,
+    "n_shards": 1,
+    "n_probed": 201,
+    "recall_nn": 0.0896
+  }
+]

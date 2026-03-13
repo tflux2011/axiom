@@ -1,0 +1,103 @@
+{
+  "benchmark": "realworld_validation",
+  "datasets": [
+    "PubMedQA (pqa_artificial)",
+    "MedQA (USMLE 4-option)"
+  ],
+  "extraction": {
+    "pubmedqa_raw_triples": 15923,
+    "medqa_raw_triples": 28392,
+    "combined_raw": 44315,
+    "unique_after_dedup": 38508
+  },
+  "results_5k": {
+    "scale": "5K",
+    "actual_facts": 5000,
+    "hdc_dimensions": 10000,
+    "original_threshold": 0.35,
+    "adaptive_threshold": 0.044,
+    "shard_size": 200,
+    "n_shards": 25,
+    "distillation_time_s": 0.571,
+    "accuracy": {
+      "nn_retrieval_accuracy": 0.535,
+      "retrieval_correct": 535,
+      "retrieval_total": 1000,
+      "fact_fidelity": 0.971,
+      "hallucination_catch_rate": 0.984,
+      "false_positive_rate": 0.016,
+      "precision": 0.9838,
+      "recall": 0.971,
+      "f1_score": 0.9774,
+      "tp": 971,
+      "fp": 16,
+      "tn": 984,
+      "fn": 29
+    },
+    "cosine_analysis": {
+      "avg_positive_cosine": 0.062791,
+      "avg_negative_cosine": 0.035497,
+      "separation": 0.027294,
+      "min_positive": 0.0322,
+      "max_negative": 0.048
+    },
+    "latency": {
+      "avg_query_ms": 125.5147,
+      "p99_query_ms": 255.3433,
+      "queries_measured": 100
+    },
+    "compression": {
+      "axiom_total_bytes_f32": 1000000,
+      "axiom_total_bytes_bipolar": 31250,
+      "faiss_baseline_bytes": 17664000,
+      "compression_ratio_f32": 17.7,
+      "compression_ratio_bipolar": 565.2
+    },
+    "unique_entities": 3146
+  },
+  "results_10k": {
+    "scale": "10K",
+    "actual_facts": 10000,
+    "hdc_dimensions": 10000,
+    "original_threshold": 0.35,
+    "adaptive_threshold": 0.0466,
+    "shard_size": 200,
+    "n_shards": 50,
+    "distillation_time_s": 1.419,
+    "accuracy": {
+      "nn_retrieval_accuracy": 0.3945,
+      "retrieval_correct": 789,
+      "retrieval_total": 2000,
+      "fact_fidelity": 0.9715,
+      "hallucination_catch_rate": 0.9935,
+      "false_positive_rate": 0.0065,
+      "precision": 0.9934,
+      "recall": 0.9715,
+      "f1_score": 0.9823,
+      "tp": 1943,
+      "fp": 13,
+      "tn": 1987,
+      "fn": 57
+    },
+    "cosine_analysis": {
+      "avg_positive_cosine": 0.066244,
+      "avg_negative_cosine": 0.036742,
+      "separation": 0.029502,
+      "min_positive": 0.0338,
+      "max_negative": 0.0504
+    },
+    "latency": {
+      "avg_query_ms": 110.5005,
+      "p99_query_ms": 131.6412,
+      "queries_measured": 100
+    },
+    "compression": {
+      "axiom_total_bytes_f32": 2000000,
+      "axiom_total_bytes_bipolar": 62500,
+      "faiss_baseline_bytes": 35328000,
+      "compression_ratio_f32": 17.7,
+      "compression_ratio_bipolar": 565.2
+    },
+    "unique_entities": 4154
+  }
+}
