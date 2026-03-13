@@ -158,13 +158,13 @@ HDC (also known as Vector Symbolic Architectures, VSA) traces back to
 Plate's Holographic Reduced Representations \citep{plate1995holographic}
 and Kanerva's binary spatter codes \citep{kanerva2009hyperdimensional}.
 Recent work has applied HDC to NLP tasks including text classification
-\citep{najafabadi2016hyperdimensional}, language recognition
+\citep{imani2019hdctext}, language recognition
 \citep{rahimi2017hyperlanguage}, and knowledge graph completion
 \citep{kleyko2022hdkg}.  We extend this line by integrating HDC directly
 into a transformer's attention mechanism.
 
 \paragraph{Model Compression and Efficient Inference.}
-Quantisation \citep{dettmers2024qlora}, pruning, and knowledge distillation
+Quantisation \citep{dettmers2023qlora}, pruning, and knowledge distillation
 have enabled LLMs on edge devices.  Our work is complementary: we compress
 the \emph{external knowledge}, not the model weights, and show that the
 two strategies compose naturally.
@@ -246,7 +246,7 @@ AXIOM comprises three phases: \emph{Distillation} (\S\ref{sec:distiller}),
               node[midway, right, note] {inject};
 
         % Generation flow: Proj → SLM → Gov → Output
-        \draw[arrow] (proj) -- node[above, note]{KV-cache} (slm);
+        \draw[arrow] (proj) -- node[midway, above=14pt, note]{KV-cache} (slm);
         \draw[arrow] (slm)  -- (gov);
         \draw[arrow] (gov)  -- (out);
 
@@ -1461,10 +1461,10 @@ A.~Asai, Z.~Wu, Y.~Wang, A.~Sil, and H.~Hajishirzi.
   self-reflection.
 \newblock In \emph{ICLR}, 2024.
 
-\bibitem[Dettmers et~al.(2024)]{dettmers2024qlora}
+\bibitem[Dettmers et~al.(2023)]{dettmers2023qlora}
 T.~Dettmers, A.~Pagnoni, A.~Holtzman, and L.~Zettlemoyer.
 \newblock {QLoRA}: Efficient finetuning of quantized language models.
-\newblock In \emph{NeurIPS}, 2024.
+\newblock In \emph{NeurIPS}, 2023.
 
 \bibitem[Glass et~al.(2022)]{glass2022re2g}
 M.~Glass, G.~Rossiello, M.~F.~M.~Chowdhury, and A.~Gliozzo.
@@ -1507,11 +1507,12 @@ P.~Manakul, A.~Liusie, and M.~J.~F.~Gales.
   generative large language models.
 \newblock In \emph{EMNLP}, 2023.
 
-\bibitem[Najafabadi et~al.(2016)]{najafabadi2016hyperdimensional}
-M.~M.~Najafabadi, F.~Villanustre, T.~M.~Khoshgoftaar, N.~Seliya,
-  R.~Wald, and E.~Muharemagic.
-\newblock Deep learning applications and challenges in big data analytics.
-\newblock \emph{Journal of Big Data}, 2(1):1--21, 2016.
+\bibitem[Imani et~al.(2019)]{imani2019hdctext}
+M.~Imani, D.~Kong, A.~Rahimi, and T.~Rosing.
+\newblock A framework for collaboration and scaling of hyperdimensional
+  computing.
+\newblock In \emph{IEEE International Symposium on High Performance Computer
+  Architecture (HPCA)}, pp.~430--443, 2019.
 
 \bibitem[Plate(1995)]{plate1995holographic}
 T.~A.~Plate.
